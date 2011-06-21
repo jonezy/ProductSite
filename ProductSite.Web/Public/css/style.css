@@ -148,6 +148,130 @@ b.border-d { -webkit-transform: scale(1.5) rotate(45deg); -webkit-transform-orig
 
 
 
+/*------------------------------------*\
+	FORMS
+\*------------------------------------*/
+/*
+Unfortunately, and somewhat obviously, forms don’t fit the baseline all too well. Perhaps in a later version...
+*/
+fieldset{
+	padding:10px;
+	border:1px solid #ccc;
+	margin-bottom:1.5em;
+}
+label{
+	display:block;
+	cursor:pointer;
+}
+label:after{
+	content:":";
+}
+label::after{
+	content:":";
+}
+input,
+textarea{
+	font-family:inherit;
+	font-size:1em;
+	line-height:1.5;
+}
+
+/*
+Nice UI touch for placeholders. To get placeholders working cross-browser see @dan_bentley’s jQuery plugin: https://github.com/danbentley/placeholder
+*/
+[placeholder]{
+	cursor:pointer;
+}
+[placeholder]:active,
+[placeholder]:focus{
+	cursor:text;
+}
+.check-list{
+	width:100%;
+	overflow:hidden;
+	list-style:none;
+	margin:0 0 1.5em 0;
+}
+.check-list li{
+	width:25%;
+	float:left;
+}
+.check-label{
+	display:inline;
+}
+.check-label:after{
+	content:normal;
+}
+.check-label::after{
+	content:normal;
+}
+.button{
+	cursor:pointer;
+}
+fieldset > :last-child{
+	/* Remove the margin from the last element in the fieldset--this makes our padding more consistent. */
+	margin:0;
+}
+
+/*------------------------------------*\
+	TABLES
+\*------------------------------------*/
+/*
+Unfortunately, and somewhat obviously, tables don’t fit the baseline all too well. Perhaps in a later version...
+*/
+table{
+	margin-bottom:1.5em;
+	width:100%;
+	max-width:100%;
+}
+thead tr:last-of-type th{
+	/* Thicker border on the table-headers of the last row in the table head */
+	xborder-bottom-width:2px;
+}
+tbody th{
+	/* Thicker right border on table-headers in the table body */
+	xborder-right-width:2px;
+}
+th:empty{
+	/* Hide the borders on any empty table-headers */
+	border:none;
+}
+th,td{
+	vertical-align:top;
+	padding:0.75em;
+	xborder:1px solid #ccc;
+}
+th{
+	font-weight:bold;
+	text-align:left;
+}
+table [colspan]{
+	/* This looks lovely, trust me... */
+	text-align:center;
+}
+table [rowspan]{
+	/* ...as does this. */
+	vertical-align:middle;
+}
+/*
+Assuming IE has an 'implied' colspan of one on cells without an explicit colspan attribute, fix/undo it.
+See http://jsfiddle.net/csswizardry/UJJay/
+*/
+[colspan="1"]{
+    text-align:left;
+}
+[rowspan="1"]{
+    vertical-align:top;
+}
+tbody tr:nth-of-type(odd){
+	background:rgba(0,0,0,0.05);
+}
+tfoot{
+	text-align:center;
+}
+tfoot td{
+	border-top-width:2px;
+}
 
 
 

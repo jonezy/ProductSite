@@ -1,0 +1,8 @@
+.sln
+.suo
+.csproj
+.cs\
+.pdb
+obj\
+errors\
+App_Data\
