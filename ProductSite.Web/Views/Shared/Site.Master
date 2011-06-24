@@ -17,6 +17,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+    <%= Html.Css("messages.css") %>
     <%= Html.Css("style.css") %>
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
 </head>
@@ -28,7 +29,7 @@
     <b class="border-d"></b> 
     <header>
         <div class="inner clearfix">
-            <a href="./" id="logo">Client Logo</a>
+        <%= Html.ActionLink("Client Logo", "Index", "Home", null, new { @id = "logo" }) %>
             <asp:ContentPlaceHolder ID="Navigation" runat="server">
                 <nav id="primary">
                     <ul>
@@ -40,8 +41,9 @@
             </asp:ContentPlaceHolder>
         </div>
     </header>
+    <% Html.RenderPartial("Messages"); %>
     <div id="container">
-
+    
         <div id="main" role="main">
             <div class="row">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
@@ -54,7 +56,9 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
     <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
-
+    
+    <%= Html.Notify() %>
+    
     <!-- scripts concatenated and minified via ant build script-->
     <%= Html.Script("plugins.js") %>
     <%= Html.Script("script.js") %>

@@ -80,6 +80,8 @@ a:hover { color: #036; }
  *
  * Author: 
  */
+.left {float:left;}
+.right {float:right;}
 
 body {text-align:center;background:#232927;color:#E3D7BF;font:300 12px/18px "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue", sans-serif}
 a {color:#E16734 !important;}
@@ -145,6 +147,35 @@ b.border-b { -webkit-transform: scale(1.5) rotate(45deg); -webkit-transform-orig
 b.border-c { -webkit-transform: scale(1.5) rotate(-45deg); -webkit-transform-origin: 20% 0%; -moz-transform: scale(1.5) rotate(-45deg); -moz-transform-origin: 20% 0%; -o-transform: scale(1.5) rotate(-45deg); -o-transform-origin: 20% 0%; left: 2em; top: 0; }
 b.border-d { -webkit-transform: scale(1.5) rotate(45deg); -webkit-transform-origin: 80% 0%; -moz-transform: scale(1.5) rotate(45deg); -moz-transform-origin: 80% 0%;  -o-transform: scale(1.5) rotate(45deg); -o-transform-origin: 80% 0%; left: auto; right: 2em; top: 0; }
 
+td.actions_items {text-align:center;}
+td.actions_items ul {width:auto;margin:0;list-style:none;display:inline-table;float:none;}
+td.actions_items ul li {margin-bottom:1px;float:left;margin-right:5px;}
+td.actions_items ul li a,
+a.action_item
+{
+    width:100%;
+	color:#000 !important;display:block;padding:2px;font-weight:bold;border:solid 1px #999;
+	background: #eeeeee;background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc));background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%);background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%);background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );background: linear-gradient(top, #eeeeee 0%,#cccccc 100%);
+	text-shadow: 1px 1px 0px #fff;filter: dropshadow(color=#fff, offx=1, offy=1);                          
+}
+a.action_item {display:inline;padding:4px;}
+
+td.actions_items ul li a.delete,
+a.delete
+{
+	color:#fff !important;
+	background: #f85032; background: -moz-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f85032), color-stop(50%,#f16f5c), color-stop(51%,#f6290c), color-stop(71%,#f02f17), color-stop(100%,#e73827));background: -webkit-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);background: -o-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);background: -ms-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 );background: linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);                                 
+	text-shadow: 1px 1px 0px #000;filter: dropshadow(color=#fff, offx=1, offy=1);                                                   
+}
+a.delete {display:inline;}
+
+.header {width:auto !important;margin:7px 0px 0px 250px !important;float:right;display:inline;}
+
+/*--- PARAGRAPHS ---*/
+p,
+address{
+	margin-bottom:1.5em;
+}
 
 
 
@@ -156,8 +187,9 @@ Unfortunately, and somewhat obviously, forms don’t fit the baseline all too we
 */
 fieldset{
 	padding:10px;
-	border:1px solid #ccc;
 	margin-bottom:1.5em;
+    width:auto;
+    background:rgba(0,0,0,.05);
 }
 label{
 	display:block;

@@ -2,55 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Create.aspx</h2>
-
+    <h2 class="left">Product Details</h2>
+    <%= Html.ActionLink("Back to List", "Index", null, new { @class = "action_item header" })%>
+    <br style="clear:both;" />
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>
 
         <fieldset>
-            <legend>Fields</legend>
+            <p><%= Html.LabelFor(model => model.Brand) %><%= Html.TextBoxFor(model => model.Brand) %></p>
+            <p><%= Html.LabelFor(model => model.Name) %><%= Html.TextBoxFor(model => model.Name) %></p>
             
-            <p>
-                <%= Html.LabelFor(model => model.Brand) %>
+            <p><%= Html.LabelFor(model => model.CreatedOn) %><%= Html.TextBoxFor(model => model.CreatedOn) %></p>
             
-                <%= Html.TextBoxFor(model => model.Brand) %>
-            </p>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.Name) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Name) %>
-                <%= Html.ValidationMessageFor(model => model.Name) %>
-            </div>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.IsActive) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.IsActive) %>
-                <%= Html.ValidationMessageFor(model => model.IsActive) %>
-            </div>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.CreatedOn) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.CreatedOn) %>
-                <%= Html.ValidationMessageFor(model => model.CreatedOn) %>
-            </div>
-            
-            <p>
-                <input type="submit" value="Create" />
-            </p>
+            <p><%= Html.LabelFor(model => model.IsActive) %><%= Html.CheckBoxFor(model => model.IsActive) %></p>
+            <p><input type="submit" value="Create" /></p>
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%= Html.ActionLink("Back to List", "Index") %>
-    </div>
-
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Navigation" runat="server">

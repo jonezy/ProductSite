@@ -127,6 +127,8 @@
     <Content Include="Areas\Admin\Views\Product\Create.aspx" />
     <Content Include="Areas\Admin\Views\Product\Index.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Public\css\messages.css" />
+    <Content Include="Views\Shared\Messages.ascx" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>

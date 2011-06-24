@@ -21,9 +21,9 @@ namespace ProductSite.Areas.Admin.Controllers {
                 productViewModels.Add(new ProductViewModel("Brand-" + i, "Name-" + i));
             }
         }
+
         public ActionResult Index() {
             List<ProductViewModel> model = productViewModels;
-            
             return View(model);
         }
 
@@ -48,7 +48,7 @@ namespace ProductSite.Areas.Admin.Controllers {
         public ActionResult Create(FormCollection collection) {
             try {
                 // TODO: Add insert logic here
-
+                this.StoreSuccess("Would have saved a product hurr");
                 return RedirectToAction("Index");
             } catch {
                 return View();
@@ -58,8 +58,8 @@ namespace ProductSite.Areas.Admin.Controllers {
         //
         // GET: /Product/Edit/5
 
-        public ActionResult Edit(int id) {
-            return View();
+        public ActionResult Edit(int? id) {
+            return View("Create");
         }
 
         //
@@ -79,8 +79,10 @@ namespace ProductSite.Areas.Admin.Controllers {
         //
         // GET: /Product/Delete/5
 
-        public ActionResult Delete(int id) {
-            return View();
+        public ActionResult Delete(int? id) {
+            this.StoreInfo("Deleted fool!");
+
+            return RedirectToAction("Index");
         }
 
         //
