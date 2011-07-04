@@ -18,32 +18,32 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <%= Html.Css("messages.css") %>
+    <%= Html.Css("base.css") %>
     <%= Html.Css("style.css") %>
+
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
 </head>
 
 <body>
-    <b class="border-a"></b> 
-    <b class="border-b"></b> 
-    <b class="border-c"></b> 
-    <b class="border-d"></b> 
-    <header>
-        <div class="inner clearfix">
-        <%= Html.ActionLink("Client Logo", "Index", "Home", null, new { @id = "logo" }) %>
-            <asp:ContentPlaceHolder ID="Navigation" runat="server">
-                <nav id="primary">
-                    <ul>
-                        <li><%= Html.ActionLink("Products", "Index", "Home") %></li>
-                        <li><%= Html.ActionLink("About", "Index", "Home")%></li>
-                        <li><%= Html.ActionLink("Contact", "Index", "Home")%></li>
-                    </ul>
-                </nav>
-            </asp:ContentPlaceHolder>
-        </div>
-    </header>
-    <% Html.RenderPartial("Messages"); %>
+
     <div id="container">
+        <header>
+            <div class="inner clearfix">
+            <%= Html.ActionLink("Client Logo", "Index", "Home", new { area = "" }, new { @id = "logo" })%>
+                <asp:ContentPlaceHolder ID="Navigation" runat="server">
+                    <nav id="primary">
+                        <ul>
+                            <li><%= Html.ActionLink("Products", "Index", "Home", new { area = "" }, null)%></li>
+                            <li><%= Html.ActionLink("About", "Index", "Home", new { area = "" }, null)%></li>
+                            <li><%= Html.ActionLink("Contact", "Index", "Home", new { area = "" }, null)%></li>
+                        </ul>
+                    </nav>
+                </asp:ContentPlaceHolder>
+            </div>
+        </header>    
     
+        <% Html.RenderPartial("Messages"); %>
+            
         <div id="main" role="main">
             <div class="row">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />

@@ -1,79 +1,8 @@
 /* HTML5 ✰ Boilerplate */
-
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-
-blockquote, q { quotes: none; }
-blockquote:before, blockquote:after,
-q:before, q:after { content: ""; content: none; }
-ins { background-color: #ff9; color: #000; text-decoration: none; }
-mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
-del { text-decoration: line-through; }
-abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
-table { border-collapse: collapse; border-spacing: 0; }
-hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
-input, select { vertical-align: middle; }
-
-body { font:13px/1.231 sans-serif; *font-size:small; }
-select, input, textarea, button { font:99% sans-serif; }
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
-
-html { overflow-y: scroll; }
-a:hover, a:active { outline: none; }
-ul, ol { margin-left: 2em; }
-ol { list-style-type: decimal; }
-nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
-small { font-size: 85%; }
-strong, th { font-weight: bold; }
-td { vertical-align: top; }
-sub, sup { font-size: 75%; line-height: 0; position: relative; }
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
-
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 15px; }
-textarea { overflow: auto; } 
-.ie6 legend, .ie7 legend { margin-left: -7px; } 
-input[type="radio"] { vertical-align: text-bottom; }
-input[type="checkbox"] { vertical-align: bottom; }
-.ie7 input[type="checkbox"] { vertical-align: baseline; }
-.ie6 input { vertical-align: text-bottom; }
-label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
-button, input, select, textarea { margin: 0; }
-input:valid, textarea:valid   {  }
-input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
-.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
-
-
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }
-a:link { -webkit-tap-highlight-color: #FF5E99; }
-button {  width: auto; overflow: visible; }
-.ie7 img { -ms-interpolation-mode: bicubic; }
-
-body, select, input, textarea { color: #444; }
-h1, h2, h3, h4, h5, h6 { font-weight: bold; }
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
-
 
 /**
  * Primary styles
@@ -83,69 +12,17 @@ a:hover { color: #036; }
 .left {float:left;}
 .right {float:right;}
 
-body {text-align:center;background:#232927;color:#E3D7BF;font:300 12px/18px "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue", sans-serif}
-a {color:#E16734 !important;}
-h1              { font-size: 2em; margin: .67em 0 }
-h2              { font-size: 1.5em; margin: .75em 0 }
-h3              { font-size: 1.17em; margin: .83em 0 }
-h4              { font-size: 1em; margin: 1.12em 0 }
-h5              { font-size: .83em; margin: 1.5em 0 }
-h6              { font-size: .75em; margin: 1.67em 0 }
-/* ================ */
-/* = The 1Kb Grid = */     /* 12 columns, 60 pixels each, with 20 pixel gutter */
-/* ================ */
-
-.grid_1 { width:60px; }
-.grid_2 { width:140px; }
-.grid_3 { width:220px; }
-.grid_4 { width:300px; }
-.grid_5 { width:380px; }
-.grid_6 { width:460px; }
-.grid_7 { width:540px; }
-.grid_8 { width:620px; }
-.grid_9 { width:700px; }
-.grid_10 { width:780px; }
-.grid_11 { width:860px; }
-.grid_12 { width:940px; }
-
-.column {
-	margin: 0 10px;
-	overflow: hidden;
-	float: left;
-	display: inline;
-}
-.row {
-	width: 960px;
-	margin: 0 auto;
-	overflow: hidden;
-}
-.row .row {
-	margin: 0 -10px;
-	width: auto;
-	display: inline-block;
-}
-
-header {background:#eee;text-align:left;}
+header {text-align:left;}
 header .inner {width:960px;margin:auto;position:relative;}
 header .inner a#logo {font-size:3em;float:left;padding:1em 0 1em 0;}
 
-nav#primary {position:absolute;bottom:0;right:60px;background:#232927;padding:.8em 0 .7em 0;}
+nav#primary {position:absolute;bottom:0;right:60px;padding:.8em 0 .7em 0;}
 nav#primary ul li {float:left;}
 nav#primary ul li a {padding:.9em;}
 nav#primary ul li a:hover {background:#fff;}
 
 #container {width:960px;margin:auto;text-align:left;}
 #main {}
-
-
-
-b.border-a,
-b.border-b,
-b.border-c,
-b.border-d { display: block; position: fixed; top: 50%; left: -1em; width: 1em; height: 100%; z-index: -1; background: #212624; -webkit-transform: scale(1.5) rotate(-45deg); -webkit-transform-origin: 20% 0%; -moz-transform: scale(1.5) rotate(-45deg); -moz-transform-origin: 20% 0%; -o-transform: scale(1.5) rotate(-45deg); -o-transform-origin: 20% 0%; border: 1px dotted #1e2322; }
-b.border-b { -webkit-transform: scale(1.5) rotate(45deg); -webkit-transform-origin: 80% 0%; -moz-transform: scale(1.5) rotate(45deg); -moz-transform-origin: 80% 0%; -o-transform: scale(1.5) rotate(45deg); -o-transform-origin: 80% 0%; left: auto; right: -1em; }
-b.border-c { -webkit-transform: scale(1.5) rotate(-45deg); -webkit-transform-origin: 20% 0%; -moz-transform: scale(1.5) rotate(-45deg); -moz-transform-origin: 20% 0%; -o-transform: scale(1.5) rotate(-45deg); -o-transform-origin: 20% 0%; left: 2em; top: 0; }
-b.border-d { -webkit-transform: scale(1.5) rotate(45deg); -webkit-transform-origin: 80% 0%; -moz-transform: scale(1.5) rotate(45deg); -moz-transform-origin: 80% 0%;  -o-transform: scale(1.5) rotate(45deg); -o-transform-origin: 80% 0%; left: auto; right: 2em; top: 0; }
 
 td.actions_items {text-align:center;}
 td.actions_items ul {width:auto;margin:0;list-style:none;display:inline-table;float:none;}
@@ -179,72 +56,63 @@ address{
 
 
 
-/*------------------------------------*\
-	FORMS
-\*------------------------------------*/
-/*
-Unfortunately, and somewhat obviously, forms don’t fit the baseline all too well. Perhaps in a later version...
-*/
-fieldset{
-	padding:10px;
-	margin-bottom:1.5em;
-    width:auto;
-    background:rgba(0,0,0,.05);
-}
-label{
-	display:block;
-	cursor:pointer;
-}
-label:after{
-	content:":";
-}
-label::after{
-	content:":";
-}
-input,
-textarea{
-	font-family:inherit;
-	font-size:1em;
-	line-height:1.5;
-}
+/* #Forms
+================================================== */
 
-/*
-Nice UI touch for placeholders. To get placeholders working cross-browser see @dan_bentley’s jQuery plugin: https://github.com/danbentley/placeholder
-*/
-[placeholder]{
-	cursor:pointer;
-}
-[placeholder]:active,
-[placeholder]:focus{
-	cursor:text;
-}
-.check-list{
-	width:100%;
-	overflow:hidden;
-	list-style:none;
-	margin:0 0 1.5em 0;
-}
-.check-list li{
-	width:25%;
-	float:left;
-}
-.check-label{
-	display:inline;
-}
-.check-label:after{
-	content:normal;
-}
-.check-label::after{
-	content:normal;
-}
-.button{
-	cursor:pointer;
-}
-fieldset > :last-child{
-	/* Remove the margin from the last element in the fieldset--this makes our padding more consistent. */
-	margin:0;
-}
-
+	form { 
+		margin-bottom: 20px; }
+	fieldset { 
+		margin-bottom: 20px; }
+	input[type="text"], 
+	input[type="password"],
+	input[type="email"],
+	textarea, 
+	select {
+		border: 1px solid #ccc;
+		padding: 6px 4px;
+		outline: none;
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #777;
+		margin: 0;
+		width: 100%;
+		max-width: 100%;
+		display: block;
+		margin-bottom: 20px;
+		background: #fff; }
+	select { 
+		padding: 5px 4px; }
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	input[type="email"]:focus, 
+	textarea:focus {
+		border: 1px solid #aaa;
+ 		color: #444;
+ 		-moz-box-shadow: 0 0 3px rgba(0,0,0,.2);
+		-webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
+		box-shadow:  0 0 3px rgba(0,0,0,.2); }
+	textarea {
+		min-height: 60px; }
+	label,
+	legend { 
+		display: block;
+		font-weight: bold;
+		font-size: 13px;  }
+	select { 
+		width: 220px; }
+	input[type="checkbox"] { display: inline; float:left;}
+	label span,
+	legend span {
+		font-weight: normal;
+		font-size: 13px;
+		color: #444; }
+    
+    .checkboxes.wider label {width:100px;}
+    .checkboxes label {float:left;width:60px;}
+    .checkboxes input[type="checkbox"] {display:block;margin:4px 5px;}
+    
 /*------------------------------------*\
 	TABLES
 \*------------------------------------*/

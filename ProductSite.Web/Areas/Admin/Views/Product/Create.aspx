@@ -15,7 +15,7 @@
             <p><%= Html.LabelFor(model => model.CreatedOn) %><%= Html.TextBoxFor(model => model.CreatedOn) %></p>
             
             <p><%= Html.LabelFor(model => model.IsActive) %><%= Html.CheckBoxFor(model => model.IsActive) %></p>
-            <p><input type="submit" value="Create" /></p>
+            <p><input type="submit" value="Create" class="button" /></p>
         </fieldset>
 
     <% } %>
