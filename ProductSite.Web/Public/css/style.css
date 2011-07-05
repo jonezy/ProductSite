@@ -21,11 +21,10 @@ nav#primary ul li {float:left;}
 nav#primary ul li a {padding:.9em;}
 nav#primary ul li a:hover {background:#fff;}
 
-#container {width:960px;margin:auto;text-align:left;}
 #main {}
 
-td.actions_items {text-align:center;}
-td.actions_items ul {width:auto;margin:0;list-style:none;display:inline-table;float:none;}
+td.actions_items {text-align:right;vertical-align:middle;}
+td.actions_items ul {text-align:center;width:auto;margin:0;list-style:none;display:inline-table;float:none;}
 td.actions_items ul li {margin-bottom:1px;float:left;margin-right:5px;}
 td.actions_items ul li a,
 a.action_item

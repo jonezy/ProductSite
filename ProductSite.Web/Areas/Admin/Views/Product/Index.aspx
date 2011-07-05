@@ -7,14 +7,14 @@
     <br style="clear:both;" />
     <table>
         <tr>
-            <th>Name</th>
+            <th style="width:80%;">Name</th>
             <th></th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td><%= item.ProductName %></td>
+            <td style="vertical-align:middle !important;"><%= item.ProductName %></td>
             <td class="actions_items">
                 <ul>
                     <li><%= Html.ActionLink("Edit", "edit", new { /* id=item.PrimaryKey */ }) %></li>

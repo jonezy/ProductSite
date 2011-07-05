@@ -19,12 +19,13 @@ namespace ProductSite.Areas.Admin.Controllers {
         private void InitializeProducts() {
             productViewModels = new List<ProductViewModel>();
             for (int i = 0; i < 10; i++) {
-                productViewModels.Add(new ProductViewModel(new Product()));
+                productViewModels.Add(new ProductViewModel(new Product { ProductName = "Product -" + i, Description = "Description " + i }));
             }
         }
 
         public ActionResult Index() {
             List<ProductViewModel> model = productViewModels;
+
             return View(model);
         }
 
@@ -39,14 +40,14 @@ namespace ProductSite.Areas.Admin.Controllers {
         // GET: /Product/Create
 
         public ActionResult Create() {
-            return View();
+            return View(new ProductViewModel());
         }
 
         //
         // POST: /Product/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection) {
+        public ActionResult Create(ProductViewModel model) {
             try {
                 // TODO: Add insert logic here
                 this.StoreSuccess("Would have saved a product hurr");

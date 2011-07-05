@@ -19,6 +19,7 @@
 
     <%= Html.Css("messages.css") %>
     <%= Html.Css("base.css") %>
+    <%= Html.Css("skeleton.css") %>
     <%= Html.Css("style.css") %>
 
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
@@ -26,7 +27,7 @@
 
 <body>
 
-    <div id="container">
+    <div class="container">
         <header>
             <div class="inner clearfix">
             <%= Html.ActionLink("Client Logo", "Index", "Home", new { area = "" }, new { @id = "logo" })%>
