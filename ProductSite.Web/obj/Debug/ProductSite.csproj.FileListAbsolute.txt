@@ -1,9 +1,0 @@
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\ProductSite.dll
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\ProductSite.pdb
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\Elmah.dll
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\smokesignals.dll
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\SubSonic.Core.dll
-c:\dev\Personal\ProductSite\ProductSite.Web\bin\smokesignals.pdb
-c:\dev\Personal\ProductSite\ProductSite.Web\obj\Debug\ResolveAssemblyReference.cache
-c:\dev\Personal\ProductSite\ProductSite.Web\obj\Debug\ProductSite.dll
-c:\dev\Personal\ProductSite\ProductSite.Web\obj\Debug\ProductSite.pdb

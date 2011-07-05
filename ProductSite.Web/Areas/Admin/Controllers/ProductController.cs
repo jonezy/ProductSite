@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProductSite.Areas.Admin.Models;
+using ProductSite.Data;
 
 namespace ProductSite.Areas.Admin.Controllers {
     public class ProductController : Controller {
@@ -18,7 +19,7 @@ namespace ProductSite.Areas.Admin.Controllers {
         private void InitializeProducts() {
             productViewModels = new List<ProductViewModel>();
             for (int i = 0; i < 10; i++) {
-                productViewModels.Add(new ProductViewModel("Brand-" + i, "Name-" + i));
+                productViewModels.Add(new ProductViewModel(new Product()));
             }
         }
 
