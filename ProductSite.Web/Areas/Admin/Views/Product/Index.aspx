@@ -17,7 +17,7 @@
             <td style="vertical-align:middle !important;"><%= item.ProductName %></td>
             <td class="actions_items">
                 <ul>
-                    <li><%= Html.ActionLink("Edit", "edit", new { /* id=item.PrimaryKey */ }) %></li>
+                    <li><%= Html.ActionLink("Edit", "edit", new { id=item.ProductID }) %></li>
                     <li><%= Html.ActionLink("Delete", "delete", new { /* id=item.PrimaryKey */ }, new { @class = "delete" })%></li>
                 </ul>
             </td>

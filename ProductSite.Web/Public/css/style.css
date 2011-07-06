@@ -26,21 +26,15 @@ nav#primary ul li a:hover {background:#fff;}
 td.actions_items {text-align:right;vertical-align:middle;}
 td.actions_items ul {text-align:center;width:auto;margin:0;list-style:none;display:inline-table;float:none;}
 td.actions_items ul li {margin-bottom:1px;float:left;margin-right:5px;}
-td.actions_items ul li a,
-a.action_item
-{
-    width:100%;
-	color:#000 !important;display:block;padding:2px;font-weight:bold;border:solid 1px #999;
-	background: #eeeeee;background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc));background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%);background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%);background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );background: linear-gradient(top, #eeeeee 0%,#cccccc 100%);
-	text-shadow: 1px 1px 0px #fff;filter: dropshadow(color=#fff, offx=1, offy=1);                          
-}
+
 a.action_item {display:inline;padding:4px;}
 
 td.actions_items ul li a.delete,
-a.delete
+a.delete,
+a.delete:hover
 {
 	color:#fff !important;
-	background: #f85032; background: -moz-linear-gradient(top, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f85032), color-stop(50%,#f16f5c), color-stop(51%,#f6290c), color-stop(71%,#f02f17), color-stop(100%,#e73827));background: -webkit-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);background: -o-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);background: -ms-linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 );background: linear-gradient(top, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);                                 
+	background: #f85032 !important;
 	text-shadow: 1px 1px 0px #000;filter: dropshadow(color=#fff, offx=1, offy=1);                                                   
 }
 a.delete {display:inline;}
@@ -54,60 +48,6 @@ address{
 }
 
 
-
-/* #Forms
-================================================== */
-
-	form { 
-		margin-bottom: 20px; }
-	fieldset { 
-		margin-bottom: 20px; }
-	input[type="text"], 
-	input[type="password"],
-	input[type="email"],
-	textarea, 
-	select {
-		border: 1px solid #ccc;
-		padding: 6px 4px;
-		outline: none;
-		-moz-border-radius: 2px;
-		-webkit-border-radius: 2px;
-		border-radius: 2px;
-		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		color: #777;
-		margin: 0;
-		width: 100%;
-		max-width: 100%;
-		display: block;
-		margin-bottom: 20px;
-		background: #fff; }
-	select { 
-		padding: 5px 4px; }
-	input[type="text"]:focus,
-	input[type="password"]:focus,
-	input[type="email"]:focus, 
-	textarea:focus {
-		border: 1px solid #aaa;
- 		color: #444;
- 		-moz-box-shadow: 0 0 3px rgba(0,0,0,.2);
-		-webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
-		box-shadow:  0 0 3px rgba(0,0,0,.2); }
-	textarea {
-		min-height: 60px; }
-	label,
-	legend { 
-		display: block;
-		font-weight: bold;
-		font-size: 13px;  }
-	select { 
-		width: 220px; }
-	input[type="checkbox"] { display: inline; float:left;}
-	label span,
-	legend span {
-		font-weight: normal;
-		font-size: 13px;
-		color: #444; }
-    
     .checkboxes.wider label {width:100px;}
     .checkboxes label {float:left;width:60px;}
     .checkboxes input[type="checkbox"] {display:block;margin:4px 5px;}

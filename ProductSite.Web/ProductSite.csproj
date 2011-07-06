@@ -112,6 +112,7 @@
     <Compile Include="Core\Helpers\CookieHelpers.cs" />
     <Compile Include="Core\Helpers\Encryption.cs" />
     <Compile Include="Core\Helpers\HtmlHelpers.cs" />
+    <Compile Include="Core\Services\ProductService.cs" />
     <Compile Include="Core\Services\ServiceBase.cs" />
     <Compile Include="Core\Services\UserService.cs" />
     <Compile Include="Core\UserRole.cs" />

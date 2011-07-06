@@ -132,7 +132,11 @@
 	button,
 	input[type="submit"],
 	input[type="reset"],
-	input[type="button"] {
+	input[type="button"],
+	td.actions_items ul li a,
+    a.action_item,
+    td.actions_items ul li a.delete,
+    a.delete {
 		background: #eee; /* Old browsers */
 		background: -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
@@ -162,7 +166,11 @@
 	button:hover,
 	input[type="submit"]:hover,
 	input[type="reset"]:hover,
-	input[type="button"]:hover {
+	input[type="button"]:hover,
+	td.actions_items ul li a:hover,
+    a.action_item:hover,
+    td.actions_items ul li a.delete:hover,
+    a.delete:hover {
 		color: #222;
 		background: #eee; /* Old browsers */
 		background: -moz-linear-gradient(top, rgba(255,255,255,.3) 0%, rgba(0,0,0,.3) 100%); /* FF3.6+ */
@@ -175,11 +183,15 @@
 	  border-top: 1px solid #aaa;
 	  border-left: 1px solid #aaa; }
 	  
-  a.button:active, 
-  button:active,
+	a.button:active, 
+	button:active,
 	input[type="submit"]:active,
 	input[type="reset"]:active,
-	input[type="button"]:active {
+	input[type="button"]:active,
+	td.actions_items ul li a:active,
+    a.action_item:active,
+    td.actions_items ul li a.delete:active,
+    a.delete:active  {
     background: #eee; /* Old browsers */
     background: -moz-linear-gradient(top, rgba(0,0,0,.3) 0%, rgba(255,255,255,.3) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,.3)), color-stop(100%,rgba(255,255,255,.3))); /* Chrome,Safari4+ */
@@ -317,7 +329,7 @@
 		font-weight: bold;
 		font-size: 13px;  }
 	select { 
-		width: 220px; }
+		xwidth: 220px; }
 	input[type="checkbox"] { display: inline; float:left;}
 	label span,
 	legend span {

@@ -64,7 +64,14 @@
     <%= Html.Script("plugins.js") %>
     <%= Html.Script("script.js") %>
     <!-- end scripts-->
+    
+    <script>
+    
+        $("#BrandID").change(function () {
+            UpdateCollections('<%= Url.Action("updatecollections", "product", new { area = "admin" }) %>');
+        });
 
+    </script>
     <!--[if lt IE 7 ]>
     <script src="js/libs/dd_belatedpng.js"></script>
     <script>DD_belatedPNG.fix("img, .png_bg");</script>

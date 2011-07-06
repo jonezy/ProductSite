@@ -5,73 +5,117 @@ using System.Web;
 using System.Web.Mvc;
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
+using ProductSite.Web.Services;
 
 namespace ProductSite.Areas.Admin.Controllers {
     public class ProductController : Controller {
-        //
-        // GET: /Product/
-        private List<ProductViewModel> productViewModels;
+
+        ProductService service;
+        
         protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
-            if(productViewModels == null) InitializeProducts();
+            if(service == null) service = new ProductService();
             base.Initialize(requestContext);
         }
 
-        private void InitializeProducts() {
-            productViewModels = new List<ProductViewModel>();
-            for (int i = 0; i < 10; i++) {
-                productViewModels.Add(new ProductViewModel(new Product { ProductName = "Product -" + i, Description = "Description " + i }));
-            }
-        }
-
         public ActionResult Index() {
-            List<ProductViewModel> model = productViewModels;
+            List<Product> products = service.AllProducts(null);
+            List<ProductViewModel> model = new List<ProductViewModel>();
+            foreach (Product item in products) {
+                model.Add(new ProductViewModel(item));
+            }
 
             return View(model);
         }
-
-        //
-        // GET: /Product/Details/5
-
-        public ActionResult Details(int id) {
-            return View();
-        }
-
-        //
-        // GET: /Product/Create
 
         public ActionResult Create() {
             return View(new ProductViewModel());
         }
 
-        //
-        // POST: /Product/Create
-
         [HttpPost]
         public ActionResult Create(ProductViewModel model) {
-            try {
-                // TODO: Add insert logic here
-                this.StoreSuccess("Would have saved a product hurr");
-                return RedirectToAction("Index");
-            } catch {
-                return View();
+            if (ModelState.IsValid) {
+                try {
+                    ProductService service = new ProductService();
+                    Product product = new Product();
+                    product.BraceletID = model.BraceletID;
+                    product.BrandID = model.BrandID;
+                    product.CaseStyleID = model.CaseStyleID;
+                    product.CollectionID = model.CollectionID;
+                    product.ColourID = model.ColourID;
+                    product.Created = DateTime.Now;
+                    product.Description = model.Description;
+                    product.Diameter = model.Diameter;
+                    product.Gender = model.Gender;
+                    product.IncludesWarranty = model.IncludesWarranty;
+                    product.IsActive = model.IsActive;
+                    product.Model = model.Model;
+                    product.Movement = model.Movement;
+                    product.ProductName = model.ProductName;
+                    product.RefNo = model.RefNo;
+                    product.RetailPrice = model.RetailPrice;
+                    product.SalePrice = model.SalePrice;
+                    product.WholesalePrice = model.WholeSalePrice;
+
+                    service.Save(p: product);
+
+                    this.StoreSuccess("The product was added successfully.");
+
+                    return RedirectToAction("Index");
+                } catch (Exception ex) {
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    this.StoreError("There was a problem saving the product");
+                    return View(model);
+                }
+            } else {
+                return View(model);
             }
         }
 
-        //
-        // GET: /Product/Edit/5
-
         public ActionResult Edit(int? id) {
-            return View("Create");
+            ProductViewModel model = new ProductViewModel(service.GetProductById(id.Value));
+            return View("Create", model);
         }
 
-        //
-        // POST: /Product/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection) {
+        public ActionResult Edit(int id, ProductViewModel model) {
             try {
-                // TODO: Add update logic here
+                if (ModelState.IsValid) {
+                    try {
+                        Product product = service.GetProductById(id);
+                        if (product == null)
+                            throw new Exception("That product does not exist");
 
+                        product.BraceletID = model.BraceletID;
+                        product.BrandID = model.BrandID;
+                        product.CaseStyleID = model.CaseStyleID;
+                        product.CollectionID = model.CollectionID;
+                        product.ColourID = model.ColourID;
+                        product.Created = DateTime.Now;
+                        product.Description = model.Description;
+                        product.Diameter = model.Diameter;
+                        product.Gender = model.Gender;
+                        product.IncludesWarranty = model.IncludesWarranty;
+                        product.IsActive = model.IsActive;
+                        product.Model = model.Model;
+                        product.Movement = model.Movement;
+                        product.ProductName = model.ProductName;
+                        product.RefNo = model.RefNo;
+                        product.RetailPrice = model.RetailPrice;
+                        product.SalePrice = model.SalePrice;
+                        product.WholesalePrice = model.WholeSalePrice;
+
+                        service.Save(p: product);
+                        this.StoreSuccess("The product was updated successfully.");
+
+                        return RedirectToAction("Index");
+                    } catch (Exception ex) {
+                        Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                        this.StoreError("There was a problem saving the product");
+                        return View(model);
+                    }
+                } else {
+                    return View(model);
+                }
                 return RedirectToAction("Index");
             } catch {
                 return View();
@@ -99,6 +143,18 @@ namespace ProductSite.Areas.Admin.Controllers {
             } catch {
                 return View();
             }
+        }
+
+
+        [HttpGet]
+        public JsonResult UpdateCollections(int? id) {
+            ProductService service = new ProductService();
+            List<ProductCollection> collections = service.ProductBrandCollections(id.Value);
+
+            // convert to a selectlist item since that's what were binding the results too.
+            JsonResult result = Json(collections.Select(c => new SelectListItem { Text = c.CollectionName, Value = c.ProductCollectionID.ToString() }), JsonRequestBehavior.AllowGet);
+
+            return result;
         }
     }
 }

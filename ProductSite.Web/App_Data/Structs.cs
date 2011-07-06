@@ -455,7 +455,7 @@ namespace ProductSite.Data {
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 1
+	                MaxLength = 10
                 });
 
                 Columns.Add(new DatabaseColumn("Model", this)
