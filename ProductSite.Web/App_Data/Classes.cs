@@ -66,6 +66,17 @@ namespace ProductSite.Data
         #endregion
 
         #region Foreign Keys
+        public IQueryable<Product> Products
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.BrandID == _ProductBrandID
+                       select items;
+            }
+        }
+
         public IQueryable<ProductBrand> ProductBrands
         {
             get
@@ -195,243 +206,17 @@ namespace ProductSite.Data
             }
         }
 
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
+        public IQueryable<Product> Products
         {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.CollectionID == _ProductCollectionID
+                       select items;
+            }
         }
 
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductCaseStyle table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductCaseStyle 
-    /// </summary>
-
-	public partial class ProductCaseStyle: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductCaseStyle(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductCaseStyleIDChanging(int value);
-        partial void OnProductCaseStyleIDChanged();
-		
-		private int _ProductCaseStyleID;
-		public int ProductCaseStyleID { 
-		    get{
-		        return _ProductCaseStyleID;
-		    } 
-		    set{
-		        this.OnProductCaseStyleIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductCaseStyleID = value;
-                this.SendPropertyChanged("ProductCaseStyleID");
-                this.OnProductCaseStyleIDChanged();
-		    }
-		}
-		
-        partial void OnCaseStyleNameChanging(string value);
-        partial void OnCaseStyleNameChanged();
-		
-		private string _CaseStyleName;
-		public string CaseStyleName { 
-		    get{
-		        return _CaseStyleName;
-		    } 
-		    set{
-		        this.OnCaseStyleNameChanging(value);
-                this.SendPropertyChanging();
-                this._CaseStyleName = value;
-                this.SendPropertyChanged("CaseStyleName");
-                this.OnCaseStyleNameChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
-        {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
-        }
-
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductColour table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductColour 
-    /// </summary>
-
-	public partial class ProductColour: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductColour(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductColourIDChanging(int value);
-        partial void OnProductColourIDChanged();
-		
-		private int _ProductColourID;
-		public int ProductColourID { 
-		    get{
-		        return _ProductColourID;
-		    } 
-		    set{
-		        this.OnProductColourIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductColourID = value;
-                this.SendPropertyChanged("ProductColourID");
-                this.OnProductColourIDChanged();
-		    }
-		}
-		
-        partial void OnColourNameChanging(string value);
-        partial void OnColourNameChanged();
-		
-		private string _ColourName;
-		public string ColourName { 
-		    get{
-		        return _ColourName;
-		    } 
-		    set{
-		        this.OnColourNameChanging(value);
-                this.SendPropertyChanging();
-                this._ColourName = value;
-                this.SendPropertyChanged("ColourName");
-                this.OnColourNameChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
-        {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
-        }
-
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductBracelet table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductBracelet 
-    /// </summary>
-
-	public partial class ProductBracelet: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductBracelet(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductBraceletIDChanging(int value);
-        partial void OnProductBraceletIDChanged();
-		
-		private int _ProductBraceletID;
-		public int ProductBraceletID { 
-		    get{
-		        return _ProductBraceletID;
-		    } 
-		    set{
-		        this.OnProductBraceletIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductBraceletID = value;
-                this.SendPropertyChanged("ProductBraceletID");
-                this.OnProductBraceletIDChanged();
-		    }
-		}
-		
-        partial void OnBraceletNameChanging(string value);
-        partial void OnBraceletNameChanged();
-		
-		private string _BraceletName;
-		public string BraceletName { 
-		    get{
-		        return _BraceletName;
-		    } 
-		    set{
-		        this.OnBraceletNameChanging(value);
-                this.SendPropertyChanging();
-                this._BraceletName = value;
-                this.SendPropertyChanged("BraceletName");
-                this.OnBraceletNameChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
         #endregion
 
 
@@ -524,54 +309,241 @@ namespace ProductSite.Data
 		    }
 		}
 		
-        partial void OnCaseStyleIDChanging(int value);
-        partial void OnCaseStyleIDChanged();
+        partial void OnGenderChanging(string value);
+        partial void OnGenderChanged();
 		
-		private int _CaseStyleID;
-		public int CaseStyleID { 
+		private string _Gender;
+		public string Gender { 
 		    get{
-		        return _CaseStyleID;
+		        return _Gender;
 		    } 
 		    set{
-		        this.OnCaseStyleIDChanging(value);
+		        this.OnGenderChanging(value);
                 this.SendPropertyChanging();
-                this._CaseStyleID = value;
-                this.SendPropertyChanged("CaseStyleID");
-                this.OnCaseStyleIDChanged();
+                this._Gender = value;
+                this.SendPropertyChanged("Gender");
+                this.OnGenderChanged();
 		    }
 		}
 		
-        partial void OnColourIDChanging(int value);
-        partial void OnColourIDChanged();
+        partial void OnProductNameChanging(string value);
+        partial void OnProductNameChanged();
 		
-		private int _ColourID;
-		public int ColourID { 
+		private string _ProductName;
+		public string ProductName { 
 		    get{
-		        return _ColourID;
+		        return _ProductName;
 		    } 
 		    set{
-		        this.OnColourIDChanging(value);
+		        this.OnProductNameChanging(value);
                 this.SendPropertyChanging();
-                this._ColourID = value;
-                this.SendPropertyChanged("ColourID");
-                this.OnColourIDChanged();
+                this._ProductName = value;
+                this.SendPropertyChanged("ProductName");
+                this.OnProductNameChanged();
 		    }
 		}
 		
-        partial void OnBraceletIDChanging(int value);
-        partial void OnBraceletIDChanged();
+        partial void OnModelNameChanging(string value);
+        partial void OnModelNameChanged();
 		
-		private int _BraceletID;
-		public int BraceletID { 
+		private string _ModelName;
+		public string ModelName { 
 		    get{
-		        return _BraceletID;
+		        return _ModelName;
 		    } 
 		    set{
-		        this.OnBraceletIDChanging(value);
+		        this.OnModelNameChanging(value);
                 this.SendPropertyChanging();
-                this._BraceletID = value;
-                this.SendPropertyChanged("BraceletID");
-                this.OnBraceletIDChanged();
+                this._ModelName = value;
+                this.SendPropertyChanged("ModelName");
+                this.OnModelNameChanged();
+		    }
+		}
+		
+        partial void OnMovementTypeChanging(string value);
+        partial void OnMovementTypeChanged();
+		
+		private string _MovementType;
+		public string MovementType { 
+		    get{
+		        return _MovementType;
+		    } 
+		    set{
+		        this.OnMovementTypeChanging(value);
+                this.SendPropertyChanging();
+                this._MovementType = value;
+                this.SendPropertyChanged("MovementType");
+                this.OnMovementTypeChanged();
+		    }
+		}
+		
+        partial void OnFeaturesChanging(string value);
+        partial void OnFeaturesChanged();
+		
+		private string _Features;
+		public string Features { 
+		    get{
+		        return _Features;
+		    } 
+		    set{
+		        this.OnFeaturesChanging(value);
+                this.SendPropertyChanging();
+                this._Features = value;
+                this.SendPropertyChanged("Features");
+                this.OnFeaturesChanged();
+		    }
+		}
+		
+        partial void OnMovementDetailsChanging(string value);
+        partial void OnMovementDetailsChanged();
+		
+		private string _MovementDetails;
+		public string MovementDetails { 
+		    get{
+		        return _MovementDetails;
+		    } 
+		    set{
+		        this.OnMovementDetailsChanging(value);
+                this.SendPropertyChanging();
+                this._MovementDetails = value;
+                this.SendPropertyChanged("MovementDetails");
+                this.OnMovementDetailsChanged();
+		    }
+		}
+		
+        partial void OnDialDescriptionChanging(string value);
+        partial void OnDialDescriptionChanged();
+		
+		private string _DialDescription;
+		public string DialDescription { 
+		    get{
+		        return _DialDescription;
+		    } 
+		    set{
+		        this.OnDialDescriptionChanging(value);
+                this.SendPropertyChanging();
+                this._DialDescription = value;
+                this.SendPropertyChanged("DialDescription");
+                this.OnDialDescriptionChanged();
+		    }
+		}
+		
+        partial void OnBezelChanging(string value);
+        partial void OnBezelChanged();
+		
+		private string _Bezel;
+		public string Bezel { 
+		    get{
+		        return _Bezel;
+		    } 
+		    set{
+		        this.OnBezelChanging(value);
+                this.SendPropertyChanging();
+                this._Bezel = value;
+                this.SendPropertyChanged("Bezel");
+                this.OnBezelChanged();
+		    }
+		}
+		
+        partial void OnCaseDetailsChanging(string value);
+        partial void OnCaseDetailsChanged();
+		
+		private string _CaseDetails;
+		public string CaseDetails { 
+		    get{
+		        return _CaseDetails;
+		    } 
+		    set{
+		        this.OnCaseDetailsChanging(value);
+                this.SendPropertyChanging();
+                this._CaseDetails = value;
+                this.SendPropertyChanged("CaseDetails");
+                this.OnCaseDetailsChanged();
+		    }
+		}
+		
+        partial void OnCasebackChanging(string value);
+        partial void OnCasebackChanged();
+		
+		private string _Caseback;
+		public string Caseback { 
+		    get{
+		        return _Caseback;
+		    } 
+		    set{
+		        this.OnCasebackChanging(value);
+                this.SendPropertyChanging();
+                this._Caseback = value;
+                this.SendPropertyChanged("Caseback");
+                this.OnCasebackChanged();
+		    }
+		}
+		
+        partial void OnAgeChanging(string value);
+        partial void OnAgeChanged();
+		
+		private string _Age;
+		public string Age { 
+		    get{
+		        return _Age;
+		    } 
+		    set{
+		        this.OnAgeChanging(value);
+                this.SendPropertyChanging();
+                this._Age = value;
+                this.SendPropertyChanged("Age");
+                this.OnAgeChanged();
+		    }
+		}
+		
+        partial void OnStrapChanging(string value);
+        partial void OnStrapChanged();
+		
+		private string _Strap;
+		public string Strap { 
+		    get{
+		        return _Strap;
+		    } 
+		    set{
+		        this.OnStrapChanging(value);
+                this.SendPropertyChanging();
+                this._Strap = value;
+                this.SendPropertyChanged("Strap");
+                this.OnStrapChanged();
+		    }
+		}
+		
+        partial void OnConditionDetailsChanging(string value);
+        partial void OnConditionDetailsChanged();
+		
+		private string _ConditionDetails;
+		public string ConditionDetails { 
+		    get{
+		        return _ConditionDetails;
+		    } 
+		    set{
+		        this.OnConditionDetailsChanging(value);
+                this.SendPropertyChanging();
+                this._ConditionDetails = value;
+                this.SendPropertyChanged("ConditionDetails");
+                this.OnConditionDetailsChanged();
+		    }
+		}
+		
+        partial void OnConditionChanging(string value);
+        partial void OnConditionChanged();
+		
+		private string _Condition;
+		public string Condition { 
+		    get{
+		        return _Condition;
+		    } 
+		    set{
+		        this.OnConditionChanging(value);
+                this.SendPropertyChanging();
+                this._Condition = value;
+                this.SendPropertyChanged("Condition");
+                this.OnConditionChanged();
 		    }
 		}
 		
@@ -626,142 +598,6 @@ namespace ProductSite.Data
 		    }
 		}
 		
-        partial void OnGenderChanging(string value);
-        partial void OnGenderChanged();
-		
-		private string _Gender;
-		public string Gender { 
-		    get{
-		        return _Gender;
-		    } 
-		    set{
-		        this.OnGenderChanging(value);
-                this.SendPropertyChanging();
-                this._Gender = value;
-                this.SendPropertyChanged("Gender");
-                this.OnGenderChanged();
-		    }
-		}
-		
-        partial void OnModelChanging(string value);
-        partial void OnModelChanged();
-		
-		private string _Model;
-		public string Model { 
-		    get{
-		        return _Model;
-		    } 
-		    set{
-		        this.OnModelChanging(value);
-                this.SendPropertyChanging();
-                this._Model = value;
-                this.SendPropertyChanged("Model");
-                this.OnModelChanged();
-		    }
-		}
-		
-        partial void OnRefNoChanging(string value);
-        partial void OnRefNoChanged();
-		
-		private string _RefNo;
-		public string RefNo { 
-		    get{
-		        return _RefNo;
-		    } 
-		    set{
-		        this.OnRefNoChanging(value);
-                this.SendPropertyChanging();
-                this._RefNo = value;
-                this.SendPropertyChanged("RefNo");
-                this.OnRefNoChanged();
-		    }
-		}
-		
-        partial void OnProductNameChanging(string value);
-        partial void OnProductNameChanged();
-		
-		private string _ProductName;
-		public string ProductName { 
-		    get{
-		        return _ProductName;
-		    } 
-		    set{
-		        this.OnProductNameChanging(value);
-                this.SendPropertyChanging();
-                this._ProductName = value;
-                this.SendPropertyChanged("ProductName");
-                this.OnProductNameChanged();
-		    }
-		}
-		
-        partial void OnDescriptionChanging(string value);
-        partial void OnDescriptionChanged();
-		
-		private string _Description;
-		public string Description { 
-		    get{
-		        return _Description;
-		    } 
-		    set{
-		        this.OnDescriptionChanging(value);
-                this.SendPropertyChanging();
-                this._Description = value;
-                this.SendPropertyChanged("Description");
-                this.OnDescriptionChanged();
-		    }
-		}
-		
-        partial void OnDiameterChanging(short? value);
-        partial void OnDiameterChanged();
-		
-		private short? _Diameter;
-		public short? Diameter { 
-		    get{
-		        return _Diameter;
-		    } 
-		    set{
-		        this.OnDiameterChanging(value);
-                this.SendPropertyChanging();
-                this._Diameter = value;
-                this.SendPropertyChanged("Diameter");
-                this.OnDiameterChanged();
-		    }
-		}
-		
-        partial void OnMovementChanging(string value);
-        partial void OnMovementChanged();
-		
-		private string _Movement;
-		public string Movement { 
-		    get{
-		        return _Movement;
-		    } 
-		    set{
-		        this.OnMovementChanging(value);
-                this.SendPropertyChanging();
-                this._Movement = value;
-                this.SendPropertyChanged("Movement");
-                this.OnMovementChanged();
-		    }
-		}
-		
-        partial void OnIncludesWarrantyChanging(bool value);
-        partial void OnIncludesWarrantyChanged();
-		
-		private bool _IncludesWarranty;
-		public bool IncludesWarranty { 
-		    get{
-		        return _IncludesWarranty;
-		    } 
-		    set{
-		        this.OnIncludesWarrantyChanging(value);
-                this.SendPropertyChanging();
-                this._IncludesWarranty = value;
-                this.SendPropertyChanged("IncludesWarranty");
-                this.OnIncludesWarrantyChanged();
-		    }
-		}
-		
         partial void OnCreatedChanging(DateTime value);
         partial void OnCreatedChanged();
 		
@@ -800,6 +636,28 @@ namespace ProductSite.Data
         #endregion
 
         #region Foreign Keys
+        public IQueryable<ProductBrand> ProductBrands
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductBrands
+                       where items.ProductBrandID == _BrandID
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductCollection> ProductCollections
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductCollections
+                       where items.ProductCollectionID == _CollectionID
+                       select items;
+            }
+        }
+
         #endregion
 
 

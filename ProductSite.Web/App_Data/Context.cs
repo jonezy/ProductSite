@@ -123,9 +123,6 @@ namespace ProductSite.Data
 			
         public Query<ProductBrand> ProductBrands { get; set; }
         public Query<ProductCollection> ProductCollections { get; set; }
-        public Query<ProductCaseStyle> ProductCaseStyles { get; set; }
-        public Query<ProductColour> ProductColours { get; set; }
-        public Query<ProductBracelet> ProductBracelets { get; set; }
         public Query<Product> Products { get; set; }
         public Query<UserRole> UserRoles { get; set; }
         public Query<User> Users { get; set; }
@@ -234,9 +231,6 @@ namespace ProductSite.Data
             #region ' Query Defs '
             ProductBrands = new Query<ProductBrand>(provider);
             ProductCollections = new Query<ProductCollection>(provider);
-            ProductCaseStyles = new Query<ProductCaseStyle>(provider);
-            ProductColours = new Query<ProductColour>(provider);
-            ProductBracelets = new Query<ProductBracelet>(provider);
             Products = new Query<Product>(provider);
             UserRoles = new Query<UserRole>(provider);
             Users = new Query<User>(provider);
@@ -248,9 +242,6 @@ namespace ProductSite.Data
 			{
             	DataProvider.Schema.Tables.Add(new ProductBrandTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductCollectionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductCaseStyleTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductColourTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductBraceletTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new UserRoleTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));

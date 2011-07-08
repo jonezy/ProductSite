@@ -47,7 +47,8 @@ address{
 	margin-bottom:1.5em;
 }
 
-
+	textarea.two-line {
+		min-height: 40px; }
     .checkboxes.wider label {width:100px;}
     .checkboxes label {float:left;width:60px;}
     .checkboxes input[type="checkbox"] {display:block;margin:4px 5px;}

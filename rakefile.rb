@@ -1,7 +1,7 @@
 require 'rake/clean'
 
 SELF_PATH = File.dirname(__FILE__)
-PATH_TO_MSBUILD = "C:\\Windows\\Microsoft.NET\\Framework\\v3.5\\msbuild.exe"
+PATH_TO_MSBUILD = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\msbuild.exe"
 TARGET_ENV = "staging"
 
 # list of files and directories to clean, change to suit your liking
@@ -14,7 +14,8 @@ task :default => :build
 task :build do 
   desc "builds all of the .sln files in the current directory"
   Dir.glob('*.sln') do |file|
-    sh "#{PATH_TO_MSBUILD} /v:q #{SELF_PATH}/#{file}"
+    puts "Building #{file}"
+    system("#{PATH_TO_MSBUILD} /v:q #{SELF_PATH}/#{file}")
   end
 end
 

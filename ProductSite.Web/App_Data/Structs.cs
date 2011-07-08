@@ -74,7 +74,7 @@ namespace ProductSite.Data {
         
         /// <summary>
         /// Table: ProductCollection
-        /// Primary Key: 
+        /// Primary Key: ProductCollectionID
         /// </summary>
 
         public class ProductCollectionTable: DatabaseTable {
@@ -86,11 +86,11 @@ namespace ProductSite.Data {
 
                 Columns.Add(new DatabaseColumn("ProductCollectionID", this)
                 {
-	                IsPrimaryKey = false,
+	                IsPrimaryKey = true,
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = true,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
@@ -158,195 +158,6 @@ namespace ProductSite.Data {
         }
         
         /// <summary>
-        /// Table: ProductCaseStyle
-        /// Primary Key: ProductCaseStyleID
-        /// </summary>
-
-        public class ProductCaseStyleTable: DatabaseTable {
-            
-            public ProductCaseStyleTable(IDataProvider provider):base("ProductCaseStyle",provider){
-                ClassName = "ProductCaseStyle";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductCaseStyleID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("CaseStyleName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductCaseStyleID{
-                get{
-                    return this.GetColumn("ProductCaseStyleID");
-                }
-            }
-            				
-   			public static string ProductCaseStyleIDColumn{
-			      get{
-        			return "ProductCaseStyleID";
-      			}
-		    }
-           
-            public IColumn CaseStyleName{
-                get{
-                    return this.GetColumn("CaseStyleName");
-                }
-            }
-            				
-   			public static string CaseStyleNameColumn{
-			      get{
-        			return "CaseStyleName";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductColour
-        /// Primary Key: ProductColourID
-        /// </summary>
-
-        public class ProductColourTable: DatabaseTable {
-            
-            public ProductColourTable(IDataProvider provider):base("ProductColour",provider){
-                ClassName = "ProductColour";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductColourID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("ColourName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductColourID{
-                get{
-                    return this.GetColumn("ProductColourID");
-                }
-            }
-            				
-   			public static string ProductColourIDColumn{
-			      get{
-        			return "ProductColourID";
-      			}
-		    }
-           
-            public IColumn ColourName{
-                get{
-                    return this.GetColumn("ColourName");
-                }
-            }
-            				
-   			public static string ColourNameColumn{
-			      get{
-        			return "ColourName";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductBracelet
-        /// Primary Key: ProductBraceletID
-        /// </summary>
-
-        public class ProductBraceletTable: DatabaseTable {
-            
-            public ProductBraceletTable(IDataProvider provider):base("ProductBracelet",provider){
-                ClassName = "ProductBracelet";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductBraceletID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("BraceletName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductBraceletID{
-                get{
-                    return this.GetColumn("ProductBraceletID");
-                }
-            }
-            				
-   			public static string ProductBraceletIDColumn{
-			      get{
-        			return "ProductBraceletID";
-      			}
-		    }
-           
-            public IColumn BraceletName{
-                get{
-                    return this.GetColumn("BraceletName");
-                }
-            }
-            				
-   			public static string BraceletNameColumn{
-			      get{
-        			return "BraceletName";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
         /// Table: Product
         /// Primary Key: ProductID
         /// </summary>
@@ -374,7 +185,7 @@ namespace ProductSite.Data {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
@@ -384,38 +195,148 @@ namespace ProductSite.Data {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = false,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 
-                Columns.Add(new DatabaseColumn("CaseStyleID", this)
+                Columns.Add(new DatabaseColumn("Gender", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
+	                DataType = DbType.String,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 0
+	                MaxLength = 10
                 });
 
-                Columns.Add(new DatabaseColumn("ColourID", this)
+                Columns.Add(new DatabaseColumn("ProductName", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
+	                DataType = DbType.String,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 0
+	                MaxLength = 500
                 });
 
-                Columns.Add(new DatabaseColumn("BraceletID", this)
+                Columns.Add(new DatabaseColumn("ModelName", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
+	                DataType = DbType.String,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 0
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("MovementType", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Features", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
+                });
+
+                Columns.Add(new DatabaseColumn("MovementDetails", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("DialDescription", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Bezel", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CaseDetails", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Caseback", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Age", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 100
+                });
+
+                Columns.Add(new DatabaseColumn("Strap", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
+                });
+
+                Columns.Add(new DatabaseColumn("ConditionDetails", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = -1
+                });
+
+                Columns.Add(new DatabaseColumn("Condition", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 20
                 });
 
                 Columns.Add(new DatabaseColumn("RetailPrice", this)
@@ -442,86 +363,6 @@ namespace ProductSite.Data {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Currency,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Gender", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 10
-                });
-
-                Columns.Add(new DatabaseColumn("Model", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = true,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 50
-                });
-
-                Columns.Add(new DatabaseColumn("RefNo", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = true,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 50
-                });
-
-                Columns.Add(new DatabaseColumn("ProductName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-
-                Columns.Add(new DatabaseColumn("Description", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = -1
-                });
-
-                Columns.Add(new DatabaseColumn("Diameter", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int16,
-	                IsNullable = true,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Movement", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = true,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 50
-                });
-
-                Columns.Add(new DatabaseColumn("IncludesWarranty", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Boolean,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
@@ -588,39 +429,171 @@ namespace ProductSite.Data {
       			}
 		    }
            
-            public IColumn CaseStyleID{
+            public IColumn Gender{
                 get{
-                    return this.GetColumn("CaseStyleID");
+                    return this.GetColumn("Gender");
                 }
             }
             				
-   			public static string CaseStyleIDColumn{
+   			public static string GenderColumn{
 			      get{
-        			return "CaseStyleID";
+        			return "Gender";
       			}
 		    }
            
-            public IColumn ColourID{
+            public IColumn ProductName{
                 get{
-                    return this.GetColumn("ColourID");
+                    return this.GetColumn("ProductName");
                 }
             }
             				
-   			public static string ColourIDColumn{
+   			public static string ProductNameColumn{
 			      get{
-        			return "ColourID";
+        			return "ProductName";
       			}
 		    }
            
-            public IColumn BraceletID{
+            public IColumn ModelName{
                 get{
-                    return this.GetColumn("BraceletID");
+                    return this.GetColumn("ModelName");
                 }
             }
             				
-   			public static string BraceletIDColumn{
+   			public static string ModelNameColumn{
 			      get{
-        			return "BraceletID";
+        			return "ModelName";
+      			}
+		    }
+           
+            public IColumn MovementType{
+                get{
+                    return this.GetColumn("MovementType");
+                }
+            }
+            				
+   			public static string MovementTypeColumn{
+			      get{
+        			return "MovementType";
+      			}
+		    }
+           
+            public IColumn Features{
+                get{
+                    return this.GetColumn("Features");
+                }
+            }
+            				
+   			public static string FeaturesColumn{
+			      get{
+        			return "Features";
+      			}
+		    }
+           
+            public IColumn MovementDetails{
+                get{
+                    return this.GetColumn("MovementDetails");
+                }
+            }
+            				
+   			public static string MovementDetailsColumn{
+			      get{
+        			return "MovementDetails";
+      			}
+		    }
+           
+            public IColumn DialDescription{
+                get{
+                    return this.GetColumn("DialDescription");
+                }
+            }
+            				
+   			public static string DialDescriptionColumn{
+			      get{
+        			return "DialDescription";
+      			}
+		    }
+           
+            public IColumn Bezel{
+                get{
+                    return this.GetColumn("Bezel");
+                }
+            }
+            				
+   			public static string BezelColumn{
+			      get{
+        			return "Bezel";
+      			}
+		    }
+           
+            public IColumn CaseDetails{
+                get{
+                    return this.GetColumn("CaseDetails");
+                }
+            }
+            				
+   			public static string CaseDetailsColumn{
+			      get{
+        			return "CaseDetails";
+      			}
+		    }
+           
+            public IColumn Caseback{
+                get{
+                    return this.GetColumn("Caseback");
+                }
+            }
+            				
+   			public static string CasebackColumn{
+			      get{
+        			return "Caseback";
+      			}
+		    }
+           
+            public IColumn Age{
+                get{
+                    return this.GetColumn("Age");
+                }
+            }
+            				
+   			public static string AgeColumn{
+			      get{
+        			return "Age";
+      			}
+		    }
+           
+            public IColumn Strap{
+                get{
+                    return this.GetColumn("Strap");
+                }
+            }
+            				
+   			public static string StrapColumn{
+			      get{
+        			return "Strap";
+      			}
+		    }
+           
+            public IColumn ConditionDetails{
+                get{
+                    return this.GetColumn("ConditionDetails");
+                }
+            }
+            				
+   			public static string ConditionDetailsColumn{
+			      get{
+        			return "ConditionDetails";
+      			}
+		    }
+           
+            public IColumn Condition{
+                get{
+                    return this.GetColumn("Condition");
+                }
+            }
+            				
+   			public static string ConditionColumn{
+			      get{
+        			return "Condition";
       			}
 		    }
            
@@ -657,102 +630,6 @@ namespace ProductSite.Data {
    			public static string SalePriceColumn{
 			      get{
         			return "SalePrice";
-      			}
-		    }
-           
-            public IColumn Gender{
-                get{
-                    return this.GetColumn("Gender");
-                }
-            }
-            				
-   			public static string GenderColumn{
-			      get{
-        			return "Gender";
-      			}
-		    }
-           
-            public IColumn Model{
-                get{
-                    return this.GetColumn("Model");
-                }
-            }
-            				
-   			public static string ModelColumn{
-			      get{
-        			return "Model";
-      			}
-		    }
-           
-            public IColumn RefNo{
-                get{
-                    return this.GetColumn("RefNo");
-                }
-            }
-            				
-   			public static string RefNoColumn{
-			      get{
-        			return "RefNo";
-      			}
-		    }
-           
-            public IColumn ProductName{
-                get{
-                    return this.GetColumn("ProductName");
-                }
-            }
-            				
-   			public static string ProductNameColumn{
-			      get{
-        			return "ProductName";
-      			}
-		    }
-           
-            public IColumn Description{
-                get{
-                    return this.GetColumn("Description");
-                }
-            }
-            				
-   			public static string DescriptionColumn{
-			      get{
-        			return "Description";
-      			}
-		    }
-           
-            public IColumn Diameter{
-                get{
-                    return this.GetColumn("Diameter");
-                }
-            }
-            				
-   			public static string DiameterColumn{
-			      get{
-        			return "Diameter";
-      			}
-		    }
-           
-            public IColumn Movement{
-                get{
-                    return this.GetColumn("Movement");
-                }
-            }
-            				
-   			public static string MovementColumn{
-			      get{
-        			return "Movement";
-      			}
-		    }
-           
-            public IColumn IncludesWarranty{
-                get{
-                    return this.GetColumn("IncludesWarranty");
-                }
-            }
-            				
-   			public static string IncludesWarrantyColumn{
-			      get{
-        			return "IncludesWarranty";
       			}
 		    }
            

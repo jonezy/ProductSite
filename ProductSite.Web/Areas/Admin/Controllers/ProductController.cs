@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using AutoMapper;
+
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Web.Services;
@@ -14,6 +16,7 @@ namespace ProductSite.Areas.Admin.Controllers {
         
         protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
             if(service == null) service = new ProductService();
+
             base.Initialize(requestContext);
         }
 
@@ -32,31 +35,12 @@ namespace ProductSite.Areas.Admin.Controllers {
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(ProductViewModel model) {
             if (ModelState.IsValid) {
                 try {
-                    ProductService service = new ProductService();
-                    Product product = new Product();
-                    product.BraceletID = model.BraceletID;
-                    product.BrandID = model.BrandID;
-                    product.CaseStyleID = model.CaseStyleID;
-                    product.CollectionID = model.CollectionID;
-                    product.ColourID = model.ColourID;
-                    product.Created = DateTime.Now;
-                    product.Description = model.Description;
-                    product.Diameter = model.Diameter;
-                    product.Gender = model.Gender;
-                    product.IncludesWarranty = model.IncludesWarranty;
-                    product.IsActive = model.IsActive;
-                    product.Model = model.Model;
-                    product.Movement = model.Movement;
-                    product.ProductName = model.ProductName;
-                    product.RefNo = model.RefNo;
-                    product.RetailPrice = model.RetailPrice;
-                    product.SalePrice = model.SalePrice;
-                    product.WholesalePrice = model.WholeSalePrice;
-
-                    service.Save(p: product);
+                    Product product = Mapper.Map<ProductViewModel, Product>(model);
+                    service.Save(product);
 
                     this.StoreSuccess("The product was added successfully.");
 
@@ -77,49 +61,24 @@ namespace ProductSite.Areas.Admin.Controllers {
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(int id, ProductViewModel model) {
-            try {
-                if (ModelState.IsValid) {
-                    try {
-                        Product product = service.GetProductById(id);
-                        if (product == null)
-                            throw new Exception("That product does not exist");
+            if (ModelState.IsValid) {
+                try {
+                    Product product = Mapper.Map<ProductViewModel, Product>(model);
 
-                        product.BraceletID = model.BraceletID;
-                        product.BrandID = model.BrandID;
-                        product.CaseStyleID = model.CaseStyleID;
-                        product.CollectionID = model.CollectionID;
-                        product.ColourID = model.ColourID;
-                        product.Created = DateTime.Now;
-                        product.Description = model.Description;
-                        product.Diameter = model.Diameter;
-                        product.Gender = model.Gender;
-                        product.IncludesWarranty = model.IncludesWarranty;
-                        product.IsActive = model.IsActive;
-                        product.Model = model.Model;
-                        product.Movement = model.Movement;
-                        product.ProductName = model.ProductName;
-                        product.RefNo = model.RefNo;
-                        product.RetailPrice = model.RetailPrice;
-                        product.SalePrice = model.SalePrice;
-                        product.WholesalePrice = model.WholeSalePrice;
+                    service.Save(product);
+                        
+                    this.StoreSuccess("The product was updated successfully.");
 
-                        service.Save(p: product);
-                        this.StoreSuccess("The product was updated successfully.");
-
-                        return RedirectToAction("Index");
-                    } catch (Exception ex) {
-                        Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
-                        this.StoreError("There was a problem saving the product");
-                        return View(model);
-                    }
-                } else {
+                    return RedirectToAction("Index");
+                } catch (Exception ex) {
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    this.StoreError("There was a problem saving the product");
                     return View(model);
                 }
-                return RedirectToAction("Index");
-            } catch {
-                return View();
             }
+            return View(model);
         }
 
         //

@@ -23,6 +23,7 @@
     <%= Html.Css("style.css") %>
 
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
+    <%= Html.Script("mylibs/fckeditor/fckeditor.js") %>
 </head>
 
 <body>
