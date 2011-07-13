@@ -54,8 +54,8 @@
     <%= Html.Notify() %>
     
     <!-- scripts concatenated and minified via ant build script-->
-    <%= Html.Script("jquery.cycle.min.js")%>
-    <%= Html.Script("jquery.color.js")%>
+    <%= Html.Script("libs/jquery.cycle.min.js")%>
+    <%= Html.Script("libs/jquery.color.js")%>
     <%= Html.Script("plugins.js") %>
     <%= Html.Script("script.js") %>
     <!-- end scripts-->

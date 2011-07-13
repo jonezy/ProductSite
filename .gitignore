@@ -3,4 +3,4 @@ obj
 *.suo
 *.user
 *.*~
-ProductSite.Web/Public/js/mylibs/fckeditor/**.*
+ProductSite.Web/Public/js/mylibs/fckeditor/
