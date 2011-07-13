@@ -27,33 +27,25 @@
 </head>
 
 <body>
-
-    <div class="container">
-        <header>
-            <div class="inner clearfix">
-            <%= Html.ActionLink("Client Logo", "Index", "Home", new { area = "" }, new { @id = "logo" })%>
-                <asp:ContentPlaceHolder ID="Navigation" runat="server">
-                    <nav id="primary">
-                        <ul>
-                            <li><%= Html.ActionLink("Products", "Index", "Home", new { area = "" }, null)%></li>
-                            <li><%= Html.ActionLink("About", "Index", "Home", new { area = "" }, null)%></li>
-                            <li><%= Html.ActionLink("Contact", "Index", "Home", new { area = "" }, null)%></li>
-                        </ul>
-                    </nav>
-                </asp:ContentPlaceHolder>
-            </div>
-        </header>    
-    
-        <% Html.RenderPartial("Messages"); %>
-            
-        <div id="main" role="main">
-            <div class="row">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </div>
+    <header>
+        <div class="inner clearfix">
+            <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
+            <nav id="primary">
+                <ul>
+                    <li><%= Html.ActionLink("Sell Your Watch", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Watch Trading", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Repairs", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Testimonials", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Contact", "Index", "Home", new { area = "" }, null)%></li>
+                </ul>
+            </nav>
         </div>
-        <footer>
-
-        </footer>
+    </header>  
+    <asp:ContentPlaceHolder ID="HomepageBanners" runat="server">
+    </asp:ContentPlaceHolder>
+    <div class="container">
+        <% Html.RenderPartial("Messages"); %>
+        <asp:ContentPlaceHolder ID="RootContent" runat="server" />
     </div> <!-- eo #container -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
@@ -62,12 +54,35 @@
     <%= Html.Notify() %>
     
     <!-- scripts concatenated and minified via ant build script-->
+    <%= Html.Script("jquery.cycle.min.js")%>
+    <%= Html.Script("jquery.color.js")%>
     <%= Html.Script("plugins.js") %>
     <%= Html.Script("script.js") %>
     <!-- end scripts-->
     
     <script>
-    
+        // http://return-true.com/examples/cyclecolor.html
+        $(function () {
+
+            var imgc = $('#slide img').length - 1;
+            var c = 2;
+            var color = ['#000', '#000', '#000', '#000'];
+
+            $('#slide').cycle({
+                fx: 'fade',
+                before: function (currHTML, nextHTML, options) {
+                    if (c === 2) {
+                        options.currSlide = imgc;
+                        c--;
+                    } else if (c === 1) {
+                        options.currSlide = 0;
+                        c--;
+                    }
+
+                    $('#slide-container').animate({ backgroundColor: color[options.currSlide] }, 1000);
+                }
+            });
+        });    
         $("#BrandID").change(function () {
             UpdateCollections('<%= Url.Action("updatecollections", "product", new { area = "admin" }) %>');
         });

@@ -1,0 +1,16 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<asp:Content ContentPlaceHolderID="HomepageBanners" runat="server">
+    <div id="slide-container">	    <div id="slide">            <%= Html.Image("banners/1.jpg") %>	    </div>    </div>    
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="RootContent" runat="server">
+    <div id="main" role="main">
+        <%= Html.Action("RenderProductNavigation", "Products") %>
+        <div id="content" class="twelve columns">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <footer>
+                footer links and such
+            </footer>
+        </div>
+    </div>
+</asp:Content>

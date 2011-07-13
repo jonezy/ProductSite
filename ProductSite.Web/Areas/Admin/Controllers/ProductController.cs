@@ -75,10 +75,10 @@ namespace ProductSite.Areas.Admin.Controllers {
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
-                    return View(model);
+                    return View("Create", model);
                 }
             }
-            return View(model);
+            return View("Create",model);
         }
 
         //

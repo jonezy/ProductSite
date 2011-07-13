@@ -110,11 +110,13 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Core\Filters\LogErrors.cs" />
     <Compile Include="Core\Filters\RequiresAuthentication.cs" />
     <Compile Include="Core\Helpers\CookieHelpers.cs" />
     <Compile Include="Core\Helpers\Encryption.cs" />
     <Compile Include="Core\Helpers\HtmlHelpers.cs" />
+    <Compile Include="Core\Helpers\UrlHelpers.cs" />
     <Compile Include="Core\Services\ProductService.cs" />
     <Compile Include="Core\Services\ServiceBase.cs" />
     <Compile Include="Core\Services\UserService.cs" />
@@ -610,7 +612,9 @@
     <Content Include="Public\js\mylibs\fckeditor\_upgrade.html" />
     <Content Include="Public\js\mylibs\fckeditor\_whatsnew.html" />
     <Content Include="Public\js\mylibs\fckeditor\_whatsnew_history.html" />
+    <Content Include="Views\Products\Category.aspx" />
     <Content Include="Views\Shared\Messages.ascx" />
+    <Content Include="Views\Shared\ProductNavigation.ascx" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -741,6 +745,8 @@
     <None Include="Public\js\mylibs\fckeditor\_samples\php\sampleposteddata.php" />
     <None Include="Public\js\mylibs\fckeditor\_samples\py\sample01.py" />
     <None Include="Public\js\mylibs\fckeditor\_samples\py\sampleposteddata.py" />
+    <Content Include="Views\Shared\Homepage.master" />
+    <Content Include="Views\Shared\Products.master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -21,6 +21,12 @@ namespace ProductSite {
 
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            routes.MapRoute(
+                "ProductsByCategory",
+                "products/{categorySlug}",
+                new { controller = "Products", action = "Category" }
+            );
 
             routes.MapRoute(
                 "Default", // Route name
