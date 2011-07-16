@@ -37,7 +37,7 @@ namespace ProductSite.Areas.Admin.Controllers {
         public ActionResult Index(LoginViewModel model) {
             if (ModelState.IsValid) {
                 string encryptedPassword = EncryptionUtility.Encrypt(model.Password);
-                Data.User user = service.ValidateUser(model.Username, encryptedPassword);
+                Data.User user = service.ValidateUser(model.Username, model.Password);
 
                 if (user == null) {
                     this.StoreWarning("The username/password was not found, please try again");
@@ -55,7 +55,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                 if (TempData["returnUrl"] != null)
                     return Redirect(TempData["returnUrl"].ToString());
 
-                return RedirectToAction("index", "pages");
+                return RedirectToAction("index", "product");
             }
 
             return View();

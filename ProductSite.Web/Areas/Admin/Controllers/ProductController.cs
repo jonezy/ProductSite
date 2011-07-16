@@ -10,12 +10,13 @@ using ProductSite.Data;
 using ProductSite.Web.Services;
 
 namespace ProductSite.Areas.Admin.Controllers {
-    public class ProductController : Controller {
+    [RequiresAuthentication(ValidUserRole = UserRole.Administrator, AccessDeniedMessage = "You must be logged in as an administrator to view that part of the site")]
+    public class ProductController : BaseController {
 
         ProductService service;
-        
+
         protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
-            if(service == null) service = new ProductService();
+            if (service == null) service = new ProductService();
 
             base.Initialize(requestContext);
         }
@@ -68,7 +69,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                     Product product = Mapper.Map<ProductViewModel, Product>(model);
 
                     service.Save(product);
-                        
+
                     this.StoreSuccess("The product was updated successfully.");
 
                     return RedirectToAction("Index");
@@ -78,7 +79,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                     return View("Create", model);
                 }
             }
-            return View("Create",model);
+            return View("Create", model);
         }
 
         //

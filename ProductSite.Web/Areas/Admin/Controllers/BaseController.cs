@@ -14,30 +14,26 @@ namespace ProductSite.Areas.Admin.Controllers {
                 return CookieHelpers.GetUserId();
             }
         }
-       
-        public User CurrentUser { 
+
+        public User CurrentUser {
             get {
 
                 return userService.GetUserById(this.CurrentUserID);
-            } 
+            }
         }
-        
+
         public int AdminUserRoleID {
             get {
                 return (int)Enum.Parse(typeof(UserRole), UserRole.Administrator.ToString());
             }
         }
 
-        public BaseController() {}
+        public BaseController() { }
 
         protected override void Initialize(RequestContext requestContext) {
             if (userService == null) userService = new UserService();
 
             base.Initialize(requestContext);
-        }
-
-        protected override void OnActionExecuting(ActionExecutingContext filterContext) {
-            base.OnActionExecuting(filterContext);
         }
     }
 }

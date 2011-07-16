@@ -13,11 +13,11 @@ footer, header, hgroup, menu, nav, section {
  .left {float:left;}
 .right {float:right;}
 
-header {text-align:left;background:#040605;border-bottom:solid 6px #fff;}
+header {text-align:left;background:#040605;border-bottom:solid 6px #fff;margin-bottom:1em;}
 header .inner {width:960px;margin:auto;position:relative;}
 header .inner a#logo {float:left;}
 
-nav#primary {position:absolute;bottom:0;right:60px;padding:0 0 0 0;}
+nav#primary {position:absolute;bottom:0;right:0px;padding:0 0 0 0;}
 nav#primary ul li {float:left;}
 nav#primary ul li a {padding:.9em;color:#fff;}
 nav#primary ul li a:hover {background:#fff;color:#000;}

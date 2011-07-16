@@ -2,9 +2,10 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using ProductSite.Areas.Admin.Controllers;
 using ProductSite.Data;
 
-namespace ProductSite.Web.Controllers {
+namespace ProductSite {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
     public class RequiresAuthentication : ActionFilterAttribute {
         public UserRole ValidUserRole { get; set; }
@@ -46,8 +47,8 @@ namespace ProductSite.Web.Controllers {
 
         private RouteValueDictionary BuildLoginRouteDictionary(string returnUrl) {
             RouteValueDictionary loginpageRouteDictionary = new RouteValueDictionary();
-            loginpageRouteDictionary.Add("action", "Login");
-            loginpageRouteDictionary.Add("controller", "Account");
+            loginpageRouteDictionary.Add("action", "index");
+            loginpageRouteDictionary.Add("controller", "login");
             
             if(!string.IsNullOrEmpty(returnUrl))
                 loginpageRouteDictionary.Add("returnUrl", returnUrl);

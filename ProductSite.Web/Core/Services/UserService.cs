@@ -17,7 +17,7 @@ namespace ProductSite.Web.Services {
         }
 
         public User ValidateUser(string username, string password) {
-            return base.db.Users.Where(u => u.Username == username && u.Password == EncryptionUtility.EncryptTripleDES(password)).FirstOrDefault();
+            return base.db.Users.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
         }
 
         public User GetUserById(int userId) {

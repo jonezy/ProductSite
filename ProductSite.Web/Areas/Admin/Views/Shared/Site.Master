@@ -35,7 +35,7 @@
                 <ul>
                     <li><%= Html.ActionLink("Welcome", "Index", "Welcome") %></li>
                     <li><%= Html.ActionLink("Products", "index", "product")%></li>
-                    <li><%= Html.ActionLink("Logout", "Index", "Welcome")%></li>
+                    <li><%= Html.ActionLink("Logout", "logout", "login")%></li>
                 </ul>
             </nav>
         </div>

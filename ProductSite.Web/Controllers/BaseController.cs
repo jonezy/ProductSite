@@ -4,7 +4,7 @@ using System.Web.Routing;
 
 using ProductSite.Data;
 
-namespace ProductSite.Web.Controllers {
+namespace ProductSite.Controllers {
     public class BaseController : Controller {
         public int CurrentUserID {
             get {

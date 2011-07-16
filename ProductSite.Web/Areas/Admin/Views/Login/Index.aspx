@@ -1,12 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Admin/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LoginViewModel>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	platform.lite - login
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
-        <h1 class="login">Login to platform.lite.</h1>
+        <h1 class="login">Login.</h1>
 
         <% Html.RenderPartial("Messages"); %>
         <div class="eight columns alpha">
@@ -23,8 +19,8 @@
 
         <div class="eight columns omega">
             <br />
-            <p>This is the super simple stripped down no frills, fluff or guff version of the CMS.  It's simple and to the point.</p>
-            <p>If you don't have a username and password e-mail us here: support@richmondday.com</p>
+            <%--<p>This is the super simple stripped down no frills, fluff or guff version of the CMS.  It's simple and to the point.</p>
+            <p>If you don't have a username and password e-mail us here: support@richmondday.com</p>--%>
         </div>
 
 <script>
@@ -33,4 +29,3 @@
     });
 </script>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server"></asp:Content>
