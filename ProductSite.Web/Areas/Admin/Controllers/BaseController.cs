@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
-using ProductSite.Web.Services;
+
 using ProductSite.Data;
-using System.Data;
+using ProductSite.Web.Services;
 
 namespace ProductSite.Areas.Admin.Controllers {
     public class BaseController : Controller {
@@ -24,7 +24,7 @@ namespace ProductSite.Areas.Admin.Controllers {
         
         public int AdminUserRoleID {
             get {
-                return (int)Enum.Parse(typeof(UserRoleType), UserRoleType.Administrator.ToString());
+                return (int)Enum.Parse(typeof(UserRole), UserRole.Administrator.ToString());
             }
         }
 
@@ -39,13 +39,5 @@ namespace ProductSite.Areas.Admin.Controllers {
         protected override void OnActionExecuting(ActionExecutingContext filterContext) {
             base.OnActionExecuting(filterContext);
         }
-
-        //protected void LogError(Exception e, string friendlyMessage) {
-        //    Elmah.ErrorSignal.FromCurrentContext().Raise(e);
-            
-        //    if(!string.IsNullOrEmpty(friendlyMessage))
-        //        this.StoreError(friendlyMessage);
-        //}
-
     }
 }

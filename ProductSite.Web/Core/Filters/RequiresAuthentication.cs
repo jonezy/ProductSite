@@ -7,7 +7,7 @@ using ProductSite.Data;
 namespace ProductSite.Web.Controllers {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
     public class RequiresAuthentication : ActionFilterAttribute {
-        public UserRoleType ValidUserRole { get; set; }
+        public UserRole ValidUserRole { get; set; }
         public bool IsAdmin { get; set; }
         public string AccessDeniedMessage { get; set; }
 
@@ -31,7 +31,7 @@ namespace ProductSite.Web.Controllers {
             }
 
             if (!string.IsNullOrEmpty(ValidUserRole.ToString())) {
-                int currentRole = (int)Enum.Parse(typeof(UserRoleType), ValidUserRole.ToString());
+                int currentRole = (int)Enum.Parse(typeof(UserRole), ValidUserRole.ToString());
                 if (user == null || user.UserRoleID > currentRole) {
                     if (!string.IsNullOrEmpty(AccessDeniedMessage)) {
                         controller.StoreWarning(AccessDeniedMessage);

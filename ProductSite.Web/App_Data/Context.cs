@@ -121,11 +121,10 @@ namespace ProductSite.Data
             return null;
         }
 			
+        public Query<User> Users { get; set; }
         public Query<ProductBrand> ProductBrands { get; set; }
         public Query<ProductCollection> ProductCollections { get; set; }
         public Query<Product> Products { get; set; }
-        public Query<UserRole> UserRoles { get; set; }
-        public Query<User> Users { get; set; }
 
 			
 
@@ -229,22 +228,20 @@ namespace ProductSite.Data
             provider = new DbQueryProvider(this.Provider);
 
             #region ' Query Defs '
+            Users = new Query<User>(provider);
             ProductBrands = new Query<ProductBrand>(provider);
             ProductCollections = new Query<ProductCollection>(provider);
             Products = new Query<Product>(provider);
-            UserRoles = new Query<UserRole>(provider);
-            Users = new Query<User>(provider);
             #endregion
 
 
             #region ' Schemas '
         	if(DataProvider.Schema.Tables.Count == 0)
 			{
+            	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductBrandTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductCollectionTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserRoleTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
             }
             #endregion
         }

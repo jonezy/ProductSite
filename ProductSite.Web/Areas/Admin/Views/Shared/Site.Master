@@ -21,7 +21,7 @@
     <%= Html.Css("messages.css") %>
     <%= Html.Css("base.css") %>
     <%= Html.Css("skeleton.css") %>
-    <%= Html.Css("style.css") %>
+    <%= Html.Css("admin.css") %>
 
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
     <%= Html.Script("mylibs/fckeditor/fckeditor.js") %>
@@ -30,14 +30,12 @@
 <body>
     <header>
         <div class="inner clearfix">
-            <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
+            <a href="<%= Url.Action("Index", "Home", new {area="Admin"}) %>" id="logo"><%= Html.Image("logo.png") %></a>
             <nav id="primary">
                 <ul>
-                    <li><%= Html.ActionLink("Sell Your Watch", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Watch Trading", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Repairs", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Testimonials", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Contact", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Welcome", "Index", "Welcome") %></li>
+                    <li><%= Html.ActionLink("Products", "index", "product")%></li>
+                    <li><%= Html.ActionLink("Logout", "Index", "Welcome")%></li>
                 </ul>
             </nav>
         </div>
@@ -46,7 +44,7 @@
     </asp:ContentPlaceHolder>
     <div class="container">
         <% Html.RenderPartial("Messages"); %>
-        <asp:ContentPlaceHolder ID="RootContent" runat="server" />
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div> <!-- eo #container -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>

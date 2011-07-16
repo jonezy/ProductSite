@@ -35,9 +35,5 @@ namespace ProductSite.Web.Services {
         public bool UsernameAvailable(string username) {
             return base.db.Users.Where(u => u.Username == username).Count() == 0;
         }
-
-        public List<UserRole> GetAllUserRoles() {
-            return base.db.UserRoles.ToList();
-        }
     }
 }

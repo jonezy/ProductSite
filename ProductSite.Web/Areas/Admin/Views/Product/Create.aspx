@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ProductSite.Areas.Admin.Models.ProductViewModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Admin/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ProductSite.Areas.Admin.Models.ProductViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -42,8 +42,5 @@
         </fieldset>            
         <input type="submit" value="Save Product" class="button" />
     <% } %>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="Navigation" runat="server">
 </asp:Content>
 

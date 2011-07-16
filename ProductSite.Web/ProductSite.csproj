@@ -105,7 +105,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\WelcomeController.cs" />
+    <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Core\Helpers\Encryption.cs" />
     <Compile Include="Core\Helpers\HtmlHelpers.cs" />
     <Compile Include="Core\Helpers\UrlHelpers.cs" />
+    <Compile Include="Core\MagicStrings.cs" />
     <Compile Include="Core\Services\ProductService.cs" />
     <Compile Include="Core\Services\ServiceBase.cs" />
     <Compile Include="Core\Services\UserService.cs" />
@@ -127,11 +130,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Login\Index.aspx" />
     <Content Include="Areas\Admin\Views\Product\Create.aspx" />
     <Content Include="Areas\Admin\Views\Product\Index.aspx" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\String.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Public\css\base.css" />
+    <Content Include="Public\css\admin.css" />
     <Content Include="Public\css\messages.css" />
     <Content Include="Public\css\skeleton.css" />
     <Content Include="Public\js\mylibs\fckeditor\editor\css\behaviors\disablehandles.htc" />
@@ -636,9 +641,6 @@
     <Content Include="Areas\Admin\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Shared\Admin.master" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App_Data\Classes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Classes.cs</LastGenOutput>
@@ -654,6 +656,7 @@
       <LastGenOutput>Structs.cs</LastGenOutput>
     </None>
     <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\Shared\Site.Master" />
     <None Include="Public\js\mylibs\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="Public\js\mylibs\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="Public\js\mylibs\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

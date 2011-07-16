@@ -11,7 +11,7 @@ public static class CookieHelpers {
             HttpContext.Current.Response.Cookies[CookieIdentifiers.Login_Cookie].Expires = DateTime.Now.AddDays(15);
         }
     }
-    
+
     public static void DestroyAuthenticationCookie() {
         HttpCookie myCookie = new HttpCookie(CookieIdentifiers.Login_Cookie);
         HttpContext.Current.Response.Cookies.Remove(CookieIdentifiers.Login_Cookie);
@@ -25,6 +25,30 @@ public static class CookieHelpers {
         HttpContext.Current.Response.Cookies.Add(myCookie);
         myCookie.Values.Add(CookieIdentifiers.Region_Cookie_Key, regionId.ToString());
         HttpContext.Current.Response.Cookies[CookieIdentifiers.Region_Cookie].Expires = DateTime.Now.AddDays(15);
+    }
+
+    public static void WriteCartCookie(int cartId) {
+        HttpCookie myCookie = new HttpCookie(CookieIdentifiers.Cart_Cookie);
+        HttpContext.Current.Response.Cookies.Remove(CookieIdentifiers.Cart_Cookie);
+        HttpContext.Current.Response.Cookies.Add(myCookie);
+        myCookie.Values.Add(CookieIdentifiers.Cart_Cookie_Key, cartId.ToString());
+        HttpContext.Current.Response.Cookies[CookieIdentifiers.Cart_Cookie].Expires = DateTime.Now.AddDays(30);
+    }
+
+    public static void WriteCookie(string cookieIdentifier, string cookieKeyIdentifier, string cookieKeyValue) {
+        HttpCookie myCookie = new HttpCookie(cookieIdentifier);
+        HttpContext.Current.Response.Cookies.Remove(cookieIdentifier);
+        HttpContext.Current.Response.Cookies.Add(myCookie);
+        myCookie.Values.Add(cookieKeyIdentifier, cookieKeyValue.ToString());
+    }
+
+    public static void WriteCookie(string cookieIdentifier, string cookieKeyIdentifier, string cookieKeyValue, DateTime expiry) {
+        HttpCookie myCookie = new HttpCookie(cookieIdentifier);
+        HttpContext.Current.Response.Cookies.Remove(cookieIdentifier);
+        HttpContext.Current.Response.Cookies.Add(myCookie);
+        myCookie.Values.Add(cookieKeyIdentifier, cookieKeyValue.ToString());
+        if (expiry != null)
+            HttpContext.Current.Response.Cookies[cookieIdentifier].Expires = expiry;
     }
 
     public static void DestroyCookie(string cookieIdentifier) {
@@ -50,17 +74,31 @@ public static class CookieHelpers {
         Int32 userId = 0;
         if (HttpContext.Current.Request.Cookies.Get(CookieIdentifiers.Login_Cookie) != null) {
             HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(CookieIdentifiers.Login_Cookie);
-            Int32.TryParse(cookie.Values[CookieIdentifiers.Login_Cookie_Key].ToString(), out userId);
+            if (cookie.Values.Count > 0)
+                Int32.TryParse(cookie.Values[CookieIdentifiers.Login_Cookie_Key].ToString(), out userId);
         }
 
         return userId;
     }
+
+    public static int GetCartID() {
+        Int32 cartId = 0;
+        if (HttpContext.Current.Request.Cookies.Get(CookieIdentifiers.Cart_Cookie) != null) {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(CookieIdentifiers.Cart_Cookie);
+            if (cookie.Values[CookieIdentifiers.Cart_Cookie_Key] != null)
+                Int32.TryParse(cookie.Values[CookieIdentifiers.Cart_Cookie_Key].ToString(), out cartId);
+        }
+
+        return cartId;
+    }
 }
-
 public static class CookieIdentifiers {
-    public const string Login_Cookie = "EighteenForeLess.LoginCookie";
-    public const string Login_Cookie_Key = "EighteenForeLess.LoginCookieUserID";
+    public static string Login_Cookie = "LoginCookie";
+    public static string Login_Cookie_Key = "LoginCookieUserID";
 
-    public static string Region_Cookie = "EighteenForeLess.RegionCookie";
-    public static string Region_Cookie_Key = "EighteenForeLess.RegionCookieKey";
+    public static string Region_Cookie = "RegionCookie";
+    public static string Region_Cookie_Key = "RegionCookieKey";
+
+    public static string Cart_Cookie = "CartCookie";
+    public static string Cart_Cookie_Key = "CartCookieKey";
 }

@@ -21,7 +21,7 @@ namespace ProductSite.Web.Controllers {
 
         public int AdminUserRoleID {
             get {
-                return (int)Enum.Parse(typeof(UserRoleType), UserRoleType.Administrator.ToString());
+                return (int)Enum.Parse(typeof(UserRole), UserRole.Administrator.ToString());
             }
         }
 
