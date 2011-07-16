@@ -41,6 +41,7 @@ namespace ProductSite {
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
+            Mapper.CreateMap<Product, AdminProductViewModel>();
             Mapper.CreateMap<AdminProductViewModel, Product>()
                 .ForMember(dest => dest.Created, config => config.MapFrom(source => DateTime.Now));
 

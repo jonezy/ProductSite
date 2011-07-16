@@ -8,10 +8,10 @@
         <% foreach (var item in Model) { %>
             <tr>
                 <td style="vertical-align:middle !important;"><%= item.ProductName %></td>
-                <td class="actions_items">
+                <td style="vertical-align:middle !important;" class="actions_items">
                     <ul>
                         <li><%= Html.ActionLink("Edit", "edit", new { id=item.ProductID }) %></li>
-                        <li><%= Html.ActionLink("Delete", "delete", new { id = item.ProductID }, new { @class = "delete" })%></li>
+                        <li><%= Html.ActionLink("Delete", "delete", new { id = item.ProductID }, new { @class = "delete", @onclick="return confirm('Are you sure you want to delete that product');" })%></li>
                     </ul>
                 </td>
             </tr>

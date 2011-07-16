@@ -14,6 +14,12 @@ namespace ProductSite.Web.Services {
                                      repository.Add(p);
         }
 
+        public object SaveImage(ProductImage p) {
+            SubSonicRepository<ProductImage> repository = base.GetRepository<ProductImage>();
+
+            return p.ProductID > 0 ? repository.Update(p) :
+                                     repository.Add(p);
+        }
         public int Delete(int productId) {
             return base.GetRepository<Product>().Delete(productId);
         }

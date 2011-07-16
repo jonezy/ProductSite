@@ -183,6 +183,91 @@ namespace ProductSite.Data {
         }
         
         /// <summary>
+        /// Table: ProductImage
+        /// Primary Key: ProductImageID
+        /// </summary>
+
+        public class ProductImageTable: DatabaseTable {
+            
+            public ProductImageTable(IDataProvider provider):base("ProductImage",provider){
+                ClassName = "ProductImage";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ProductImageID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Path", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+            
+            public IColumn ProductImageID{
+                get{
+                    return this.GetColumn("ProductImageID");
+                }
+            }
+            				
+   			public static string ProductImageIDColumn{
+			      get{
+        			return "ProductImageID";
+      			}
+		    }
+           
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+            				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+           
+            public IColumn Path{
+                get{
+                    return this.GetColumn("Path");
+                }
+            }
+            				
+   			public static string PathColumn{
+			      get{
+        			return "Path";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
         /// Table: ProductBrand
         /// Primary Key: ProductBrandID
         /// </summary>
@@ -348,7 +433,7 @@ namespace ProductSite.Data {
 	                DataType = DbType.Int32,
 	                IsNullable = false,
 	                AutoIncrement = true,
-	                IsForeignKey = false,
+	                IsForeignKey = true,
 	                MaxLength = 0
                 });
 

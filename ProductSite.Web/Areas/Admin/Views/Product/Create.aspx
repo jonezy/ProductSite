@@ -38,6 +38,13 @@
                 </div>
                 <br style="clear:both;" />
                 <p><%= Html.LabelFor(model => model.IsActive) %><%= Html.CheckBoxFor(model => model.IsActive) %></p>
+
+                <h3>Images</h3>
+                <div class="five columns">
+                    <p><input type="file" id="file1" name="files" /></p>
+                    <p><input type="file" id="file2" name="files" /></p>
+                    <p><input type="file" id="file3" name="files" /></p>
+                </div>
             </div>
         </fieldset>            
         <input type="submit" value="Save Product" class="button" />

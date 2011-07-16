@@ -8,11 +8,13 @@ using AutoMapper;
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Web.Services;
+using System.Web;
+using System.IO;
 
 namespace ProductSite.Areas.Admin.Controllers {
     [RequiresAuthentication(ValidUserRole = UserRole.Administrator, AccessDeniedMessage = "You must be logged in as an administrator to view that part of the site")]
     public class ProductController : BaseController {
-
+        string imagesDirectory = "~/Uploads/Products/{0}";
         ProductService service;
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
@@ -23,25 +25,25 @@ namespace ProductSite.Areas.Admin.Controllers {
 
         public ActionResult Index() {
             List<Product> products = service.AllProducts(null);
-            List<AdminProductViewModel> model = new List<AdminProductViewModel>();
-            foreach (Product item in products) {
-                model.Add(new AdminProductViewModel(item));
-            }
+            List<AdminProductViewModel> model = Mapper.Map<List<Product>, List<AdminProductViewModel>>(products);
 
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Create() {
             return View(new AdminProductViewModel());
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(AdminProductViewModel model) {
+        public ActionResult Create(AdminProductViewModel model, IEnumerable<HttpPostedFileBase> files) {
             if (ModelState.IsValid) {
                 try {
                     Product product = Mapper.Map<AdminProductViewModel, Product>(model);
                     service.Save(product);
+
+                    SaveImages(files, product.ProductID);
 
                     this.StoreSuccess("The product was added successfully.");
 
@@ -56,19 +58,22 @@ namespace ProductSite.Areas.Admin.Controllers {
             }
         }
 
+        [HttpGet]
         public ActionResult Edit(int? id) {
-            AdminProductViewModel model = new AdminProductViewModel(service.GetProductById(id.Value));
+            AdminProductViewModel model = Mapper.Map<Product,AdminProductViewModel>(service.GetProductById(id.Value));
+            
             return View("Create", model);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(int id, AdminProductViewModel model) {
+        public ActionResult Edit(int id, AdminProductViewModel model, IEnumerable<HttpPostedFileBase> files) {
             if (ModelState.IsValid) {
                 try {
                     Product product = Mapper.Map<AdminProductViewModel, Product>(model);
-
                     service.Save(product);
+                   
+                    SaveImages(files, product.ProductID);
 
                     this.StoreSuccess("The product was updated successfully.");
 
@@ -76,12 +81,39 @@ namespace ProductSite.Areas.Admin.Controllers {
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
-                    return View("Create", model);
                 }
             }
+
             return View("Create", model);
         }
 
+        private void SaveImages(IEnumerable<HttpPostedFileBase> files, int productId) {
+            if (files != null) {
+                foreach (var file in files) {
+                    if (file != null) {
+                        string productImageDirectory = string.Format(imagesDirectory, productId);
+                        string rootPRoductImageDirectory = Server.MapPath(productImageDirectory);
+
+                        if (!Directory.Exists(rootPRoductImageDirectory))
+                            Directory.CreateDirectory(rootPRoductImageDirectory);
+
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(rootPRoductImageDirectory, fileName);
+
+                        try {
+                            file.SaveAs(path);
+                            ProductImage image = new ProductImage { ProductID = productId, Path = Path.Combine(productImageDirectory, fileName) };
+
+                            service.SaveImage(image);
+                        } catch (Exception ex) {
+                            Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                        }
+                    }
+                }
+            }
+        }
+
+        [HttpGet]
         public ActionResult Delete(int? id) {
             try {
                 service.Delete(id.Value);

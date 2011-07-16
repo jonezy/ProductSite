@@ -176,6 +176,113 @@ namespace ProductSite.Data
     
     
     /// <summary>
+    /// A class which represents the ProductImage table in the Products Database.
+    /// This class is queryable through ProductsDB.ProductImage 
+    /// </summary>
+
+	public partial class ProductImage: INotifyPropertyChanging, INotifyPropertyChanged
+	{
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+	    
+	    public ProductImage(){
+	        OnCreated();
+	    }
+	    
+	    #region Properties
+	    
+        partial void OnProductImageIDChanging(int value);
+        partial void OnProductImageIDChanged();
+		
+		private int _ProductImageID;
+		public int ProductImageID { 
+		    get{
+		        return _ProductImageID;
+		    } 
+		    set{
+		        this.OnProductImageIDChanging(value);
+                this.SendPropertyChanging();
+                this._ProductImageID = value;
+                this.SendPropertyChanged("ProductImageID");
+                this.OnProductImageIDChanged();
+		    }
+		}
+		
+        partial void OnProductIDChanging(int value);
+        partial void OnProductIDChanged();
+		
+		private int _ProductID;
+		public int ProductID { 
+		    get{
+		        return _ProductID;
+		    } 
+		    set{
+		        this.OnProductIDChanging(value);
+                this.SendPropertyChanging();
+                this._ProductID = value;
+                this.SendPropertyChanged("ProductID");
+                this.OnProductIDChanged();
+		    }
+		}
+		
+        partial void OnPathChanging(string value);
+        partial void OnPathChanged();
+		
+		private string _Path;
+		public string Path { 
+		    get{
+		        return _Path;
+		    } 
+		    set{
+		        this.OnPathChanging(value);
+                this.SendPropertyChanging();
+                this._Path = value;
+                this.SendPropertyChanged("Path");
+                this.OnPathChanged();
+		    }
+		}
+		
+
+        #endregion
+
+        #region Foreign Keys
+        public IQueryable<Product> Products
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.ProductID == _ProductID
+                       select items;
+            }
+        }
+
+        #endregion
+
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void SendPropertyChanging()
+        {
+            var handler = PropertyChanging;
+            if (handler != null)
+               handler(this, emptyChangingEventArgs);
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+	}
+	
+    
+    
+    /// <summary>
     /// A class which represents the ProductBrand table in the Products Database.
     /// This class is queryable through ProductsDB.ProductBrand 
     /// </summary>
@@ -818,6 +925,17 @@ namespace ProductSite.Data
                   var db=new ProductSite.Data.ProductsDB();
                   return from items in db.ProductBrands
                        where items.ProductBrandID == _BrandID
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductImage> ProductImages
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductImages
+                       where items.ProductID == _ProductID
                        select items;
             }
         }
