@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+
 using AutoMapper;
+
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
+using ProductSite.Models;
 
 namespace ProductSite {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -23,9 +25,9 @@ namespace ProductSite {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             
             routes.MapRoute(
-                "ProductsByCategory",
-                "products/{categorySlug}",
-                new { controller = "Products", action = "Category" }
+                "ProductsByBrand",
+                "products/{brandSlug}",
+                new { controller = "products", action = "brand" }
             );
 
             routes.MapRoute(
@@ -39,8 +41,15 @@ namespace ProductSite {
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
-            Mapper.CreateMap<ProductViewModel, Product>()
+            Mapper.CreateMap<AdminProductViewModel, Product>()
                 .ForMember(dest => dest.Created, config => config.MapFrom(source => DateTime.Now));
+
+            Mapper.CreateMap<ProductBrand, ProductNavigationViewModel>()
+                .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.BrandName))
+                .ForMember(dest => dest.CategorySlug, opt => opt.MapFrom(src => src.BrandName.CreateUrlSlug()));
+
+            Mapper.CreateMap<Product, ProductViewModel>()
+                .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName));
 
             RegisterRoutes(RouteTable.Routes);
         }

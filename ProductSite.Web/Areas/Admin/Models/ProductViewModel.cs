@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
 using ProductSite.Data;
-using System.ComponentModel.DataAnnotations;
-using AutoMapper;
 
 namespace ProductSite.Areas.Admin.Models {
-    public class ProductViewModel {
+    public class AdminProductViewModel {
         public int ProductID { get; set; }
         
         [DisplayName("Brand")]
@@ -69,8 +68,8 @@ namespace ProductSite.Areas.Admin.Models {
         [DisplayName("Active")]
         public bool IsActive { get { return true; } set {} }
 
-        public ProductViewModel() {}
-        public ProductViewModel(Product product) {
+        public AdminProductViewModel() {}
+        public AdminProductViewModel(Product product) {
             ProductID = product.ProductID;
             BrandID = product.BrandID;
             CollectionID = product.CollectionID;

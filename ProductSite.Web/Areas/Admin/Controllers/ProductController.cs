@@ -23,24 +23,24 @@ namespace ProductSite.Areas.Admin.Controllers {
 
         public ActionResult Index() {
             List<Product> products = service.AllProducts(null);
-            List<ProductViewModel> model = new List<ProductViewModel>();
+            List<AdminProductViewModel> model = new List<AdminProductViewModel>();
             foreach (Product item in products) {
-                model.Add(new ProductViewModel(item));
+                model.Add(new AdminProductViewModel(item));
             }
 
             return View(model);
         }
 
         public ActionResult Create() {
-            return View(new ProductViewModel());
+            return View(new AdminProductViewModel());
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(ProductViewModel model) {
+        public ActionResult Create(AdminProductViewModel model) {
             if (ModelState.IsValid) {
                 try {
-                    Product product = Mapper.Map<ProductViewModel, Product>(model);
+                    Product product = Mapper.Map<AdminProductViewModel, Product>(model);
                     service.Save(product);
 
                     this.StoreSuccess("The product was added successfully.");
@@ -57,16 +57,16 @@ namespace ProductSite.Areas.Admin.Controllers {
         }
 
         public ActionResult Edit(int? id) {
-            ProductViewModel model = new ProductViewModel(service.GetProductById(id.Value));
+            AdminProductViewModel model = new AdminProductViewModel(service.GetProductById(id.Value));
             return View("Create", model);
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(int id, ProductViewModel model) {
+        public ActionResult Edit(int id, AdminProductViewModel model) {
             if (ModelState.IsValid) {
                 try {
-                    Product product = Mapper.Map<ProductViewModel, Product>(model);
+                    Product product = Mapper.Map<AdminProductViewModel, Product>(model);
 
                     service.Save(product);
 
@@ -82,29 +82,17 @@ namespace ProductSite.Areas.Admin.Controllers {
             return View("Create", model);
         }
 
-        //
-        // GET: /Product/Delete/5
-
         public ActionResult Delete(int? id) {
-            this.StoreInfo("Deleted fool!");
+            try {
+                service.Delete(id.Value);
+                this.StoreSuccess("The product was deleted successfully");
+            } catch (Exception ex) {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                this.StoreError("There was a problem deleting the product");
+            }
 
             return RedirectToAction("Index");
         }
-
-        //
-        // POST: /Product/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection) {
-            try {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            } catch {
-                return View();
-            }
-        }
-
 
         [HttpGet]
         public JsonResult UpdateCollections(int? id) {
