@@ -31,6 +31,11 @@ namespace ProductSite {
             );
 
             routes.MapRoute(
+                "ProductDetailsByProductName",
+                "products/{brandSlug}/{productName}",
+                new { controller = "products", action = "details" }
+            );
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
@@ -45,12 +50,18 @@ namespace ProductSite {
             Mapper.CreateMap<AdminProductViewModel, Product>()
                 .ForMember(dest => dest.Created, config => config.MapFrom(source => DateTime.Now));
 
+            Mapper.CreateMap<ProductImage, AdminProductImageViewModel>();
+
             Mapper.CreateMap<ProductBrand, ProductNavigationViewModel>()
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.BrandName))
                 .ForMember(dest => dest.CategorySlug, opt => opt.MapFrom(src => src.BrandName.CreateUrlSlug()));
 
             Mapper.CreateMap<Product, ProductViewModel>()
-                .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName));
+                .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName))
+                .ForMember(dest => dest.BrandSlug, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName.CreateUrlSlug()))
+                .ForMember(dest => dest.ProductSlug, opt => opt.MapFrom(src => src.ProductName.CreateUrlSlug()));
+
+            Mapper.CreateMap<ProductImage, ProductImageViewModel>();
 
             RegisterRoutes(RouteTable.Routes);
         }

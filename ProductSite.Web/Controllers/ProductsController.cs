@@ -33,6 +33,10 @@ namespace ProductSite.Controllers {
             return View(model);
         }
 
+        public ActionResult Details(string productName) {
+            ProductViewModel model = Mapper.Map<Product, ProductViewModel>(service.GetProductBySlug(productName));
+            return View(model);
+        }
 
         public ActionResult RenderProductNavigation() {
             List<ProductNavigationViewModel> model = Mapper.Map<List<ProductBrand>, List<ProductNavigationViewModel>>(service.AllProductBrands());

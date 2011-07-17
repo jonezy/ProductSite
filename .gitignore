@@ -4,3 +4,4 @@ obj
 *.user
 *.*~
 ProductSite.Web/Public/js/mylibs/fckeditor/
+Uploads/

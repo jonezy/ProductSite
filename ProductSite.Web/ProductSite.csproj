@@ -106,8 +106,9 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\WelcomeController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminProductImageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AdminProductViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductImageViewModel.cs" />
     <Compile Include="Models\ProductNavigationViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -619,6 +621,7 @@
     <Content Include="Public\js\mylibs\fckeditor\_whatsnew.html" />
     <Content Include="Public\js\mylibs\fckeditor\_whatsnew_history.html" />
     <Content Include="Views\Products\Brand.aspx" />
+    <Content Include="Views\Products\Details.aspx" />
     <Content Include="Views\Shared\Messages.ascx" />
     <Content Include="Views\Shared\ProductNavigation.ascx" />
     <Content Include="Web.config" />

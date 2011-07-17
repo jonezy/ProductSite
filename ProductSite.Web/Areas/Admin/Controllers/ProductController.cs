@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 using AutoMapper;
@@ -8,8 +10,7 @@ using AutoMapper;
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Web.Services;
-using System.Web;
-using System.IO;
+using System.Collections.Specialized;
 
 namespace ProductSite.Areas.Admin.Controllers {
     [RequiresAuthentication(ValidUserRole = UserRole.Administrator, AccessDeniedMessage = "You must be logged in as an administrator to view that part of the site")]
@@ -43,7 +44,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                     Product product = Mapper.Map<AdminProductViewModel, Product>(model);
                     service.Save(product);
 
-                    SaveImages(files, product.ProductID);
+                    SaveImages(Request.Form, files, product.ProductID);
 
                     this.StoreSuccess("The product was added successfully.");
 
@@ -73,7 +74,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                     Product product = Mapper.Map<AdminProductViewModel, Product>(model);
                     service.Save(product);
                    
-                    SaveImages(files, product.ProductID);
+                    SaveImages(Request.Form,files, product.ProductID);
 
                     this.StoreSuccess("The product was updated successfully.");
 
@@ -87,23 +88,31 @@ namespace ProductSite.Areas.Admin.Controllers {
             return View("Create", model);
         }
 
-        private void SaveImages(IEnumerable<HttpPostedFileBase> files, int productId) {
+        private void SaveImages(NameValueCollection form, IEnumerable<HttpPostedFileBase> files, int productId) {
             if (files != null) {
                 foreach (var file in files) {
                     if (file != null) {
                         string productImageDirectory = string.Format(imagesDirectory, productId);
-                        string rootPRoductImageDirectory = Server.MapPath(productImageDirectory);
+                        string rootProductImageDirectory = Server.MapPath(productImageDirectory);
+                        string fileName = Path.GetFileName(file.FileName);
+                        string path = Path.Combine(rootProductImageDirectory, fileName);
+                        string savePath = string.Format("{0}/{1}", productImageDirectory, fileName);
+                        int productImageID = 0;
 
-                        if (!Directory.Exists(rootPRoductImageDirectory))
-                            Directory.CreateDirectory(rootPRoductImageDirectory);
+                        if (!Directory.Exists(rootProductImageDirectory))
+                            Directory.CreateDirectory(rootProductImageDirectory);
 
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(rootPRoductImageDirectory, fileName);
+                        foreach (string key in form) {
+                            if (form[key].Contains(fileName)) {
+                                productImageID = int.Parse(form[key].Substring(0, form[key].IndexOf("_")));
+                            }
+
+                        }
 
                         try {
                             file.SaveAs(path);
-                            ProductImage image = new ProductImage { ProductID = productId, Path = Path.Combine(productImageDirectory, fileName) };
-
+                            
+                            ProductImage image = new ProductImage { ProductID = productId, Path = savePath };
                             service.SaveImage(image);
                         } catch (Exception ex) {
                             Elmah.ErrorSignal.FromCurrentContext().Raise(ex);

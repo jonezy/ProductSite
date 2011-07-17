@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+
 using ProductSite.Data;
 
 namespace ProductSite.Areas.Admin.Models {
@@ -67,6 +68,8 @@ namespace ProductSite.Areas.Admin.Models {
         
         [DisplayName("Active")]
         public bool IsActive { get { return true; } set {} }
+
+        public List<AdminProductImageViewModel> ProductImages { get; set; }
 
         public AdminProductViewModel() {}
         public AdminProductViewModel(Product product) {

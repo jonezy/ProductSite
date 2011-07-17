@@ -17,8 +17,8 @@ namespace ProductSite.Web.Services {
         public object SaveImage(ProductImage p) {
             SubSonicRepository<ProductImage> repository = base.GetRepository<ProductImage>();
 
-            return p.ProductID > 0 ? repository.Update(p) :
-                                     repository.Add(p);
+            return p.ProductImageID > 0 ? repository.Update(p) :
+                                          repository.Add(p);
         }
         public int Delete(int productId) {
             return base.GetRepository<Product>().Delete(productId);
@@ -26,6 +26,15 @@ namespace ProductSite.Web.Services {
 
         public Product GetProductById(int productId) {
             return base.db.Products.Where(model => model.ProductID == productId).FirstOrDefault();
+        }
+
+        public Product GetProductBySlug(string productSlug) {
+            foreach (Product item in base.db.Products) {
+                if (item.ProductName.CreateUrlSlug() == productSlug)
+                    return item;
+            }
+
+            return null;
         }
 
         public List<Product> ProductByBrandSlug(string slug) {
