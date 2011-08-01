@@ -10,29 +10,39 @@
             <div class="ten columns alpha">
                 <%= Html.HiddenFor(model => model.ProductID)%>
                 <p><%= Html.LabelFor(model => model.ProductName)%><%= Html.TextBoxFor(model => model.ProductName)%></p>
-                <p><%= Html.LabelFor(model => model.ModelName)%><%= Html.TextAreaFor(model => model.ModelName, new { @class = "two-line" })%></p>
-                <p><%= Html.LabelFor(model => model.MovementType)%><%= Html.TextBoxFor(model => model.MovementType)%></p>
-                <p><%= Html.LabelFor(model => model.Features)%><%= Html.EditorFor(model => model.Features, new { @class = "" })%></p>
+                <p><%= Html.LabelFor(model => model.ModelName)%><%= Html.TextAreaFor(model => model.ModelName)%></p>
+                <p><%= Html.LabelFor(model => model.Movement)%><%= Html.TextBoxFor(model => model.Movement)%></p>
+                <p><%= Html.LabelFor(model => model.ModelNumber)%><%= Html.TextBoxFor(model => model.ModelNumber)%></p>
+                <p><%= Html.LabelFor(model => model.SerialNumber)%><%= Html.TextBoxFor(model => model.SerialNumber)%></p>
+                <p><%= Html.LabelFor(model => model.Bezel)%><%= Html.TextBoxFor(model => model.Bezel)%></p>
+                <p><%= Html.LabelFor(model => model.Crystal)%><%= Html.TextBoxFor(model => model.Crystal)%></p>
+                <p><%= Html.LabelFor(model => model.WaterResistant)%><%= Html.TextBoxFor(model => model.WaterResistant)%></p>
                 <div class="five columns alpha">
-                    <p><%= Html.LabelFor(model => model.MovementDetails)%><%= Html.TextAreaFor(model => model.MovementDetails, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.CaseMaterial)%><%= Html.TextAreaFor(model => model.CaseMaterial, new { @class = "two-line" })%></p>
                 </div>
                 <div class="five columns omega">
-                    <p><%= Html.LabelFor(model => model.DialDescription)%><%= Html.TextAreaFor(model => model.DialDescription, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.DialColour)%><%= Html.TextAreaFor(model => model.DialColour, new { @class = "two-line" })%></p>
                 </div>
                 <br style="clear:both;" />
                 <div class="five columns alpha">
-                    <p><%= Html.LabelFor(model => model.Bezel)%><%= Html.TextAreaFor(model => model.Bezel, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.Functions)%><%= Html.TextAreaFor(model => model.Functions, new { @class = "two-line" })%></p>
                 </div>
                 <div class="five columns omega">
-                    <p><%= Html.LabelFor(model => model.CaseDetails)%><%= Html.TextAreaFor(model => model.CaseDetails, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.Strap)%><%= Html.TextAreaFor(model => model.Strap, new { @class = "two-line" })%></p>
                 </div>
                 <br style="clear:both;" />
+                <div class="five columns alpha">
+                    <p><%= Html.LabelFor(model => model.BoxPapers)%><%= Html.TextAreaFor(model => model.BoxPapers, new { @class = "two-line" })%></p>
+                </div>
+                <div class="five columns omega">
+                    <p><%= Html.LabelFor(model => model.Warranty)%><%= Html.TextAreaFor(model => model.Warranty, new { @class = "two-line" })%></p>
+                </div>
             </div>
             <div class="one columns">&nbsp;</div>
             <div class="five columns omega">
                 <p><%= Html.LabelFor(model => model.Gender)%><%= Html.DropDownListFor(model => model.Gender, Model.Genders, "Select")%></p>
                 <p><%= Html.LabelFor(model => model.BrandID)%><%= Html.DropDownListFor(model => model.BrandID, Model.ProductBrands, "Select")%></p>
-                <p><%= Html.LabelFor(model => model.CollectionID)%><%= Html.DropDownListFor(model => model.CollectionID, Model.ProductCollections, "Select brand first")%></p>
+                <p><%= Html.LabelFor(model => model.Condition)%><%= Html.DropDownListFor(model => model.Condition, Model.Conditions, "Select")%></p>
                 <div class="three columns alpha">
                     <p><%= Html.LabelFor(model => model.RetailPrice)%><%= Html.TextBoxFor(model => model.RetailPrice)%></p>
                 </div>
@@ -43,13 +53,13 @@
                 <div class="five columns">
 
                 <%  
-           if (Model.ProductImages != null) {
-               int i = 0;
-               int count = 0;
-               int max = 2;
-               string seperator = "<br style='clear:both;' />";
+               if (Model.ProductImages != null) {
+                   int i = 0;
+                   int count = 0;
+                   int max = 2;
+                   string seperator = "<br style='clear:both;' />";
 
-               foreach (var item in Model.ProductImages) { 
+                   foreach (var item in Model.ProductImages) { 
                 %>
                 <div class="left" style="margin-right:5px;">
                     <img src="<%= Url.Content(item.Path) %>" width="125" height="100" class="left" />
@@ -58,18 +68,17 @@
                 </div>
 
                 <%
-            if (count == max) {
-                count = 0;
-                Response.Write(seperator);
-            }
-            count++;
-               }
-                    
+                        if (count == max) {
+                            count = 0;
+                            Response.Write(seperator);
+                        }
+                        count++;
+                    }
+                } 
                 %>
 
-                    
-                    <% if (Model.ProductImages.Count < 3) { %><p><input type="file" id="file1" name="files" /></p><% } %>
-                <% } %>
+                <p><input type="file" id="file1" name="files" /></p>
+
                 </div>
             </div>
         </fieldset>            

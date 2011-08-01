@@ -20,15 +20,6 @@ namespace ProductSite.Areas.Admin.Models {
             }
         }
 
-        [DisplayName("Collection")]
-        public int CollectionID { get; set; }
-        public IEnumerable<SelectListItem> ProductCollections {
-            get {
-                ProductsDB db = new ProductsDB();
-                return db.ProductCollections.Select(pc => new SelectListItem { Text = pc.CollectionName, Value = pc.ProductCollectionID.ToString() });
-            }
-        }
-
         [DisplayName("Gender")]
         public string Gender { get; set; }
         public IEnumerable<SelectListItem> Genders {
@@ -37,34 +28,60 @@ namespace ProductSite.Areas.Admin.Models {
                 return genders.Select(g => new SelectListItem { Text = g, Value = g });
             }
         }
-        
+
+        [DisplayName("Condition")]
+        public int Condition { get; set; }
+        public IEnumerable<SelectListItem> Conditions {
+            get {
+                ProductsDB db = new ProductsDB();
+                return db.ProductConditions.Select(pc => new SelectListItem { Text = pc.ConditionDescription, Value = pc.ProductConditionID.ToString() });
+            }
+        }
+
         [DisplayName("Product Name")]
         public string ProductName { get; set; }
 
         [DisplayName("Model Name")]
         public string ModelName { get; set; }
+        
+        [DisplayName("Model Number")]
+        public string ModelNumber { get; set; }
+        
+        [DisplayName("Serial Number")]
+        public string SerialNumber { get; set; }
 
-        [DisplayName("Movement Type")]
+        [DisplayName("Case Size")]
+        public string CaseSize { get; set; }
+
+        [DisplayName("Case Material")]
+        public string CaseMaterial { get; set; }
+
+        [DisplayName("Crystal")]
+        public string Crystal { get; set; }
+
+        [DisplayName("Dial Colour")]
+        public string DialColour { get; set; }
+
         [Required(ErrorMessage="Please enter a movement type")]
-        public string MovementType { get; set; }
+        public string Movement { get; set; }
 
-        public string Features { get; set; }
+        public string Functions { get; set; }
 
-        [DisplayName("Movement Details")]
-        public string MovementDetails { get; set; }
-
-        [DisplayName("Dial Description")]
-        public string DialDescription { get; set; }
+        public string Strap { get; set; }
+        public string WaterResistant { get; set; }
+        
+        [DisplayName("Box/Papers")]
+        public string BoxPapers { get; set; }
+        
+        public string Warranty { get; set; }
 
         public string Bezel { get; set; }
-
-        [DisplayName("Case Details")]
-        public string CaseDetails { get; set; }
-
+    
         [DisplayName("Retail Price")]
         public decimal RetailPrice { get; set; }
         
-        public DateTime Created { get; set; }
+        public bool NewArrival { get; set; }
+        public bool HotDeal { get; set; }
         
         [DisplayName("Active")]
         public bool IsActive { get { return true; } set {} }
@@ -72,18 +89,5 @@ namespace ProductSite.Areas.Admin.Models {
         public List<AdminProductImageViewModel> ProductImages { get; set; }
 
         public AdminProductViewModel() {}
-        public AdminProductViewModel(Product product) {
-            ProductID = product.ProductID;
-            BrandID = product.BrandID;
-            CollectionID = product.CollectionID;
-            Gender = product.Gender;
-            ProductName = product.ProductName;
-            ModelName = product.ModelName;
-            Bezel = product.Bezel;
-            RetailPrice = product.RetailPrice;
-            IsActive = product.IsActive;
-            Created = product.Created;
-            
-        }
     }
 }

@@ -30,7 +30,7 @@
 <body>
     <header>
         <div class="inner clearfix">
-            <a href="<%= Url.Action("Index", "Home", new {area="Admin"}) %>" id="logo"><%= Html.Image("logo.png") %></a>
+            <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
             <nav id="primary">
                 <ul>
                     <li><%= Html.ActionLink("Welcome", "Index", "Welcome") %></li>

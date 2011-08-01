@@ -48,6 +48,9 @@ namespace ProductSite {
 
             Mapper.CreateMap<Product, AdminProductViewModel>();
             Mapper.CreateMap<AdminProductViewModel, Product>()
+                .ForMember(dest => dest.WholesalePrice, opt => opt.Ignore())
+                .ForMember(dest => dest.SalePrice, opt => opt.Ignore())
+                .ForMember(dest => dest.CollectionID, opt => opt.Ignore())
                 .ForMember(dest => dest.Created, config => config.MapFrom(source => DateTime.Now));
 
             Mapper.CreateMap<ProductImage, AdminProductImageViewModel>();
@@ -63,6 +66,7 @@ namespace ProductSite {
 
             Mapper.CreateMap<ProductImage, ProductImageViewModel>();
 
+            Mapper.AssertConfigurationIsValid();
             RegisterRoutes(RouteTable.Routes);
         }
     }
