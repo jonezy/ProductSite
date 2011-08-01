@@ -124,9 +124,9 @@ namespace ProductSite.Data
         public Query<User> Users { get; set; }
         public Query<ProductImage> ProductImages { get; set; }
         public Query<ProductCondition> ProductConditions { get; set; }
-        public Query<Product> Products { get; set; }
         public Query<ProductBrand> ProductBrands { get; set; }
         public Query<ProductCollection> ProductCollections { get; set; }
+        public Query<Product> Products { get; set; }
 
 			
 
@@ -233,9 +233,9 @@ namespace ProductSite.Data
             Users = new Query<User>(provider);
             ProductImages = new Query<ProductImage>(provider);
             ProductConditions = new Query<ProductCondition>(provider);
-            Products = new Query<Product>(provider);
             ProductBrands = new Query<ProductBrand>(provider);
             ProductCollections = new Query<ProductCollection>(provider);
+            Products = new Query<Product>(provider);
             #endregion
 
 
@@ -245,9 +245,9 @@ namespace ProductSite.Data
             	DataProvider.Schema.Tables.Add(new UserTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductImageTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductConditionTable(DataProvider));
-            	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductBrandTable(DataProvider));
             	DataProvider.Schema.Tables.Add(new ProductCollectionTable(DataProvider));
+            	DataProvider.Schema.Tables.Add(new ProductTable(DataProvider));
             }
             #endregion
         }

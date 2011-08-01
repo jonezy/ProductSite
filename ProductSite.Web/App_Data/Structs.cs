@@ -331,6 +331,154 @@ namespace ProductSite.Data {
         }
         
         /// <summary>
+        /// Table: ProductBrand
+        /// Primary Key: ProductBrandID
+        /// </summary>
+
+        public class ProductBrandTable: DatabaseTable {
+            
+            public ProductBrandTable(IDataProvider provider):base("ProductBrand",provider){
+                ClassName = "ProductBrand";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ProductBrandID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BrandName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+            
+            public IColumn ProductBrandID{
+                get{
+                    return this.GetColumn("ProductBrandID");
+                }
+            }
+            				
+   			public static string ProductBrandIDColumn{
+			      get{
+        			return "ProductBrandID";
+      			}
+		    }
+           
+            public IColumn BrandName{
+                get{
+                    return this.GetColumn("BrandName");
+                }
+            }
+            				
+   			public static string BrandNameColumn{
+			      get{
+        			return "BrandName";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
+        /// Table: ProductCollection
+        /// Primary Key: ProductCollectionID
+        /// </summary>
+
+        public class ProductCollectionTable: DatabaseTable {
+            
+            public ProductCollectionTable(IDataProvider provider):base("ProductCollection",provider){
+                ClassName = "ProductCollection";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ProductCollectionID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductBrandID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("CollectionName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+            
+            public IColumn ProductCollectionID{
+                get{
+                    return this.GetColumn("ProductCollectionID");
+                }
+            }
+            				
+   			public static string ProductCollectionIDColumn{
+			      get{
+        			return "ProductCollectionID";
+      			}
+		    }
+           
+            public IColumn ProductBrandID{
+                get{
+                    return this.GetColumn("ProductBrandID");
+                }
+            }
+            				
+   			public static string ProductBrandIDColumn{
+			      get{
+        			return "ProductBrandID";
+      			}
+		    }
+           
+            public IColumn CollectionName{
+                get{
+                    return this.GetColumn("CollectionName");
+                }
+            }
+            				
+   			public static string CollectionNameColumn{
+			      get{
+        			return "CollectionName";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
         /// Table: Product
         /// Primary Key: ProductID
         /// </summary>
@@ -366,7 +514,7 @@ namespace ProductSite.Data {
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Int32,
-	                IsNullable = false,
+	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = true,
 	                MaxLength = 0
@@ -425,7 +573,7 @@ namespace ProductSite.Data {
                 Columns.Add(new DatabaseColumn("RetailPrice", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Currency,
+	                DataType = DbType.Decimal,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
@@ -435,7 +583,7 @@ namespace ProductSite.Data {
                 Columns.Add(new DatabaseColumn("WholesalePrice", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Currency,
+	                DataType = DbType.Decimal,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
@@ -445,7 +593,7 @@ namespace ProductSite.Data {
                 Columns.Add(new DatabaseColumn("SalePrice", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Currency,
+	                DataType = DbType.Decimal,
 	                IsNullable = false,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
@@ -455,11 +603,11 @@ namespace ProductSite.Data {
                 Columns.Add(new DatabaseColumn("CaseSize", this)
                 {
 	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
+	                DataType = DbType.String,
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 0
+	                MaxLength = 50
                 });
 
                 Columns.Add(new DatabaseColumn("CaseMaterial", this)
@@ -489,7 +637,7 @@ namespace ProductSite.Data {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 200
+	                MaxLength = 500
                 });
 
                 Columns.Add(new DatabaseColumn("DialColour", this)
@@ -499,7 +647,7 @@ namespace ProductSite.Data {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 200
+	                MaxLength = 500
                 });
 
                 Columns.Add(new DatabaseColumn("Movement", this)
@@ -559,7 +707,7 @@ namespace ProductSite.Data {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 500
                 });
 
                 Columns.Add(new DatabaseColumn("Warranty", this)
@@ -937,154 +1085,6 @@ namespace ProductSite.Data {
    			public static string IsActiveColumn{
 			      get{
         			return "IsActive";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductBrand
-        /// Primary Key: ProductBrandID
-        /// </summary>
-
-        public class ProductBrandTable: DatabaseTable {
-            
-            public ProductBrandTable(IDataProvider provider):base("ProductBrand",provider){
-                ClassName = "ProductBrand";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductBrandID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = true,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("BrandName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductBrandID{
-                get{
-                    return this.GetColumn("ProductBrandID");
-                }
-            }
-            				
-   			public static string ProductBrandIDColumn{
-			      get{
-        			return "ProductBrandID";
-      			}
-		    }
-           
-            public IColumn BrandName{
-                get{
-                    return this.GetColumn("BrandName");
-                }
-            }
-            				
-   			public static string BrandNameColumn{
-			      get{
-        			return "BrandName";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductCollection
-        /// Primary Key: ProductCollectionID
-        /// </summary>
-
-        public class ProductCollectionTable: DatabaseTable {
-            
-            public ProductCollectionTable(IDataProvider provider):base("ProductCollection",provider){
-                ClassName = "ProductCollection";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductCollectionID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = true,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("ProductBrandID", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = true,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("CollectionName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductCollectionID{
-                get{
-                    return this.GetColumn("ProductCollectionID");
-                }
-            }
-            				
-   			public static string ProductCollectionIDColumn{
-			      get{
-        			return "ProductCollectionID";
-      			}
-		    }
-           
-            public IColumn ProductBrandID{
-                get{
-                    return this.GetColumn("ProductBrandID");
-                }
-            }
-            				
-   			public static string ProductBrandIDColumn{
-			      get{
-        			return "ProductBrandID";
-      			}
-		    }
-           
-            public IColumn CollectionName{
-                get{
-                    return this.GetColumn("CollectionName");
-                }
-            }
-            				
-   			public static string CollectionNameColumn{
-			      get{
-        			return "CollectionName";
       			}
 		    }
            

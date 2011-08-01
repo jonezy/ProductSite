@@ -47,7 +47,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                     SaveImages(Request.Form, files, product.ProductID);
 
                     this.StoreSuccess("The product was added successfully.");
-
+                        
                     return RedirectToAction("Index");
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);

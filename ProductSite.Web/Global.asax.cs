@@ -67,6 +67,7 @@ namespace ProductSite {
             Mapper.CreateMap<ProductImage, ProductImageViewModel>();
 
             Mapper.AssertConfigurationIsValid();
+
             RegisterRoutes(RouteTable.Routes);
         }
     }

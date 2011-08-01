@@ -10,18 +10,31 @@
             <div class="ten columns alpha">
                 <%= Html.HiddenFor(model => model.ProductID)%>
                 <p><%= Html.LabelFor(model => model.ProductName)%><%= Html.TextBoxFor(model => model.ProductName)%></p>
-                <p><%= Html.LabelFor(model => model.ModelName)%><%= Html.TextAreaFor(model => model.ModelName)%></p>
-                <p><%= Html.LabelFor(model => model.Movement)%><%= Html.TextBoxFor(model => model.Movement)%></p>
+                <p><%= Html.LabelFor(model => model.ModelName)%><%= Html.TextBoxFor(model => model.ModelName)%></p>
                 <p><%= Html.LabelFor(model => model.ModelNumber)%><%= Html.TextBoxFor(model => model.ModelNumber)%></p>
                 <p><%= Html.LabelFor(model => model.SerialNumber)%><%= Html.TextBoxFor(model => model.SerialNumber)%></p>
-                <p><%= Html.LabelFor(model => model.Bezel)%><%= Html.TextBoxFor(model => model.Bezel)%></p>
-                <p><%= Html.LabelFor(model => model.Crystal)%><%= Html.TextBoxFor(model => model.Crystal)%></p>
-                <p><%= Html.LabelFor(model => model.WaterResistant)%><%= Html.TextBoxFor(model => model.WaterResistant)%></p>
+                
                 <div class="five columns alpha">
-                    <p><%= Html.LabelFor(model => model.CaseMaterial)%><%= Html.TextAreaFor(model => model.CaseMaterial, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.CaseSize)%><%= Html.TextBoxFor(model => model.CaseSize)%></p>
                 </div>
                 <div class="five columns omega">
-                    <p><%= Html.LabelFor(model => model.DialColour)%><%= Html.TextAreaFor(model => model.DialColour, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.CaseMaterial)%><%= Html.TextAreaFor(model => model.CaseMaterial, new { @class = "two-line" })%></p>
+                </div>
+                <br style="clear:both;" />
+                
+                <div class="five columns alpha">
+                    <p><%= Html.LabelFor(model => model.Bezel)%><%= Html.TextBoxFor(model => model.Bezel)%></p>
+                </div>
+                <div class="five columns omega">
+                    <p><%= Html.LabelFor(model => model.Crystal)%><%= Html.TextBoxFor(model => model.Crystal)%></p>
+                </div>
+                <br style="clear:both;" />
+
+                <div class="five columns alpha">
+                    <p><%= Html.LabelFor(model => model.DialColour)%><%= Html.TextBoxFor(model => model.DialColour)%></p>
+                </div>
+                <div class="five columns omega">
+                    <p><%= Html.LabelFor(model => model.Movement)%><%= Html.TextAreaFor(model => model.Movement, new { @class = "two-line" })%></p>
                 </div>
                 <br style="clear:both;" />
                 <div class="five columns alpha">
@@ -31,6 +44,11 @@
                     <p><%= Html.LabelFor(model => model.Strap)%><%= Html.TextAreaFor(model => model.Strap, new { @class = "two-line" })%></p>
                 </div>
                 <br style="clear:both;" />
+
+                <p><%= Html.LabelFor(model => model.WaterResistant)%><%= Html.TextBoxFor(model => model.WaterResistant)%></p>
+
+                <br style="clear:both;" />
+
                 <div class="five columns alpha">
                     <p><%= Html.LabelFor(model => model.BoxPapers)%><%= Html.TextAreaFor(model => model.BoxPapers, new { @class = "two-line" })%></p>
                 </div>
