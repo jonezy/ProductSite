@@ -79,12 +79,7 @@ namespace ProductSite.Areas.Admin.Models {
             Gender = product.Gender;
             ProductName = product.ProductName;
             ModelName = product.ModelName;
-            MovementType = product.MovementType;
-            Features = product.Features;
-            MovementDetails = product.MovementDetails;
-            DialDescription = product.DialDescription;
             Bezel = product.Bezel;
-            CaseDetails = product.CaseDetails;
             RetailPrice = product.RetailPrice;
             IsActive = product.IsActive;
             Created = product.Created;

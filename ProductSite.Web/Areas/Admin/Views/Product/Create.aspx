@@ -42,29 +42,34 @@
                 <h3>Images</h3>
                 <div class="five columns">
 
-                <%  int i = 0;
-                    int count = 0;
-                    int max = 2;
-                    string seperator = "<br style='clear:both;' />";
+                <%  
+           if (Model.ProductImages != null) {
+               int i = 0;
+               int count = 0;
+               int max = 2;
+               string seperator = "<br style='clear:both;' />";
 
-                    foreach (var item in Model.ProductImages) { %>
-                    <div class="left" style="margin-right:5px;">
-                        <img src="<%= Url.Content(item.Path) %>" width="125" height="100" class="left" />
-                        <p><input type="file" id="file2" name="files"></input></p>
-                        <%= Html.Hidden(item.ProductImageID.ToString()) %>
-                    </div>
+               foreach (var item in Model.ProductImages) { 
+                %>
+                <div class="left" style="margin-right:5px;">
+                    <img src="<%= Url.Content(item.Path) %>" width="125" height="100" class="left" />
+                    <p><input type="file" id="file2" name="files"></input></p>
+                    <%= Html.Hidden(item.ProductImageID.ToString())%>
+                </div>
 
-                    <% if(count == max) {
-                           count = 0;
-                           Response.Write(seperator);
-                       }
-                        count++;   
-                    %>
-
-                    <% } %>
+                <%
+            if (count == max) {
+                count = 0;
+                Response.Write(seperator);
+            }
+            count++;
+               }
+                    
+                %>
 
                     
                     <% if (Model.ProductImages.Count < 3) { %><p><input type="file" id="file1" name="files" /></p><% } %>
+                <% } %>
                 </div>
             </div>
         </fieldset>            
