@@ -4,7 +4,7 @@
     <h2 class="left">Products</h2>
     <%= Html.ActionLink("Create New", "create", null, new { @class = "action_item header" })%>
     <br style="clear:both;" />
-    <table width="100%">
+    <table width="100%" class="product-list">
         <% foreach (var item in Model) { %>
             <tr>
                 <td style="vertical-align:middle !important;"><%= item.ProductName %></td>
