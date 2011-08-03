@@ -537,7 +537,7 @@ namespace ProductSite.Data {
 	                IsNullable = true,
 	                AutoIncrement = false,
 	                IsForeignKey = false,
-	                MaxLength = 50
+	                MaxLength = 150
                 });
 
                 Columns.Add(new DatabaseColumn("Gender", this)

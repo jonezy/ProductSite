@@ -24,6 +24,9 @@ namespace ProductSite.Web.Services {
             return base.GetRepository<Product>().Delete(productId);
         }
 
+        public void DeleteProductImages(int productId) {
+            GetRepository<ProductImage>().DeleteMany(i => i.ProductID == productId);
+        }
         public Product GetProductById(int productId) {
             return base.db.Products.Where(model => model.ProductID == productId).FirstOrDefault();
         }
@@ -66,17 +69,17 @@ namespace ProductSite.Web.Services {
         }
         public List<Product> AllProducts(bool? active) {
             if(active.HasValue) 
-                return base.db.Products.Where(p => p.IsActive == active).ToList();
+                return base.db.Products.Where(p => p.IsActive == active).OrderBy(p => p.ProductName).ToList();
 
-            return base.db.Products.ToList();
+            return base.db.Products.OrderBy(p => p.ProductName).ToList();
         }
 
         public List<ProductCollection> ProductBrandCollections(int productBrandId) {
-            return base.db.ProductCollections.Where(c => c.ProductBrandID == productBrandId).ToList();
+            return base.db.ProductCollections.Where(c => c.ProductBrandID == productBrandId).OrderBy(c => c.CollectionName).ToList();
         }
 
         public List<ProductBrand> AllProductBrands() {
-            return base.db.ProductBrands.ToList();
+            return base.db.ProductBrands.OrderBy(pb => pb.BrandName).ToList();
         }
     }
 }

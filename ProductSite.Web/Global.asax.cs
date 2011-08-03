@@ -62,6 +62,8 @@ namespace ProductSite {
             Mapper.CreateMap<Product, ProductViewModel>()
                 .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName))
                 .ForMember(dest => dest.BrandSlug, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName.CreateUrlSlug()))
+                .ForMember(dest => dest.Condition, opt => opt.MapFrom(src => src.ProductConditions.FirstOrDefault().ConditionDescription))
+                .ForMember(dest => dest.ListShortName, opt => opt.MapFrom(src => string.Format("{0} {1}", src.ProductBrands.FirstOrDefault().BrandName, src.ModelName)))
                 .ForMember(dest => dest.ProductSlug, opt => opt.MapFrom(src => src.ProductName.CreateUrlSlug()));
 
             Mapper.CreateMap<ProductImage, ProductImageViewModel>();

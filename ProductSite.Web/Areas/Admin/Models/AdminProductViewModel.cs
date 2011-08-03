@@ -16,7 +16,7 @@ namespace ProductSite.Areas.Admin.Models {
         public IEnumerable<SelectListItem> ProductBrands {
             get {
                 ProductsDB db = new ProductsDB();
-                return db.ProductBrands.Select(pb => new SelectListItem { Text = pb.BrandName, Value = pb.ProductBrandID.ToString() });
+                return db.ProductBrands.OrderBy(pb => pb.BrandName).Select(pb => new SelectListItem { Text = pb.BrandName, Value = pb.ProductBrandID.ToString() });
             }
         }
 
@@ -34,7 +34,7 @@ namespace ProductSite.Areas.Admin.Models {
         public IEnumerable<SelectListItem> Conditions {
             get {
                 ProductsDB db = new ProductsDB();
-                return db.ProductConditions.Select(pc => new SelectListItem { Text = pc.ConditionDescription, Value = pc.ProductConditionID.ToString() });
+                return db.ProductConditions.OrderBy(pc => pc.ConditionDescription).Select(pc => new SelectListItem { Text = pc.ConditionDescription, Value = pc.ProductConditionID.ToString() });
             }
         }
 

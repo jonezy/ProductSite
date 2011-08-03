@@ -12,7 +12,9 @@ footer, header, hgroup, menu, nav, section {
  body {background:#000 url(../images/body.bg.png) repeat-x;color:#fff !important;overflow-x:hidden;}
  a,a:visited {color:#fff; text-decoration:none;}
  
- h3 {color:#fff;}
+ h3 {color:#fff;font-size:24px;margin-bottom:0;line-height:normal;}
+ h4 {color:#9b9b9b;font-size:18px;line-height:normal;}
+ h5 {font-weight:bold;}
  
 .left {float:left;}
 .right {float:right;}
@@ -35,7 +37,7 @@ nav#primary ul li a:hover {background:#fff;color:#000;}
 #main {z-index:100;}
 #main #content {margin-top:475px;color:#000;}
 #main #product-category {margin-top:5px;color:#000;background:#000;padding-left:20px;}
-#product-body {background:#fff;min-height:711px;padding:10px;}
+
 
 td.actions_items {text-align:right;vertical-align:middle;}
 td.actions_items ul {text-align:center;width:auto;margin:0;list-style:none;display:inline-table;float:none;}
@@ -60,8 +62,13 @@ a.delete {display:inline;}
 #slide-container #slide {    position:relative;	width: 1600px;	height: 475px;	margin: 0 auto;}#slide-container #slide img {}
 
 
-.brandlist-item {float:left;margin-right:10px;}
+.brandlist-item {float:left;margin:0px 10px 10px 0px;color:#000;}
+.brandlist-item a {font-size:11px;color:#000;margin:0;padding:0;line-height:normal;display:block;height:10px;}
 
+#product-body {margin-top:10px;background:#fff;min-height:711px;padding:10px;}
+#product-body .image-1 {float:left;}
+#product-body .image-2 {float:right;}
+#product-body .image-3 {float:right;}
 
 @media all and (orientation:portrait) {
 

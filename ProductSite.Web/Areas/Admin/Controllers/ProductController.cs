@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,6 @@ using AutoMapper;
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Web.Services;
-using System.Collections.Specialized;
 
 namespace ProductSite.Areas.Admin.Controllers {
     [RequiresAuthentication(ValidUserRole = UserRole.Administrator, AccessDeniedMessage = "You must be logged in as an administrator to view that part of the site")]
@@ -78,7 +78,7 @@ namespace ProductSite.Areas.Admin.Controllers {
 
                     this.StoreSuccess("The product was updated successfully.");
 
-                    return RedirectToAction("Index");
+                    return View("Create", Mapper.Map<Product, AdminProductViewModel>(product));
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
@@ -106,7 +106,6 @@ namespace ProductSite.Areas.Admin.Controllers {
                             if (form[key].Contains(fileName)) {
                                 productImageID = int.Parse(form[key].Substring(0, form[key].IndexOf("_")));
                             }
-
                         }
 
                         try {
@@ -125,6 +124,10 @@ namespace ProductSite.Areas.Admin.Controllers {
         [HttpGet]
         public ActionResult Delete(int? id) {
             try {
+                // delete product images
+                string productImageDirectory = string.Format(imagesDirectory, id.Value);
+                Directory.Delete(Server.MapPath(productImageDirectory));
+                service.DeleteProductImages(id.Value);
                 service.Delete(id.Value);
                 this.StoreSuccess("The product was deleted successfully");
             } catch (Exception ex) {

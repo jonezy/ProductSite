@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2 class="left">Product Details</h2>
-    <%= Html.ActionLink("Back to List", "Index", null, new { @class = "action_item header" })%>
+    <%= Html.ActionLink("Create New", "create", null, new { @class = "action_item header" })%><%= Html.ActionLink("Back to List", "Index", null, new { @class = "action_item header" })%>
     <br style="clear:both;" />
     <% using (Html.BeginForm(null, null, FormMethod.Post, new { @enctype = "multipart/form-data" })) {%>
         <fieldset>
@@ -18,7 +18,7 @@
                     <p><%= Html.LabelFor(model => model.CaseSize)%><%= Html.TextBoxFor(model => model.CaseSize)%></p>
                 </div>
                 <div class="five columns omega">
-                    <p><%= Html.LabelFor(model => model.CaseMaterial)%><%= Html.TextAreaFor(model => model.CaseMaterial, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.CaseMaterial)%><%= Html.TextBoxFor(model => model.CaseMaterial)%></p>
                 </div>
                 <br style="clear:both;" />
                 
@@ -34,7 +34,7 @@
                     <p><%= Html.LabelFor(model => model.DialColour)%><%= Html.TextBoxFor(model => model.DialColour)%></p>
                 </div>
                 <div class="five columns omega">
-                    <p><%= Html.LabelFor(model => model.Movement)%><%= Html.TextAreaFor(model => model.Movement, new { @class = "two-line" })%></p>
+                    <p><%= Html.LabelFor(model => model.Movement)%><%= Html.TextBoxFor(model => model.Movement)%></p>
                 </div>
                 <br style="clear:both;" />
                 <div class="five columns alpha">
@@ -45,8 +45,12 @@
                 </div>
                 <br style="clear:both;" />
 
-                <p><%= Html.LabelFor(model => model.WaterResistant)%><%= Html.TextBoxFor(model => model.WaterResistant)%></p>
-
+                <div class="five columns alpha">
+                    <p><%= Html.LabelFor(model => model.WaterResistant)%><%= Html.TextBoxFor(model => model.WaterResistant)%></p>
+                </div>
+                <div class="five columns omega">
+                    <p><%= Html.LabelFor(model => model.RetailPrice)%><%= Html.TextBoxFor(model => model.RetailPrice)%></p>
+                </div>
                 <br style="clear:both;" />
 
                 <div class="five columns alpha">
@@ -61,43 +65,39 @@
                 <p><%= Html.LabelFor(model => model.Gender)%><%= Html.DropDownListFor(model => model.Gender, Model.Genders, "Select")%></p>
                 <p><%= Html.LabelFor(model => model.BrandID)%><%= Html.DropDownListFor(model => model.BrandID, Model.ProductBrands, "Select")%></p>
                 <p><%= Html.LabelFor(model => model.Condition)%><%= Html.DropDownListFor(model => model.Condition, Model.Conditions, "Select")%></p>
-                <div class="three columns alpha">
-                    <p><%= Html.LabelFor(model => model.RetailPrice)%><%= Html.TextBoxFor(model => model.RetailPrice)%></p>
-                </div>
-                <br style="clear:both;" />
                 <p><%= Html.LabelFor(model => model.IsActive)%><%= Html.CheckBoxFor(model => model.IsActive)%></p>
-
-                <h3>Images</h3>
+                <hr style="clear:both;" />
+                <h4>Images</h4>
                 <div class="five columns">
 
-                <%  
-               if (Model.ProductImages != null) {
-                   int i = 0;
-                   int count = 0;
-                   int max = 2;
-                   string seperator = "<br style='clear:both;' />";
-
-                   foreach (var item in Model.ProductImages) { 
-                %>
-                <div class="left" style="margin-right:5px;">
-                    <img src="<%= Url.Content(item.Path) %>" width="125" height="100" class="left" />
-                    <p><input type="file" id="file2" name="files"></input></p>
-                    <%= Html.Hidden(item.ProductImageID.ToString())%>
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #1</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 0 && Model.ProductImages[0] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[0].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[0].Path) %>" width="125" height="100" class="left" />
+                        <% } %>
+                        <p><input type="file" id="file2" name="files"></input></p>
+                    </div>
+                    <hr />
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #2</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 1 && Model.ProductImages[1] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[1].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[1].Path) %>" width="125" height="100" class="left" />
+                        <% } %>
+                        <p><input type="file" id="file1" name="files"></input></p>
+                    </div>
+                    <hr />
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #3</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 2 && Model.ProductImages[2] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[2].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[2].Path) %>" width="125" height="100" class="left" />
+                        <% } %>
+                        <p><input type="file" id="file3" name="files"></input></p>
+                    </div>
                 </div>
 
-                <%
-                        if (count == max) {
-                            count = 0;
-                            Response.Write(seperator);
-                        }
-                        count++;
-                    }
-                } 
-                %>
-
-                <p><input type="file" id="file1" name="files" /></p>
-
-                </div>
             </div>
         </fieldset>            
         <input type="submit" value="Save Product" class="button" />
