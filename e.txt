@@ -6,3 +6,5 @@
 obj\
 errors\
 App_Data\
+.config
+fckeditor\
