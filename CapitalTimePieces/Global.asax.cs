@@ -4,8 +4,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-using AutoMapper;
-
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Models;
@@ -45,31 +43,6 @@ namespace ProductSite {
 
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
-
-            Mapper.CreateMap<Product, AdminProductViewModel>();
-
-            Mapper.CreateMap<AdminProductViewModel, Product>()
-                .ForMember(dest => dest.WholesalePrice, opt => opt.Ignore())
-                .ForMember(dest => dest.SalePrice, opt => opt.Ignore())
-                .ForMember(dest => dest.CollectionID, opt => opt.Ignore())
-                .ForMember(dest => dest.Created, config => config.MapFrom(source => DateTime.Now));
-
-            Mapper.CreateMap<ProductImage, AdminProductImageViewModel>();
-
-            //Mapper.CreateMap<ProductBrand, ProductNavigationViewModel>()
-            //    .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.BrandName))
-            //    .ForMember(dest => dest.CategorySlug, opt => opt.MapFrom(src => src.BrandName.CreateUrlSlug()));
-
-            //Mapper.CreateMap<Product, ProductViewModel>()
-            //    .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName))
-            //    .ForMember(dest => dest.BrandSlug, opt => opt.MapFrom(src => src.ProductBrands.FirstOrDefault().BrandName.CreateUrlSlug()))
-            //    .ForMember(dest => dest.Condition, opt => opt.MapFrom(src => src.ProductConditions.FirstOrDefault().ConditionDescription))
-            //    .ForMember(dest => dest.ListShortName, opt => opt.MapFrom(src => string.Format("{0} {1}", src.ProductBrands.FirstOrDefault().BrandName, src.ModelName)))
-            //    .ForMember(dest => dest.ProductSlug, opt => opt.MapFrom(src => src.ProductName.CreateUrlSlug()));
-
-            //Mapper.CreateMap<ProductImage, ProductImageViewModel>();
-
-            Mapper.AssertConfigurationIsValid();
 
             RegisterRoutes(RouteTable.Routes);
         }

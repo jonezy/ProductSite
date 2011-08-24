@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-using AutoMapper;
-
 using ProductSite.Data;
 using ProductSite.Models;
 using ProductSite.Web.Services;
@@ -29,17 +27,26 @@ namespace ProductSite.Controllers {
                 ViewData["BrandName"] = service.BrandNameFromSlug(brandSlug);
             }
 
-            List<ProductViewModel> model = Mapper.Map<List<Product>, List<ProductViewModel>>(service.ProductByBrandSlug(brandSlug));
+            List<Product> products = service.ProductByBrandSlug(brandSlug);
+            List<ProductViewModel> model = new List<ProductViewModel>();
+            foreach (var item in products) {
+                model.Add(new ProductViewModel(item));
+            }
+
             return View(model);
         }
 
         public ActionResult Details(string productName) {
-            ProductViewModel model = Mapper.Map<Product, ProductViewModel>(service.GetProductBySlug(productName));
+            ProductViewModel model = new ProductViewModel(service.GetProductBySlug(productName));
             return View(model);
         }
 
         public ActionResult RenderProductNavigation() {
-            List<ProductNavigationViewModel> model = Mapper.Map<List<ProductBrand>, List<ProductNavigationViewModel>>(service.AllProductBrands());
+            List<ProductBrand> brands = service.AllProductBrands();
+            List<ProductNavigationViewModel> model = new List<ProductNavigationViewModel>();
+            foreach (var item in brands) {
+                model.Add(new ProductNavigationViewModel(item));
+            }
             
             return PartialView("ProductNavigation", model);
         }

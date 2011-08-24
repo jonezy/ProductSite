@@ -88,6 +88,34 @@ namespace ProductSite.Areas.Admin.Models {
 
         public List<AdminProductImageViewModel> ProductImages { get; set; }
 
-        public AdminProductViewModel() {}
+        public AdminProductViewModel() {
+
+        }
+
+        public AdminProductViewModel(Product product) {
+            Condition = product.ProductConditions.FirstOrDefault().ProductConditionID;
+            Gender = product.Gender;
+            ProductName = product.ProductName;
+            ModelName = product.ModelName;
+            ModelNumber = product.ModelNumber;
+            SerialNumber = product.SerialNumber;
+            CaseSize = product.CaseSize;
+            CaseMaterial = product.CaseMaterial;
+            Bezel = product.Bezel;
+            Crystal = product.Crystal;
+            DialColour = product.DialColour;
+            Movement = product.Movement;
+            Functions = product.Functions;
+            Strap = product.Strap;
+            WaterResistant = product.WaterResistant;
+            RetailPrice = product.RetailPrice;
+            BoxPapers = product.BoxPapers;
+            Warranty = product.Warranty;
+            ProductImages = new List<AdminProductImageViewModel>();
+            foreach (ProductImage image in product.ProductImages) {
+                ProductImages.Add(new AdminProductImageViewModel(image));
+            }   
+        
+        }
     }
 }

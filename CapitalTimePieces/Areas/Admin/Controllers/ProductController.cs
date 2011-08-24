@@ -6,8 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using AutoMapper;
-
 using ProductSite.Areas.Admin.Models;
 using ProductSite.Data;
 using ProductSite.Web.Services;
@@ -26,7 +24,10 @@ namespace ProductSite.Areas.Admin.Controllers {
 
         public ActionResult Index() {
             List<Product> products = service.AllProducts(null);
-            List<AdminProductViewModel> model = Mapper.Map<List<Product>, List<AdminProductViewModel>>(products);
+            List<AdminProductViewModel> model = new List<AdminProductViewModel>();
+            foreach (var item in products) {
+                model.Add(new AdminProductViewModel(item));
+            }
 
             return View(model);
         }
@@ -41,7 +42,8 @@ namespace ProductSite.Areas.Admin.Controllers {
         public ActionResult Create(AdminProductViewModel model, IEnumerable<HttpPostedFileBase> files) {
             if (ModelState.IsValid) {
                 try {
-                    Product product = Mapper.Map<AdminProductViewModel, Product>(model);
+                    Product product = CreateProduct(model);
+
                     service.Save(product);
 
                     SaveImages(Request.Form, files, product.ProductID);
@@ -59,9 +61,35 @@ namespace ProductSite.Areas.Admin.Controllers {
             }
         }
 
+        private static Product CreateProduct(AdminProductViewModel model) {
+            Product product = new Product();
+            product.Bezel = model.Bezel;
+            product.BoxPapers = model.BoxPapers;
+            product.BrandID = model.BrandID;
+            product.CaseMaterial = model.CaseMaterial;
+            product.CaseSize = model.CaseSize;
+            product.Condition = model.Condition;
+            product.Created = DateTime.Now;
+            product.Crystal = model.Crystal;
+            product.DialColour = model.DialColour;
+            product.Functions = model.Functions;
+            product.Gender = model.Gender;
+            product.IsActive = model.IsActive;
+            product.ModelName = model.ModelName;
+            product.ModelNumber = model.ModelNumber;
+            product.Movement = model.Movement;
+            product.ProductName = model.ProductName;
+            product.RetailPrice = model.RetailPrice;
+            product.SerialNumber = model.SerialNumber;
+            product.Strap = model.Strap;
+            product.Warranty = model.Warranty;
+            product.WaterResistant = model.WaterResistant;
+            return product;
+        }
+
         [HttpGet]
         public ActionResult Edit(int? id) {
-            AdminProductViewModel model = Mapper.Map<Product,AdminProductViewModel>(service.GetProductById(id.Value));
+            AdminProductViewModel model = new AdminProductViewModel(service.GetProductById(id.Value));
             
             return View("Create", model);
         }
@@ -71,14 +99,14 @@ namespace ProductSite.Areas.Admin.Controllers {
         public ActionResult Edit(int id, AdminProductViewModel model, IEnumerable<HttpPostedFileBase> files) {
             if (ModelState.IsValid) {
                 try {
-                    Product product = Mapper.Map<AdminProductViewModel, Product>(model);
+                    Product product = CreateProduct(model);
                     service.Save(product);
                    
                     SaveImages(Request.Form,files, product.ProductID);
 
                     this.StoreSuccess("The product was updated successfully.");
 
-                    return View("Create", Mapper.Map<Product, AdminProductViewModel>(product));
+                    return View("Create", model);
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
