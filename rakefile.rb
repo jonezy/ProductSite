@@ -4,7 +4,7 @@ SELF_PATH = File.dirname(__FILE__)
 PATH_TO_MSBUILD = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\msbuild.exe"
 # MAKE SURE YOU UPDATE THIS.
 # It's the only thing you need to change.
-PROJECT_NAME = "ProductSite"
+PROJECT_NAME = "CapitalTimePieces"
 PATH_TO_SQL = "#{SELF_PATH}\\_sql\\setup\\"
 PATH_TO_WEB = "#{SELF_PATH}\\#{PROJECT_NAME}"
 TARGET_ENV = "staging"

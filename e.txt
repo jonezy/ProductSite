@@ -6,5 +6,8 @@
 obj\
 errors\
 App_Data\
-.config
-fckeditor\
+Public\js\mylibs\fckeditor\
+Uploads\
+.Debug.config
+.Release.config
+packages.config
