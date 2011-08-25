@@ -52,7 +52,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                         
                     return RedirectToAction("Index");
                 } catch (Exception ex) {
-                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
                     return View(model);
                 }
@@ -108,7 +108,7 @@ namespace ProductSite.Areas.Admin.Controllers {
 
                     return View("Create", model);
                 } catch (Exception ex) {
-                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
                 }
             }
@@ -142,7 +142,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                             ProductImage image = new ProductImage { ProductID = productId, Path = savePath };
                             service.SaveImage(image);
                         } catch (Exception ex) {
-                            Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                            //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                         }
                     }
                 }
@@ -159,7 +159,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                 service.Delete(id.Value);
                 this.StoreSuccess("The product was deleted successfully");
             } catch (Exception ex) {
-                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                 this.StoreError("There was a problem deleting the product");
             }
 

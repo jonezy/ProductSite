@@ -36,7 +36,7 @@ namespace ProductSite.Controllers {
         }
 
         protected void LogError(Exception e, string friendlyMessage) {
-            Elmah.ErrorSignal.FromCurrentContext().Raise(e);
+            //Elmah.ErrorSignal.FromCurrentContext().Raise(e);
             
             if(!string.IsNullOrEmpty(friendlyMessage))
                 this.StoreError(friendlyMessage);
