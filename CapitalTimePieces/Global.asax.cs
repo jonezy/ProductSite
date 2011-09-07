@@ -21,7 +21,37 @@ namespace ProductSite {
 
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
+            routes.MapRoute(
+                "SellYourWatch",
+                "sell",
+                new { controller = "home", action = "sell" }
+            );
+
+            routes.MapRoute(
+                "WatchTrading",
+                "trading",
+                new { controller = "home", action = "trading" }
+            );
+
+            routes.MapRoute(
+                "Repairs",
+                "repairs",
+                new { controller = "home", action = "repairs" }
+            );
+
+            routes.MapRoute(
+                "Testimonials",
+                "testimonials",
+                new { controller = "home", action = "testimonials" }
+            );
+
+            routes.MapRoute(
+                "Contact",
+                "contact",
+                new { controller = "home", action = "contact" }
+            );
+
             routes.MapRoute(
                 "ProductsByBrand",
                 "products/{brandSlug}",

@@ -1,13 +1,13 @@
 require 'rake/clean'
 
 SELF_PATH = File.dirname(__FILE__)
+#PATH_TO_MSBUILD = "C:\\Windows\\Microsoft.NET\\Framework\\v3.5\\msbuild.exe"
 PATH_TO_MSBUILD = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\msbuild.exe"
 # MAKE SURE YOU UPDATE THIS.
 # It's the only thing you need to change.
 PROJECT_NAME = "CapitalTimePieces"
-PATH_TO_SQL = "#{SELF_PATH}\\_sql\\setup\\"
 PATH_TO_WEB = "#{SELF_PATH}\\#{PROJECT_NAME}"
-TARGET_ENV = "staging"
+TARGET_ENV = "Release"
 
 # list of files and directories to clean, change to suit your liking
 CLEAN.exclude("**/core","**/_sql")
@@ -21,7 +21,7 @@ task :default => :build
 # builds all the .sln files in the directory
 task :build, :config do |t, args| 
   desc "builds all of the .sln files in the current directory"
-  config = !args.config ? "Debug" : args.config
+  config = !args.config ? "Release" : args.config
 
   Dir.glob('*.sln') do |file|
     puts "\nBuilding #{file}"

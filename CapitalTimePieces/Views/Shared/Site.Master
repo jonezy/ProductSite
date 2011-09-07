@@ -33,11 +33,11 @@
             <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
             <nav id="primary">
                 <ul>
-                    <li><%= Html.ActionLink("Sell Your Watch", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Watch Trading", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Repairs", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Testimonials", "Index", "Home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Contact", "Index", "Home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Sell Your Watch", "sell", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Watch Trading", "trading", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Testimonials", "testimonials", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, null)%></li>
                 </ul>
             </nav>
         </div>

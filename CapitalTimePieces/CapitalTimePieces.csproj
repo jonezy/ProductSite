@@ -37,8 +37,9 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.1.1.0.118\lib\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="smokesignals">
-      <HintPath>..\packages\smokesignals.1.4\lib\smokesignals.dll</HintPath>
+    <Reference Include="smokesignals, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\smokesignals.1.5\lib\smokesignals.dll</HintPath>
     </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\packages\SubSonic.3.0.0.4\lib\SubSonic.Core.dll</HintPath>
@@ -662,13 +663,19 @@
     <Content Include="Uploads\Products\9\AP-GRANDPRIX-18.jpg" />
     <Content Include="Uploads\Products\9\AP-GRANDPRIX-3.jpg" />
     <Content Include="Uploads\Products\9\AP-GRANDPRIX-9.jpg" />
+    <Content Include="Views\Home\Contact.aspx" />
+    <Content Include="Views\Home\Trading.aspx" />
+    <Content Include="Views\Home\Testimonials.aspx" />
+    <Content Include="Views\Home\Sell.aspx" />
     <Content Include="Views\Products\Brand.aspx" />
     <Content Include="Views\Products\Details.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Repairs.aspx" />
     <Content Include="Views\Shared\Messages.ascx" />
     <Content Include="Views\Shared\ProductNavigation.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -780,15 +787,15 @@
     <None Include="Public\js\mylibs\fckeditor\_samples\php\sampleposteddata.php" />
     <None Include="Public\js\mylibs\fckeditor\_samples\py\sample01.py" />
     <None Include="Public\js\mylibs\fckeditor\_samples\py\sampleposteddata.py" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Shared\Homepage.master" />
+    <Content Include="Views\Shared\Products.master" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\Homepage.master" />
-    <Content Include="Views\Shared\Products.master" />
+    <Content Include="Views\Shared\Content.master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
