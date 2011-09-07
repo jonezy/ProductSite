@@ -44,11 +44,12 @@ namespace ProductSite {
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
-            try {
-                AutoMapper.Mapper.CreateMap<Product, ProductViewModel>();
-                AutoMapper.Mapper.AssertConfigurationIsValid();
-            } catch (Exception ex) {
-            }
+            //try {
+            //    AutoMapper.Mapper.CreateMap<Product, ProductViewModel>();
+            //    AutoMapper.Mapper.AssertConfigurationIsValid();
+            //} catch (Exception ex) {
+            //}
+
             RegisterRoutes(RouteTable.Routes);
         }
     }

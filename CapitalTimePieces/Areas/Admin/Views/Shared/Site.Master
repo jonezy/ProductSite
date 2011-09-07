@@ -23,11 +23,16 @@
     <%= Html.Css("skeleton.css") %>
     <%= Html.Css("admin.css") %>
 
-    <%= Html.Script("libs/modernizr-1.7.min.js") %>
-    <%= Html.Script("mylibs/fckeditor/fckeditor.js") %>
+    <script type="text/javascript" src="<%= Url.Content("~/Public/js/head.load.min.js") %>" />
+    <script type="text/javascript">
+        head.js('<%= Url.Content("~/Public/js/jquery-1.6.2.min.js") %>');
+        head.js('<%= Url.Content("~/Public/js/libs/modernizr-1.7.min.js") %>');
+        head.js('<%= Url.Content("~/Public/js/mylibs/fckeditor/fckeditor.js") %>');
+    </script>
 </head>
 
 <body>
+    <%= Html.Notify() %>
     <header>
         <div class="inner clearfix">
             <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
@@ -47,57 +52,6 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div> <!-- eo #container -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-    <script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
-    
-    <%= Html.Notify() %>
-    
-    <!-- scripts concatenated and minified via ant build script-->
-    <%= Html.Script("libs/jquery.cycle.min.js")%>
-    <%= Html.Script("libs/jquery.color.js")%>
-    <%= Html.Script("plugins.js") %>
-    <%= Html.Script("script.js") %>
-    <!-- end scripts-->
-    
-    <script>
-        // http://return-true.com/examples/cyclecolor.html
-        $(function () {
-
-            var imgc = $('#slide img').length - 1;
-            var c = 2;
-            var color = ['#000', '#000', '#000', '#000'];
-
-            $('#slide').cycle({
-                fx: 'fade',
-                before: function (currHTML, nextHTML, options) {
-                    if (c === 2) {
-                        options.currSlide = imgc;
-                        c--;
-                    } else if (c === 1) {
-                        options.currSlide = 0;
-                        c--;
-                    }
-
-                    $('#slide-container').animate({ backgroundColor: color[options.currSlide] }, 1000);
-                }
-            });
-        });    
-        $("#BrandID").change(function () {
-            UpdateCollections('<%= Url.Action("updatecollections", "product", new { area = "admin" }) %>');
-        });
-
-    </script>
-    <!--[if lt IE 7 ]>
-    <script src="js/libs/dd_belatedpng.js"></script>
-    <script>DD_belatedPNG.fix("img, .png_bg");</script>
-    <![endif]-->
-
-    <script>
-        var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]]; // Change UA-XXXXX-X to be your site's ID 
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-        g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-        s.parentNode.insertBefore(g,s)}(document,"script"));
-    </script>
 
 </body>
 </html>

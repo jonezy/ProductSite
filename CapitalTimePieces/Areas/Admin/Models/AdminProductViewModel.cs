@@ -93,6 +93,8 @@ namespace ProductSite.Areas.Admin.Models {
         }
 
         public AdminProductViewModel(Product product) {
+            ProductID = product.ProductID;
+            BrandID = product.BrandID;
             Condition = product.ProductConditions.FirstOrDefault().ProductConditionID;
             Gender = product.Gender;
             ProductName = product.ProductName;

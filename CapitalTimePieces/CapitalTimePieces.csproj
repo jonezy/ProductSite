@@ -665,6 +665,8 @@
     <Content Include="Views\Products\Brand.aspx" />
     <Content Include="Views\Products\Details.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Messages.ascx" />
+    <Content Include="Views\Shared\ProductNavigation.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -785,6 +787,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\Homepage.master" />
+    <Content Include="Views\Shared\Products.master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
