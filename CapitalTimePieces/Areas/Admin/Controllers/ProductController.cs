@@ -61,8 +61,11 @@ namespace ProductSite.Areas.Admin.Controllers {
             }
         }
 
-        private static Product CreateProduct(AdminProductViewModel model) {
-            Product product = new Product();
+        private Product CreateProduct(AdminProductViewModel model) {
+            Product product = model.ProductID > 0 ? 
+                service.GetProductById(model.ProductID) :
+                new Product();
+
             product.Bezel = model.Bezel;
             product.BoxPapers = model.BoxPapers;
             product.BrandID = model.BrandID;
@@ -84,6 +87,7 @@ namespace ProductSite.Areas.Admin.Controllers {
             product.Strap = model.Strap;
             product.Warranty = model.Warranty;
             product.WaterResistant = model.WaterResistant;
+
             return product;
         }
 
@@ -154,7 +158,10 @@ namespace ProductSite.Areas.Admin.Controllers {
             try {
                 // delete product images
                 string productImageDirectory = string.Format(imagesDirectory, id.Value);
-                Directory.Delete(Server.MapPath(productImageDirectory));
+                
+                if(Directory.Exists(productImageDirectory))
+                    Directory.Delete(Server.MapPath(productImageDirectory), true);
+
                 service.DeleteProductImages(id.Value);
                 service.Delete(id.Value);
                 this.StoreSuccess("The product was deleted successfully");
