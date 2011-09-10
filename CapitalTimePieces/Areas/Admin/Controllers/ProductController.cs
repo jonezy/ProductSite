@@ -131,9 +131,17 @@ namespace ProductSite.Areas.Admin.Controllers {
                         string savePath = string.Format("{0}/{1}", productImageDirectory, fileName);
                         int productImageID = 0;
 
-                        if (!Directory.Exists(rootProductImageDirectory))
-                            Directory.CreateDirectory(rootProductImageDirectory);
-
+                        try {
+                            if (!Directory.Exists(rootProductImageDirectory))
+                                Directory.CreateDirectory(rootProductImageDirectory);
+                        } catch (IOException ioex) {
+                            Elmah.ErrorSignal.FromCurrentContext().Raise(ioex);
+                        } catch (UnauthorizedAccessException uex) {
+                            Elmah.ErrorSignal.FromCurrentContext().Raise(uex);
+                         } catch (Exception ex) {
+                            Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                        }
+                        
                         foreach (string key in form) {
                             if (form[key].Contains(fileName)) {
                                 productImageID = int.Parse(form[key].Substring(0, form[key].IndexOf("_")));
