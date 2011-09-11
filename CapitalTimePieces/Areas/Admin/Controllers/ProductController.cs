@@ -6,7 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using ProductSite.Areas.Admin.Models;
+using CapitalTimePieces.Areas.Admin.Models;
+
 using ProductSite.Data;
 using ProductSite.Web.Services;
 
@@ -22,12 +23,16 @@ namespace ProductSite.Areas.Admin.Controllers {
             base.Initialize(requestContext);
         }
 
-        public ActionResult Index() {
+        public ActionResult Index(int? page) {
+            int currentPage = page.HasValue ? page.Value - 1 : 0;
             List<Product> products = service.AllProducts(null);
-            List<AdminProductViewModel> model = new List<AdminProductViewModel>();
+
+            List<AdminProductViewModel> productModel = new List<AdminProductViewModel>();
             foreach (var item in products) {
-                model.Add(new AdminProductViewModel(item));
+                productModel.Add(new AdminProductViewModel(item));
             }
+            
+            AdminProductListModel model = new AdminProductListModel(productModel, currentPage);
 
             return View(model);
         }

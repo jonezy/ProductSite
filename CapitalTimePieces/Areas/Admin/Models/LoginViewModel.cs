@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProductSite.Areas.Admin.Models {
+namespace CapitalTimePieces.Areas.Admin.Models {
     public class LoginViewModel {
         [Required(ErrorMessage="Please enter your username")]
         public string Username { get; set; }

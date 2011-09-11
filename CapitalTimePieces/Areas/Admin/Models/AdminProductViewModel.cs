@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 using ProductSite.Data;
 
-namespace ProductSite.Areas.Admin.Models {
+namespace CapitalTimePieces.Areas.Admin.Models {
     public class AdminProductViewModel {
         public int ProductID { get; set; }
         

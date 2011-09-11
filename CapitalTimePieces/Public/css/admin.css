@@ -113,3 +113,8 @@ address{
   h2, h3{ page-break-after: avoid; }
 }
 
+
+	
+	.Pager {margin:10px 0px 10px 0px;}
+	.Pager a, .Pager span {background:#000;color:#fff;padding:5px;margin:0px 5px 0px 0px;}
+	.Pager span.current {background:#fff;color:#000;}

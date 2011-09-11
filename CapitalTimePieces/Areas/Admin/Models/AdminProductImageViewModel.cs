@@ -1,6 +1,6 @@
 ﻿
 using ProductSite.Data;
-namespace ProductSite.Areas.Admin.Models {
+namespace CapitalTimePieces.Areas.Admin.Models {
     public class AdminProductImageViewModel {
         public int ProductImageID { get; set; }
         public int ProductID { get; set; }
