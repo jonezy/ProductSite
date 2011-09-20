@@ -18,11 +18,11 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <%= Html.Css("messages.css") %>
-    <%= Html.Css("base.css") %>
-    <%= Html.Css("skeleton.css") %>
-    <%= Html.Css("style.css") %>
-
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/messages.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/base.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/skeleton.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/style.css") %>" />
+    
     <%= Html.Script("libs/modernizr-1.7.min.js") %>
     <%= Html.Script("mylibs/fckeditor/fckeditor.js") %>
 </head>
