@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 using ProductSite.Data;
 
-namespace ProductSite.Models {
+namespace CapitalTimePieces.Models {
     public class ProductViewModel {
         public string BrandName { get; set; }
         public string Gender { get; set; }

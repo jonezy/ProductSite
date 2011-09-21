@@ -1,18 +1,14 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
 <asp:Content ContentPlaceHolderID="HomepageBanners" runat="server">
-    <div id="slide-container">	    <div id="slide">	    </div>    </div>    
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RootContent" runat="server">
-<div id="main" role="main">
-    <%= Html.Action("RenderProductNavigation", "Products") %>
-
-    <div id="product-category" class="twelve columns alpha omega">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-        <footer>
-            footer links and such
-        </footer>
+    <div id="main" role="main">
+        <%= Html.Action("RenderProductNavigation", "Products") %>
+        <div id="product-category" class="twelve columns alpha omega">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <%= Html.Partial("Footer") %>
     </div>
-</div>
 </asp:Content>

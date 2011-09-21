@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 
 using ProductSite.Data;
-using ProductSite.Models;
 using ProductSite.Web.Services;
+using CapitalTimePieces.Models;
 
 namespace ProductSite.Controllers {
     public class ProductsController : Controller {
@@ -14,6 +14,7 @@ namespace ProductSite.Controllers {
 
             base.Initialize(requestContext);
         }
+
         public ActionResult Index() {
             return View();
         }

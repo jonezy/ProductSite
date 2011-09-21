@@ -5,6 +5,9 @@ using System.Web.Mvc;
 using ProductSite.Data;
 
 using SubSonic.Repository;
+using System.Data.Linq.Mapping;
+using System;
+using SubSonic.Query;
 
 namespace ProductSite.Web.Services {
     public class ProductService : ServiceBase {
@@ -81,6 +84,11 @@ namespace ProductSite.Web.Services {
 
         public List<ProductBrand> AllProductBrands() {
             return base.db.ProductBrands.OrderBy(pb => pb.BrandName).ToList();
+        }
+
+        public List<Product> RandomProducts(int count) {
+
+            return new CodingHorror(base.db.DataProvider, "SELECT TOP 3 *, newid() as sortorder FROM product ORDER by sortorder").ExecuteTypedList<Product>();
         }
     }
 }

@@ -8,9 +8,7 @@
         <%= Html.Action("RenderProductNavigation", "Products") %>
         <div id="content" class="twelve columns">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <footer>
-                footer links and such
-            </footer>
         </div>
+        <%= Html.Partial("Footer") %>
     </div>
 </asp:Content>

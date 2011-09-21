@@ -2,7 +2,7 @@
 
 using ProductSite.Data;
 
-namespace ProductSite.Models {
+namespace CapitalTimePieces.Models {
     public class ProductNavigationViewModel {
         public string Text { get; set; }
         public string CategorySlug { get; set; }

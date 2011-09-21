@@ -1,6 +1,6 @@
 ﻿
 using ProductSite.Data;
-namespace ProductSite.Models {
+namespace CapitalTimePieces.Models {
     public class ProductImageViewModel {
         public int ProductImageID { get; set; }
         public int ProductID { get; set; }

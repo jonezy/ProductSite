@@ -1,15 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Products.Master" Inherits="System.Web.Mvc.ViewPage<ProductViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <br />
     <h3 class="title"><%= Model.BrandName %></h3>
     <h4 class="title"><%= Model.ProductName %></h4>
     <div class="twelve columns alpha" id="product-body">
         <div class="row">
-            <img src="<%= Url.Content(Model.ProductImages[0].Path) %>" class="image-1" width="460" height="345" />
+            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[0].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[0].Path) %>" class="image-1" width="460" height="345" /></a>
 
-            <img src="<%= Url.Content(Model.ProductImages[1].Path) %>" class="image-2" width="220" height="170" />
-            <img src="<%= Url.Content(Model.ProductImages[2].Path) %>" class="image-3" width="220" height="170" />
+            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[1].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[1].Path) %>" class="image-2" width="220" height="170" /></a>
+            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[2].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[2].Path) %>" class="image-3" width="220" height="170" /></a>
         </div>
 
         <div class="six columns alpha">

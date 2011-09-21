@@ -19,6 +19,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <link rel="Stylesheet" href="<%= Url.Content("~/public/css/messages.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/prettyPhoto.css") %>" />
     <link rel="Stylesheet" href="<%= Url.Content("~/public/css/base.css") %>" />
     <link rel="Stylesheet" href="<%= Url.Content("~/public/css/skeleton.css") %>" />
     <link rel="Stylesheet" href="<%= Url.Content("~/public/css/style.css") %>" />
@@ -44,6 +45,7 @@
     </header>  
     <asp:ContentPlaceHolder ID="HomepageBanners" runat="server">
     </asp:ContentPlaceHolder>
+
     <div class="container">
         <% Html.RenderPartial("Messages"); %>
         <asp:ContentPlaceHolder ID="RootContent" runat="server" />
@@ -57,6 +59,7 @@
     <!-- scripts concatenated and minified via ant build script-->
     <%= Html.Script("libs/jquery.cycle.min.js")%>
     <%= Html.Script("libs/jquery.color.js")%>
+    <%= Html.Script("jquery.prettyPhoto.js")%>
     <%= Html.Script("plugins.js") %>
     <%= Html.Script("script.js") %>
     <!-- end scripts-->
@@ -86,6 +89,13 @@
         });    
         $("#BrandID").change(function () {
             UpdateCollections('<%= Url.Action("updatecollections", "product", new { area = "admin" }) %>');
+        });
+
+        $(document).ready(function () {
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                theme: 'dark_square', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+                overlay_gallery: false
+            });
         });
 
     </script>
