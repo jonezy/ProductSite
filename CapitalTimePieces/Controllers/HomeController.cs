@@ -37,7 +37,7 @@ namespace ProductSite.Controllers {
             return View();
         }
 
-        public ActionResult Testimonials() {
+        public ActionResult About() {
             return View();
         }
 

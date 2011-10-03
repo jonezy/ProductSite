@@ -733,6 +733,7 @@
     <Content Include="Uploads\Products\9\AP-GRANDPRIX-3.jpg" />
     <Content Include="Uploads\Products\9\AP-GRANDPRIX-9.jpg" />
     <Content Include="Views\Home\Contact.aspx" />
+    <Content Include="Views\Home\About.aspx" />
     <Content Include="Views\Home\Trading.aspx" />
     <Content Include="Views\Home\Testimonials.aspx" />
     <Content Include="Views\Home\Sell.aspx" />

@@ -36,9 +36,9 @@ namespace ProductSite {
             );
 
             routes.MapRoute(
-                "Testimonials",
-                "testimonials",
-                new { controller = "home", action = "testimonials" }
+                "About",
+                "about",
+                new { controller = "home", action = "about" }
             );
 
             routes.MapRoute(

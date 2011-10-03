@@ -37,7 +37,7 @@
                     <li><%= Html.ActionLink("Sell Your Watch", "sell", "home", new { area = "" }, null)%></li>
                     <li><%= Html.ActionLink("Watch Trading", "trading", "home", new { area = "" }, null)%></li>
                     <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Testimonials", "testimonials", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("About Us", "about", "home", new { area = "" }, null)%></li>
                     <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, null)%></li>
                 </ul>
             </nav>
