@@ -27,7 +27,9 @@ namespace ProductSite.Web.Services {
         public int Delete(int productId) {
             return base.GetRepository<Product>().Delete(productId);
         }
-
+        public int DeleteImage(int productImageId) {
+            return base.GetRepository<ProductImage>().Delete(productImageId);
+        }
         public void DeleteProductImages(int productId) {
             GetRepository<ProductImage>().DeleteMany(i => i.ProductID == productId);
         }
@@ -42,6 +44,10 @@ namespace ProductSite.Web.Services {
             }
 
             return null;
+        }
+
+        public ProductImage GetProductImageById(int id) {
+            return base.db.ProductImages.Where(pi => pi.ProductImageID == id).FirstOrDefault();
         }
 
         public List<Product> ProductByBrandSlug(string slug) {

@@ -73,8 +73,9 @@
                     <div class="left" style="margin-right:5px;">
                         <h6>Image #1</h6>
                         <% if (Model.ProductImages != null && Model.ProductImages.Count > 0 && Model.ProductImages[0] != null) { %>
-                            <%= Html.Hidden(Model.ProductImages[0].ProductImageID.ToString())%>
-                            <img src="<%= Url.Content(Model.ProductImages[0].Path) %>" width="125" height="100" class="left" />
+                            <%= Html.Hidden(Model.ProductImages[0].Path.ToString(), Model.ProductImages[0].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[0].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[0].ProductImageID}) %>
                         <% } %>
                         <p><input type="file" id="file2" name="files"></input></p>
                     </div>
@@ -82,8 +83,9 @@
                     <div class="left" style="margin-right:5px;">
                         <h6>Image #2</h6>
                         <% if (Model.ProductImages != null && Model.ProductImages.Count > 1 && Model.ProductImages[1] != null) { %>
-                            <%= Html.Hidden(Model.ProductImages[1].ProductImageID.ToString())%>
-                            <img src="<%= Url.Content(Model.ProductImages[1].Path) %>" width="125" height="100" class="left" />
+                            <%= Html.Hidden(Model.ProductImages[1].Path.ToString(), Model.ProductImages[1].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[1].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[1].ProductImageID}) %>
                         <% } %>
                         <p><input type="file" id="file1" name="files"></input></p>
                     </div>
@@ -91,10 +93,42 @@
                     <div class="left" style="margin-right:5px;">
                         <h6>Image #3</h6>
                         <% if (Model.ProductImages != null && Model.ProductImages.Count > 2 && Model.ProductImages[2] != null) { %>
-                            <%= Html.Hidden(Model.ProductImages[2].ProductImageID.ToString())%>
-                            <img src="<%= Url.Content(Model.ProductImages[2].Path) %>" width="125" height="100" class="left" />
+                            <%= Html.Hidden(Model.ProductImages[2].Path.ToString(), Model.ProductImages[2].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[2].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[2].ProductImageID}) %>
                         <% } %>
                         <p><input type="file" id="file3" name="files"></input></p>
+                    </div>
+                    <hr />
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #4</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 3 && Model.ProductImages[3] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[3].Path.ToString(), Model.ProductImages[3].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[2].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[3].ProductImageID}) %>
+
+                        <% } %>
+                        <p><input type="file" id="file4" name="files"></input></p>
+                    </div>
+                    <hr />
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #5</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 4 && Model.ProductImages[4] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[4].Path.ToString(), Model.ProductImages[4].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[4].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[4].ProductImageID}) %>
+                        <% } %>
+                        <p><input type="file" id="file5" name="files"></input></p>
+                    </div>
+                    <hr />
+                    <div class="left" style="margin-right:5px;">
+                        <h6>Image #6</h6>
+                        <% if (Model.ProductImages != null && Model.ProductImages.Count > 5 && Model.ProductImages[5] != null) { %>
+                            <%= Html.Hidden(Model.ProductImages[5].Path.ToString(), Model.ProductImages[5].ProductImageID.ToString())%>
+                            <img src="<%= Url.Content(Model.ProductImages[5].Path) %>" width="125" height="100" class="left" /><br style="clear:both;" />
+                            <%= Html.ActionLink("Delete", "DeleteImage", new { id = Model.ProductImages[5].ProductImageID}) %>
+                        <% } %>
+                        <p><input type="file" id="file6" name="files"></input></p>
                     </div>
                 </div>
 

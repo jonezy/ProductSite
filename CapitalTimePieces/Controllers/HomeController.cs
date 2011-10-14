@@ -45,6 +45,13 @@ namespace ProductSite.Controllers {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Contact(ContactUsViewModel model) {
+
+
+            return View();
+        }
+        
         public ActionResult Repairs() {
             return View();
         }

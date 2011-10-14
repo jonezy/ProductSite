@@ -65,6 +65,7 @@ nav#primary ul li a:hover {background:#fff;color:#000;}
 #left-navigation ul {margin:0;padding:0;}
 #left-navigation ul li {color:#b0b0b0;font-family:UniverseCond;border-bottom:solid 1px #ccc;padding:0px 0px 3px 0px;margin:0 2px 0 2px;}
 #left-navigation ul li a {font-family:Universe;color:#b0b0b0;font-weight:bold;padding:5px;display:block;text-decoration:none;}
+#left-navigation ul li a:hover {color:#000;}
 
 #main {z-index:100;}
 #main #content {margin-top:475px;color:#000;min-height:320px;}
@@ -105,9 +106,13 @@ x.brandlist-item a {color:#000;margin:0;padding:0;line-height:normal;display:blo
 .brandlist-item .model_data {color:#8f8f8f;margin-bottom:10px;}
 
 #product-body {margin-top:10px;background:#fff;min-height:711px;padding:10px;}
-#product-body .image-1 {float:left;}
-#product-body .image-2 {float:right;}
-#product-body .image-3 {float:right;}
+
+.product-image {position:relative;}
+.product-image img {float:left;}
+.product-image img.angler {position:absolute;bottom:0;left:0;z-index:1000;}
+.image-1 {float:left;margin-right:5px;}
+.image-2 {float:right;margin-bottom:5px;}
+.image-3 {float:right;}
 
 
 .home-boxes h4 {color:#000;}

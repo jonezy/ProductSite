@@ -39,6 +39,7 @@
                     <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, null)%></li>
                     <li><%= Html.ActionLink("About Us", "about", "home", new { area = "" }, null)%></li>
                     <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Home", "index", "home", new { area = "" }, null)%></li>
                 </ul>
             </nav>
         </div>

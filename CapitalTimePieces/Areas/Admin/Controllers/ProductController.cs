@@ -115,7 +115,7 @@ namespace ProductSite.Areas.Admin.Controllers {
 
                     this.StoreSuccess("The product was updated successfully.");
 
-                    return View("Create", model);
+                    return RedirectToAction("Edit", new { id = id });
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
@@ -184,6 +184,23 @@ namespace ProductSite.Areas.Admin.Controllers {
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteImage(int? id) {
+            ProductImage productImage = service.GetProductImageById(id.Value);
+            try {
+                System.IO.File.Delete(Server.MapPath(productImage.Path));
+
+                service.DeleteImage(productImage.ProductImageID);
+
+                this.StoreSuccess("The product was deleted successfully");
+            } catch (Exception ex) {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                this.StoreError("There was a problem deleting the product");
+            }
+
+            return RedirectToAction("Edit", new { id = productImage.ProductID });
         }
 
         [HttpGet]

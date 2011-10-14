@@ -12,7 +12,7 @@ condition inside and out. Our commitment is to provide Excellence. Our promise i
 
 <h5>Some of the services we provide are:</h5>
 
-<ul class="circle">
+<ul style="margin-top:16px;" class="disc">
     <li>Battery Replacement</li>
     <li>Watch Band Replacements</li>
     <li>Overhauling</li>

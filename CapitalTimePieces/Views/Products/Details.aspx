@@ -4,11 +4,35 @@
     <h3 class="title"><%= Model.BrandName %></h3>
     <h4 class="title"><%= Model.ProductName %></h4>
     <div class="twelve columns alpha" id="product-body">
-        <div class="row">
-            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[0].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[0].Path) %>" class="image-1" width="460" height="345" /></a>
-
-            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[1].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[1].Path) %>" class="image-2" width="220" height="170" /></a>
-            <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[2].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[2].Path) %>" class="image-3" width="220" height="170" /></a>
+        <div class="row" style="margin:-5px -5px 10px -5px;">
+            <div class="product-image image-1">
+                <% if (Model.ProductImages.Count > 0 && Model.ProductImages[0] != null) { %>
+                    <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[0].Path) %>" target="_blank"><img src="<%= Url.Content("~/public/images/angler.png") %>" class="angler" /><img src="<%= Url.Content(Model.ProductImages[0].Path) %>" width="460" height="345" /></a>
+                <% } %>
+            </div>
+            <div class="right">
+                <div class="product-image image-2">
+                    <% if (Model.ProductImages.Count > 1 && Model.ProductImages[1] != null) { %>
+                        <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[1].Path) %>" target="_blank"><img src="<%= Url.Content("~/public/images/angler.png") %>" class="angler" /><img src="<%= Url.Content(Model.ProductImages[1].Path) %>" width="220" height="170" /></a>
+                    <% } %>
+                </div><br />
+                <div class="product-image image-3">
+                    <% if (Model.ProductImages.Count > 2 && Model.ProductImages[2] != null) { %>
+                        <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[2].Path) %>" target="_blank"><img src="<%= Url.Content("~/public/images/angler.png") %>" class="angler" /><img src="<%= Url.Content(Model.ProductImages[2].Path) %>" width="220" height="170" /></a>
+                    <% } %>
+                </div>
+            </div>
+            <div style="display:none;">
+            <% if (Model.ProductImages.Count > 3 && Model.ProductImages[3] != null) { %>
+                <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[3].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[3].Path) %>" width="220" height="170" /></a>
+            <% } %>
+            <% if (Model.ProductImages.Count > 4 && Model.ProductImages[4] != null) { %>
+                <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[4].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[4].Path) %>" width="220" height="170" /></a>
+            <% } %>
+            <% if (Model.ProductImages.Count > 5 && Model.ProductImages[5] != null) { %>
+                <a rel="prettyPhoto[product-details]" href="<%= Url.Content(Model.ProductImages[5].Path) %>" target="_blank"><img src="<%= Url.Content(Model.ProductImages[5].Path) %>" width="220" height="170" /></a>
+            <% } %>
+            </div>
         </div>
 
         <div class="six columns alpha">
