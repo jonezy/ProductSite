@@ -18,10 +18,10 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <%= Html.Css("messages.css") %>
-    <%= Html.Css("base.css") %>
-    <%= Html.Css("skeleton.css") %>
-    <%= Html.Css("admin.css") %>
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/messages.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/base.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/skeleton.css") %>" />
+    <link rel="Stylesheet" href="<%= Url.Content("~/public/css/admin.css") %>" />
 
     <script src="<%= Url.Content("~/Public/js/head.load.min.js") %>"></script>
     <script>
