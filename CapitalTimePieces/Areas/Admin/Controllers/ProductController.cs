@@ -57,7 +57,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                         
                     return RedirectToAction("Index");
                 } catch (Exception ex) {
-                    //Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                    Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
                     return View(model);
                 }
