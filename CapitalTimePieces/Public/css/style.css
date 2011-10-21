@@ -3,20 +3,25 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-
 @font-face {
-  font-family: Universe;
-  src: url("Unive.ttf");
-}
-@font-face {
-  font-family: UniverseCond;
-  src: url("UniveCon.ttf");
-}
-@font-face {
-  font-family: UniverseCondBold;
-  src: url("UniveConBol.ttf");
-}
-
+    font-family: 'InterstatePlusRegular';
+    src: url('../fonts/interstateplus_regular_cond-webfont.eot');
+    src: url('../fonts/interstateplus_regular_cond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstateplus_regular_cond-webfont.woff') format('woff'),
+         url('../fonts/interstateplus_regular_cond-webfont.ttf') format('truetype'),
+         url('../fonts/interstateplus_regular_cond-webfont.svg#InterstatePlusRegular') format('svg');
+    font-weight: normal;
+    font-style: normal}
+ 
+ @font-face {
+    font-family: 'InterstatePlusBold';
+    src: url('../fonts/interstateplus_bold_cond-webfont.eot');
+    src: url('../fonts/interstateplus_bold_cond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstateplus_bold_cond-webfont.woff') format('woff'),
+         url('../fonts/interstateplus_bold_cond-webfont.ttf') format('truetype'),
+         url('../fonts/interstateplus_bold_cond-webfont.svg#InterstatePlusRegular') format('svg');
+    font-weight: bold;
+    font-style: normal;}
 /**
  * Primary styles
  *
@@ -40,13 +45,13 @@ footer, header, hgroup, menu, nav, section {
     display:block;
     color:#fff !important;
     font-size: 11px;
-    font-family:UniverseCondBold;
+    font-family:InterstatePlusBold;
     text-decoration:none !important;
 }
   
-h3 {color:#fff;font-size:24px;margin-bottom:0;line-height:normal;font-family:UniverseCondBold;text-transform:uppercase;}
-h4 {color:#9b9b9b;font-size:18px;line-height:normal;font-family:UniverseCond;}
-h5 {font-family:UniverseCondBold;}
+h3 {color:#fff;font-size:24px;margin-bottom:0;line-height:normal;font-family:InterstatePlusBold;text-transform:uppercase;}
+h4 {color:#9b9b9b;font-size:18px;line-height:normal;font-family:InterstatePlusRegular;}
+h5 {font-family:InterstatePlusBold;}
  
 .left {float:left;}
 .right {float:right;}
@@ -55,16 +60,17 @@ header {text-align:left;background:#040605;border-bottom:solid 6px #fff;}
 header .inner {width:960px;margin:auto;position:relative;}
 header .inner a#logo {float:left;}
 
-nav#primary {position:absolute;bottom:0;right:60px;padding:0 0 0 0;}
+nav#primary {position:absolute;bottom:0;right:20px;padding:0 0 0 0;}
 nav#primary ul li {float:left;}
-nav#primary ul li a {padding:1.2em;font-family:UniverseCondBold;text-transform:uppercase;font-size:12px;}
-nav#primary ul li a:hover {background:#fff;color:#000;}
+nav#primary ul li a {padding:1em;font-family:InterstatePlusBold;text-transform:uppercase;font-size:14px;}
+nav#primary ul li a:hover,
+nav#primary ul li a.selected {background:#fff;color:#000;}
 
 #left-navigation {background:#fff;min-height:711px;z-index:100;}
 
 #left-navigation ul {margin:0;padding:0;}
-#left-navigation ul li {color:#b0b0b0;font-family:UniverseCond;border-bottom:solid 1px #ccc;padding:0px 0px 3px 0px;margin:0 2px 0 2px;}
-#left-navigation ul li a {font-family:Universe;color:#b0b0b0;font-weight:bold;padding:5px;display:block;text-decoration:none;}
+#left-navigation ul li {color:#b0b0b0;border-bottom:solid 1px #ccc;padding:0px 0px 3px 0px;margin:0 2px 0 2px;}
+#left-navigation ul li a {font-size:14px;font-family:InterstatePlusRegular;color:#b0b0b0;padding:5px 10px 5px 10px;display:block;text-decoration:none;text-transform:capitalize;}
 #left-navigation ul li a:hover {color:#000;}
 
 #main {z-index:100;}
@@ -102,7 +108,7 @@ x.brandlist-item a {color:#000;margin:0;padding:0;line-height:normal;display:blo
 .brandlist-item .model_name,
 .brandlist-item .model_data {height:22px;margin:5px 0px 5px 0px;overflow:hidden;}
 
-.brandlist-item .model_name {font-family:UniverseCondcolor:#000;height:26px;font-size:12px;}
+.brandlist-item .model_name {font-family:InterstatePlusRegular;color:#000;height:26px;font-size:12px;}
 .brandlist-item .model_data {color:#8f8f8f;margin-bottom:10px;}
 
 #product-body {margin-top:10px;background:#fff;min-height:711px;padding:10px;}

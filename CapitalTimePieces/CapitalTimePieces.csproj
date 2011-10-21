@@ -770,6 +770,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Structs1.cs</LastGenOutput>
     </None>
+    <None Include="Public\fonts\interstateplus_bold_cond-webfont.eot" />
+    <None Include="Public\fonts\interstateplus_bold_cond-webfont.svg" />
+    <None Include="Public\fonts\interstateplus_bold_cond-webfont.ttf" />
+    <None Include="Public\fonts\interstateplus_bold_cond-webfont.woff" />
+    <None Include="Public\fonts\interstateplus_regular_cond-webfont.eot" />
+    <None Include="Public\fonts\interstateplus_regular_cond-webfont.svg" />
+    <None Include="Public\fonts\interstateplus_regular_cond-webfont.ttf" />
+    <None Include="Public\fonts\interstateplus_regular_cond-webfont.woff" />
     <None Include="Public\images\fullscreen\.DS_Store" />
     <None Include="Public\js\mylibs\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="Public\js\mylibs\fckeditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
@@ -869,6 +877,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\Content.master" />
   </ItemGroup>

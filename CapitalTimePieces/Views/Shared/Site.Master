@@ -32,14 +32,18 @@
     <header>
         <div class="inner clearfix">
             <a href="<%= Url.Action("Index", "Home", new {area=""}) %>" id="logo"><%= Html.Image("logo.png") %></a>
+            <%
+                var action = ViewContext.RouteData.Values["action"] as string ?? "";
+                var controller = ViewContext.RouteData.Values["controller"] as string ?? "";
+                 %>
             <nav id="primary">
                 <ul>
-                    <li><%= Html.ActionLink("Sell Your Watch", "sell", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Watch Trading", "trading", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("About Us", "about", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, null)%></li>
-                    <li><%= Html.ActionLink("Home", "index", "home", new { area = "" }, null)%></li>
+                    <li><%= Html.ActionLink("Sell Your Watch", "sell", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "sell" ? new { @class = "selected" } : null)%></li>
+                    <li><%= Html.ActionLink("Watch Trading", "trading", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "trading" ? new { @class = "selected" } : null)%></li>
+                    <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "repairs" ? new { @class = "selected" } : null)%></li>
+                    <li><%= Html.ActionLink("About Us", "about", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "about" ? new { @class = "selected" } : null)%></li>
+                    <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "contact" ? new { @class = "selected" } : null)%></li>
+                    <li><%= Html.ActionLink("Home", "index", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "index" ? new { @class = "selected" } : null)%></li>
                 </ul>
             </nav>
         </div>
