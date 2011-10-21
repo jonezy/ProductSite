@@ -106,10 +106,10 @@ a.delete {display:inline;}
 x.brandlist-item a {color:#000;margin:0;padding:0;line-height:normal;display:block;height:10px;}
 
 .brandlist-item .model_name,
-.brandlist-item .model_data {height:22px;margin:5px 0px 5px 0px;overflow:hidden;}
+.brandlist-item .model_data {height:26px;margin:5px 0px 5px 0px;overflow:hidden;}
 
-.brandlist-item .model_name {font-family:InterstatePlusRegular;color:#000;height:26px;font-size:12px;}
-.brandlist-item .model_data {color:#8f8f8f;margin-bottom:10px;}
+.brandlist-item .model_name {font-family:InterstatePlusRegular;color:#000;height:30px;font-size:13px;}
+.brandlist-item .model_data {color:#8f8f8f;margin-bottom:10px;font-size:11px;}
 
 #product-body {margin-top:10px;background:#fff;min-height:711px;padding:10px;}
 

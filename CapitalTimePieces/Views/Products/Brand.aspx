@@ -4,10 +4,12 @@
 
     <h3><%= ViewData["BrandName"] %></h3>
     <div id="product-body">
+    <div class="brand-row">
         <% 
             if (Model != null) {
-                int i = 0;
+                int i = 1;
                 foreach (var item in Model) { %>
+                
            <div class="three columns brandlist-item">
                <%
                    string imagePath = "~/Public/image/product-holder.jpg";
@@ -21,13 +23,15 @@
                 <a href="<%= Url.Action("details", "products", new { @brandSlug = item.BrandSlug, @productName = item.ProductSlug}) %>" class="more_details">More Details + Photos</a>
            </div>
             <% if (i == 4) { // this is the number of columns %>
-                <br style="clear:both;" /><br />
+                </div>
+                <div class="brand-row">
             <%  i = 0;
                } else {
-                   i = 0;
+                   i++;
                }
                 }
             } 
            %>
     </div>
+
 </asp:Content>
