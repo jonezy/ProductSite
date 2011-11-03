@@ -2,9 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+
     <h3><%= ViewData["BrandName"] %></h3>
     <div id="product-body">
-    <div class="brand-row">
+    <div class="brand-row clearfix">
         <% 
             if (Model != null) {
                 int i = 1;
@@ -24,7 +25,7 @@
            </div>
             <% if (i == 4) { // this is the number of columns %>
                 </div>
-                <div class="brand-row">
+                <div class="brand-row clearfix">
             <%  i = 0;
                } else {
                    i++;
@@ -32,6 +33,7 @@
                 }
             } 
            %>
+    </div>
     </div>
 
 </asp:Content>

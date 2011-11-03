@@ -30,7 +30,6 @@
 <%= Html.RouteLink("View Watches", "ProductsByBrand", new { brandSlug = UrlHelpers.CreateUrlSlug("Hot Deals") }, new { @class = "more_details_home" })%>
 </div>
 
-
 <div class="four columns omega home-boxes">
 <%
     imagePath = "~/Public/image/product-holder.jpg";

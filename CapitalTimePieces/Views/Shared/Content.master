@@ -4,11 +4,12 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RootContent" runat="server">
-    <div id="main" role="main">
+    <div id="main" role="main" style="background-color:#fff;" class="clearfix">
         <%= Html.Action("RenderProductNavigation", "Products") %>
         <div id="product-category" class="twelve columns alpha omega">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-        <%= Html.Partial("Footer") %>
+        
     </div>
+    <%= Html.Partial("Footer") %>
 </asp:Content>

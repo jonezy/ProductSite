@@ -77,6 +77,18 @@ namespace ProductSite.Web.Services {
 
             return "";
         }
+
+        public ProductBrand BrandFromSlug(string brandSlug) {
+            if (brandSlug == "")
+                return null;
+
+            foreach (var brand in base.db.ProductBrands) {
+                if (brand.BrandName.CreateUrlSlug() == brandSlug)
+                    return brand;
+            }
+
+            return null;
+        }
         public List<Product> AllProducts(bool? active) {
             if(active.HasValue) 
                 return base.db.Products.Where(p => p.IsActive == active).OrderBy(p => p.ProductName).ToList();

@@ -3,43 +3,25 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 using ProductSite.Data;
+using ProductSite.Web.Services;
 
 namespace ProductSite.Controllers {
     public class BaseController : Controller {
-        public int CurrentUserID {
-            get {
-                return CookieHelpers.GetUserId();
-            }
-        }
+        ProductService service;
 
-        public User CurrentUser { 
-            get {
-                return null;
-                //return userService.GetUserById(this.CurrentUserID);
-            } 
-        }
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
+            if (service == null) service = new ProductService();
 
-        public int AdminUserRoleID {
-            get {
-                return (int)Enum.Parse(typeof(UserRole), UserRole.Administrator.ToString());
-            }
-        }
-
-        public BaseController() {}
-
-        protected override void Initialize(RequestContext requestContext) {
             base.Initialize(requestContext);
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext) {
-            base.OnActionExecuting(filterContext);
-        }
+            // figure out the brandSlug and get the brand id
+            string brandSlug = filterContext.RouteData.Values["brandSlug"].ToString();
+            ProductBrand brand = service.BrandFromSlug(brandSlug);
+            ViewData["BrandID"] = brand.ProductBrandID.ToString();
 
-        protected void LogError(Exception e, string friendlyMessage) {
-            //Elmah.ErrorSignal.FromCurrentContext().Raise(e);
-            
-            if(!string.IsNullOrEmpty(friendlyMessage))
-                this.StoreError(friendlyMessage);
+            base.OnActionExecuting(filterContext);
         }
     }
 }

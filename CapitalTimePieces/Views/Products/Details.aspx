@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="six columns alpha">
+        <div class="six columns alpha product-details">
             <h5>Manufacturer</h5>
             <p><%= Model.BrandName %></p>
 
@@ -64,7 +64,7 @@
             <p><%= Model.DialColour%></p>
         </div>
 
-        <div class="six columns omega">
+        <div class="six columns omega product-details">
 
             <h5>Movement</h5>
             <p><%= Model.Movement%></p>

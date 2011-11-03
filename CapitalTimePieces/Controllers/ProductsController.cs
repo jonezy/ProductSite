@@ -6,7 +6,7 @@ using ProductSite.Web.Services;
 using CapitalTimePieces.Models;
 
 namespace ProductSite.Controllers {
-    public class ProductsController : Controller {
+    public class ProductsController : BaseController {
         ProductService service;
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext) {
@@ -14,6 +14,7 @@ namespace ProductSite.Controllers {
 
             base.Initialize(requestContext);
         }
+
 
         public ActionResult Index() {
             return View();
