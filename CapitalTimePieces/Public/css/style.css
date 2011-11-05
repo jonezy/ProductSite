@@ -129,8 +129,10 @@ x.brandlist-item a {color:#000;margin:0;padding:0;line-height:normal;display:blo
 .image-2 {float:right;margin-bottom:5px;}
 .image-3 {float:right;}
 
-
 .home-boxes h4 {color:#000;}
+
+fieldset.contact p {margin-bottom:5px !important;}
+fieldset.contact input {width:94% !important; margin-bottom:0;}
 
 @media all and (orientation:portrait) {
 

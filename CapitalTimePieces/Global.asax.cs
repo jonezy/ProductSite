@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+
+using ProductSite.Web.Email;
 
 namespace ProductSite {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -11,6 +14,18 @@ namespace ProductSite {
         public static string BaseUrl {
             get {
                 return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/");
+            }
+        }
+
+        public static SmtpConfiguration MailConfiguration {
+            get {
+                return new SmtpConfiguration() {
+                    Server = ConfigurationManager.AppSettings["SiteSettings.Mail.Server"] as string ?? "",
+                    Port = int.Parse(ConfigurationManager.AppSettings["SiteSettings.Mail.ServerPort"] as string),
+                    Username = ConfigurationManager.AppSettings["SiteSettings.Mail.Username"] as string ?? "",
+                    Password = ConfigurationManager.AppSettings["SiteSettings.Mail.Password"] as string ?? "",
+                    DefaultFromAddress = ConfigurationManager.AppSettings["SiteSettings.Mail.DefaultFromAddress"] as string ?? ""
+                };
             }
         }
 

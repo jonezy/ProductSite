@@ -5,6 +5,8 @@ using CapitalTimePieces.Models;
 
 using ProductSite.Data;
 using ProductSite.Web.Services;
+using ProductSite.Web.Email;
+using CapitalTimePieces.Views.Email;
 
 namespace ProductSite.Controllers {
     public class HomeController : Controller {
@@ -30,7 +32,8 @@ namespace ProductSite.Controllers {
         }
 
         public ActionResult Sell() {
-            return View();
+            ContactUsViewModel model = new ContactUsViewModel();
+            return View(model);
         }
 
         public ActionResult Trading() {
@@ -42,14 +45,42 @@ namespace ProductSite.Controllers {
         }
 
         public ActionResult Contact() {
-            return View();
+            ContactUsViewModel model = new ContactUsViewModel();
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Contact(ContactUsViewModel model) {
+            if (ModelState.IsValid) {
+                TemplateParser parser = new TemplateParser();
+                Dictionary<string, string> replacements = new Dictionary<string, string>();
+                replacements.Add("[NAME]", string.Format("{0} {1}", model.FirstName, model.LastName));
+                replacements.Add("[EMAIL]", model.EmailAddress);
+                replacements.Add("[PHONE]", model.PhoneNumber);
+                replacements.Add("[COUNTRY]", model.Country);
+                replacements.Add("[LANGUAGE]", model.Language);
+                replacements.Add("[BRAND]", model.Brand);
+                replacements.Add("[MODEL]", model.WatchModel);
+                replacements.Add("[DIALDESCRIPTION]", model.DialDescription);
+                replacements.Add("[ESTIMATEDVALUE]", model.EstimatedValue);
+                replacements.Add("[COMMENTS]", model.Comments);
 
+                string message = parser.Replace(Templates.SellWatchTemplate, replacements);
 
-            return View();
+                try {
+                    EmailSender sender = new EmailSender();
+                    sender.Send(App.MailConfiguration, model.EmailAddress, "", "Sell your watch submission from the website", message);
+
+                    this.StoreSuccess("Thank you for submitting your watch to us, we'll be in touch soon");
+                    return Redirect(Request.UrlReferrer.ToString());
+                } catch {
+                    this.StoreError("There was a problem submitting the form, please reload the page and try again");
+                    return View(model);
+                }
+                
+            }
+
+            return View(model);
         }
         
         public ActionResult Repairs() {

@@ -11,9 +11,10 @@
         <div id="content" class="twelve columns clearfix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-        
+        <br style="clear:both;" />
+        <%= Html.Partial("Footer") %>
     </div>
-    <br /><br /><br /><br />
-    <%= Html.Partial("Footer") %>
+    
+    
     
 </asp:Content>

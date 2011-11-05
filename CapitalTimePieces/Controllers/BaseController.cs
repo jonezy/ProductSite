@@ -16,10 +16,12 @@ namespace ProductSite.Controllers {
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext) {
-            // figure out the brandSlug and get the brand id
-            string brandSlug = filterContext.RouteData.Values["brandSlug"].ToString();
-            ProductBrand brand = service.BrandFromSlug(brandSlug);
-            ViewData["BrandID"] = brand.ProductBrandID.ToString();
+            try {
+                // figure out the brandSlug and get the brand id
+                string brandSlug = filterContext.RouteData.Values["brandSlug"].ToString();
+                ProductBrand brand = service.BrandFromSlug(brandSlug);
+                ViewData["BrandID"] = brand.ProductBrandID.ToString();
+            } catch { }
 
             base.OnActionExecuting(filterContext);
         }
