@@ -1,8 +1,9 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
 <asp:Content ContentPlaceHolderID="HomepageBanners" runat="server">
-    
-    <div id="brand-image">        <img src="" />        <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>    </div>   
+    <% if(ViewData["BrandID"] != null) { %>
+    <div id="brand-image">        <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>    </div>   
+    <% } %>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RootContent" runat="server">

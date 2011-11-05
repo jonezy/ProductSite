@@ -10,9 +10,10 @@
         <%= Html.Action("RenderProductNavigation", "Products") %>
         <div id="content" class="twelve columns clearfix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <%= Html.Partial("Footer") %>
         </div>
-        <br style="clear:both;" />
-        <%= Html.Partial("Footer") %>
+        
     </div>
     
     
