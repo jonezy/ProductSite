@@ -46,7 +46,6 @@
                     <li><%= Html.ActionLink("Repairs", "repairs", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "repairs" ? new { @class = "selected" } : null)%></li>
                     <li><%= Html.ActionLink("About Us", "about", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "about" ? new { @class = "selected" } : null)%></li>
                     <li><%= Html.ActionLink("Contact", "contact", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "contact" ? new { @class = "selected" } : null)%></li>
-                    <li><%= Html.ActionLink("Home", "index", "home", new { area = "" }, controller.ToLower() == "home" && action.ToLower() == "index" ? new { @class = "selected" } : null)%></li>
                 </ul>
             </nav>
         </div>
