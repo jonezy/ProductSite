@@ -1,14 +1,16 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
 <asp:Content ContentPlaceHolderID="HomepageBanners" runat="server">
-    <% if(ViewData["BrandID"] != null) { %>
-    <div id="brand-image">        <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>    </div>   
+    <% 
+       string pathToImage = Server.MapPath(string.Format("~/public/images/brandbanners/{0}.jpg", ViewData["BrandID"].ToString()));
+       if (ViewData["BrandID"] != null && System.IO.File.Exists(pathToImage)) { %>
+        <div id="brand-image">            <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>        </div>   
     <% } %>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="RootContent" runat="server">
 
-<div id="main" role="main" style="background-color:#fff;" class="clearfix">
+<div id="main" role="main" class="clearfix">
     <%= Html.Action("RenderProductNavigation", "Products") %>
 
     <div id="product-category" class="twelve columns alpha omega">
