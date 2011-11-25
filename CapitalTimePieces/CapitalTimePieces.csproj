@@ -15,6 +15,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,18 +119,18 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Core\Email\EmailSender.cs" />
-    <Compile Include="Core\Email\IEmailSender.cs" />
-    <Compile Include="Core\Email\SmtpConfiguration.cs" />
-    <Compile Include="Core\Email\TemplateParser.cs" />
-    <Compile Include="Core\Filters\RequiresAuthentication.cs" />
-    <Compile Include="Core\Helpers\CookieHelpers.cs" />
-    <Compile Include="Core\Helpers\Encryption.cs" />
-    <Compile Include="Core\MagicStrings.cs" />
-    <Compile Include="Core\Services\ProductService.cs" />
-    <Compile Include="Core\Services\ServiceBase.cs" />
-    <Compile Include="Core\Services\UserService.cs" />
-    <Compile Include="Core\UserRole.cs" />
+    <Compile Include="Infrastructure\Email\EmailSender.cs" />
+    <Compile Include="Infrastructure\Email\IEmailSender.cs" />
+    <Compile Include="Infrastructure\Email\SmtpConfiguration.cs" />
+    <Compile Include="Infrastructure\Email\TemplateParser.cs" />
+    <Compile Include="Infrastructure\Filters\RequiresAuthentication.cs" />
+    <Compile Include="Infrastructure\Helpers\CookieHelpers.cs" />
+    <Compile Include="Infrastructure\Helpers\Encryption.cs" />
+    <Compile Include="Infrastructure\MagicStrings.cs" />
+    <Compile Include="Infrastructure\Services\ProductService.cs" />
+    <Compile Include="Infrastructure\Services\ServiceBase.cs" />
+    <Compile Include="Infrastructure\Services\UserService.cs" />
+    <Compile Include="Infrastructure\UserRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

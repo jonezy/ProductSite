@@ -7,6 +7,7 @@ using ProductSite.Data;
 using ProductSite.Web.Services;
 using ProductSite.Web.Email;
 using CapitalTimePieces.Views.Email;
+using System.Configuration;
 
 namespace ProductSite.Controllers {
     public class HomeController : Controller {
@@ -69,9 +70,9 @@ namespace ProductSite.Controllers {
 
                 try {
                     EmailSender sender = new EmailSender();
-                    sender.Send(App.MailConfiguration, model.EmailAddress, "", "Sell your watch submission from the website", message);
+                    sender.Send(App.MailConfiguration, ConfigurationManager.AppSettings["SiteSettings.Mail.DefaultToAddress"].ToString(), "", "Sell your watch submission from the website", message);
 
-                    this.StoreSuccess("Thank you for submitting your watch to us, we'll be in touch soon");
+                    this.StoreSuccess("Thank you for submitting your watch to us, we will be in touch soon");
                     return Redirect(Request.UrlReferrer.ToString());
                 } catch {
                     this.StoreError("There was a problem submitting the form, please reload the page and try again");
