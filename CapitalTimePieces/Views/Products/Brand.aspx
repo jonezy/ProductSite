@@ -26,7 +26,7 @@
             <% if (i == 4) { // this is the number of columns %>
                 </div>
                 <div class="brand-row clearfix">
-            <%  i = 0;
+            <%  i = 1;
                } else {
                    i++;
                }

@@ -2,9 +2,15 @@
 
 <asp:Content ContentPlaceHolderID="HomepageBanners" runat="server">
     <% 
-       string pathToImage = Server.MapPath(string.Format("~/public/images/brandbanners/{0}.jpg", ViewData["BrandID"].ToString()));
+        string pathToImage = string.Empty;
+        if (ViewData["BrandID"] != null)
+        {
+            pathToImage = Server.MapPath(string.Format("~/public/images/brandbanners/{0}.jpg", ViewData["BrandID"].ToString()));
+        }
        if (ViewData["BrandID"] != null && System.IO.File.Exists(pathToImage)) { %>
-        <div id="brand-image">            <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>        </div>   
+        <div id="brand-image">
+            <%= Html.Image("brandbanners/" + ViewData["BrandID"].ToString() +".jpg") %>
+        </div>   
     <% } %>
 </asp:Content>
 

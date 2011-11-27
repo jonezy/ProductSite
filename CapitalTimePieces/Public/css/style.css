@@ -73,7 +73,7 @@ nav#primary ul li a.selected {background:#fff;color:#000;}
 
 #left-navigation ul {margin:0;padding:0;}
 #left-navigation ul li {color:#b0b0b0;border-bottom:solid 1px #ccc;padding:0px 0px 3px 0px;margin:0 2px 0 2px;}
-#left-navigation ul li a {font-size:14px;font-family:InterstatePlusRegular;color:#b0b0b0;padding:5px 10px 5px 10px;display:block;text-decoration:none;text-transform:capitalize;}
+#left-navigation ul li a {font-size:14px;font-family:InterstatePlusRegular;color:#aaa;padding:5px 10px 5px 10px;display:block;text-decoration:none;text-transform:capitalize;}
 #left-navigation ul li a:hover {color:#000;}
 
 #main {z-index:10000;background-image:url(../images/container.bg.gif); background-repeat:repeat-x; background-position:0px 70px;}
@@ -104,9 +104,34 @@ a.delete {display:inline;}
 
 .header {width:auto !important;margin:7px 0px 0px 250px !important;float:right;display:inline;}
 
-#brand-image{    position:absolute;    top:151px;    right:0px;	background: #000;	z-index:0;}
-#slide-container {    position:absolute;    top:151px;    left:0px;	width: 100%;	background: #000;	z-index:0;}
-#slide-container #slide {    position:relative;	width: 1600px;	height: 475px;	margin: 0 auto;}#slide-container #slide img {}
+#brand-image
+{
+    position:absolute;
+    top:151px;
+    right:0px;
+	background: #000;
+	z-index:0;
+}
+
+#slide-container 
+{
+    position:absolute;
+    top:151px;
+    left:0px;
+	width: 100%;
+	background: #000;
+	z-index:0;
+}
+
+#slide-container #slide 
+{
+    position:relative;
+	width: 1600px;
+	height: 475px;
+	margin: 0 auto;
+}
+
+#slide-container #slide img {}
 
 .brand-row {margin-top:10px;}
 .brandlist-item {float:left;margin:0px 10px 20px 0px;color:#000;font-size:11px;line-height:normal;}
