@@ -7,23 +7,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CapitalTimePieces.Models {
     public class ContactUsViewModel {
-        [DisplayName("First Name"), Required(ErrorMessage="Please enter your first name")]
-        public string FirstName { get; set; }
-        
-        [DisplayName("Last Name"), Required(ErrorMessage = "Please enter your last name")]
-        public string LastName { get; set; }
 
+        [DisplayName("Your Name"), Required(ErrorMessage="Please enter your name")]
+        public string Name { get; set; }
+       
         [DisplayName("Email Address"), Required(ErrorMessage = "Please enter your email address")]
         public string EmailAddress { get; set; }
 
         [DisplayName("Phone number"), Required(ErrorMessage = "Please enter your phone number")]
         public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessage = "Please select your country")]
-        public string Country { get; set; }
-
-        [Required(ErrorMessage = "Please select your language")]
-        public string Language { get; set; }
 
         [Required(ErrorMessage = "Please select the brand of the watch you would like to sell")]
         public string Brand { get; set; }
@@ -39,25 +31,25 @@ namespace CapitalTimePieces.Models {
 
         public string Comments { get; set; }
 
-        public IEnumerable<SelectListItem> Countries {
-            get {
-                List<SelectListItem> items = new List<SelectListItem>();
-                items.Add(new SelectListItem { Text = "Canada", Value = "Canada" });
-                items.Add(new SelectListItem { Text = "US", Value = "US" });
+        //public IEnumerable<SelectListItem> Countries {
+        //    get {
+        //        List<SelectListItem> items = new List<SelectListItem>();
+        //        items.Add(new SelectListItem { Text = "Canada", Value = "Canada" });
+        //        items.Add(new SelectListItem { Text = "US", Value = "US" });
 
-                return items.AsEnumerable();
-            }
-        }
+        //        return items.AsEnumerable();
+        //    }
+        //}
 
-        public IEnumerable<SelectListItem> Languages {
-            get {
-                List<SelectListItem> items = new List<SelectListItem>();
-                items.Add(new SelectListItem { Text = "English", Value = "English" });
-                items.Add(new SelectListItem { Text = "French", Value = "French" });
+        //public IEnumerable<SelectListItem> Languages {
+        //    get {
+        //        List<SelectListItem> items = new List<SelectListItem>();
+        //        items.Add(new SelectListItem { Text = "English", Value = "English" });
+        //        items.Add(new SelectListItem { Text = "French", Value = "French" });
 
-                return items.AsEnumerable();
-            }
-        }
+        //        return items.AsEnumerable();
+        //    }
+        //}
 
         public IEnumerable<SelectListItem> ProductBrands {
             get {

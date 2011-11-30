@@ -54,8 +54,8 @@ namespace ProductSite.Areas.Admin.Controllers {
                     SaveImages(Request.Form, files, product.ProductID);
 
                     this.StoreSuccess("The product was added successfully.");
-                        
-                    return RedirectToAction("Index");
+
+                    return RedirectToAction("edit", new { id=product.ProductID });
                 } catch (Exception ex) {
                     Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
                     this.StoreError("There was a problem saving the product");
@@ -92,6 +92,7 @@ namespace ProductSite.Areas.Admin.Controllers {
             product.Strap = model.Strap;
             product.Warranty = model.Warranty;
             product.WaterResistant = model.WaterResistant;
+
 
             return product;
         }

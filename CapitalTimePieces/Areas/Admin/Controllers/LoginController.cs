@@ -38,7 +38,7 @@ namespace ProductSite.Areas.Admin.Controllers {
                 if (user == null) {
                     this.StoreWarning("The username/password was not found, please try again");
                     return View(model);
-                }
+                }   
 
                 if (!user.IsActive) {
                     this.StoreWarning("Your account is not active, please email support@richmondday.com");

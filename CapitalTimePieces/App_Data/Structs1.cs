@@ -10,264 +10,6 @@ using System.Data;
 namespace ProductSite.Data {
 	
         /// <summary>
-        /// Table: User
-        /// Primary Key: UserID
-        /// </summary>
-
-        public class UserTable: DatabaseTable {
-            
-            public UserTable(IDataProvider provider):base("User",provider){
-                ClassName = "User";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("UserID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("UserRoleID", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Email", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-
-                Columns.Add(new DatabaseColumn("Username", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-
-                Columns.Add(new DatabaseColumn("Password", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-
-                Columns.Add(new DatabaseColumn("CreationDate", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.DateTime,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("IsActive", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Boolean,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-                    
-                
-                
-            }
-            
-            public IColumn UserID{
-                get{
-                    return this.GetColumn("UserID");
-                }
-            }
-            				
-   			public static string UserIDColumn{
-			      get{
-        			return "UserID";
-      			}
-		    }
-           
-            public IColumn UserRoleID{
-                get{
-                    return this.GetColumn("UserRoleID");
-                }
-            }
-            				
-   			public static string UserRoleIDColumn{
-			      get{
-        			return "UserRoleID";
-      			}
-		    }
-           
-            public IColumn Email{
-                get{
-                    return this.GetColumn("Email");
-                }
-            }
-            				
-   			public static string EmailColumn{
-			      get{
-        			return "Email";
-      			}
-		    }
-           
-            public IColumn Username{
-                get{
-                    return this.GetColumn("Username");
-                }
-            }
-            				
-   			public static string UsernameColumn{
-			      get{
-        			return "Username";
-      			}
-		    }
-           
-            public IColumn Password{
-                get{
-                    return this.GetColumn("Password");
-                }
-            }
-            				
-   			public static string PasswordColumn{
-			      get{
-        			return "Password";
-      			}
-		    }
-           
-            public IColumn CreationDate{
-                get{
-                    return this.GetColumn("CreationDate");
-                }
-            }
-            				
-   			public static string CreationDateColumn{
-			      get{
-        			return "CreationDate";
-      			}
-		    }
-           
-            public IColumn IsActive{
-                get{
-                    return this.GetColumn("IsActive");
-                }
-            }
-            				
-   			public static string IsActiveColumn{
-			      get{
-        			return "IsActive";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductImage
-        /// Primary Key: ProductImageID
-        /// </summary>
-
-        public class ProductImageTable: DatabaseTable {
-            
-            public ProductImageTable(IDataProvider provider):base("ProductImage",provider){
-                ClassName = "ProductImage";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductImageID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = false,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("ProductID", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = true,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("Path", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductImageID{
-                get{
-                    return this.GetColumn("ProductImageID");
-                }
-            }
-            				
-   			public static string ProductImageIDColumn{
-			      get{
-        			return "ProductImageID";
-      			}
-		    }
-           
-            public IColumn ProductID{
-                get{
-                    return this.GetColumn("ProductID");
-                }
-            }
-            				
-   			public static string ProductIDColumn{
-			      get{
-        			return "ProductID";
-      			}
-		    }
-           
-            public IColumn Path{
-                get{
-                    return this.GetColumn("Path");
-                }
-            }
-            				
-   			public static string PathColumn{
-			      get{
-        			return "Path";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
         /// Table: ProductCondition
         /// Primary Key: ProductConditionID
         /// </summary>
@@ -324,69 +66,6 @@ namespace ProductSite.Data {
    			public static string ConditionDescriptionColumn{
 			      get{
         			return "ConditionDescription";
-      			}
-		    }
-           
-                    
-        }
-        
-        /// <summary>
-        /// Table: ProductBrand
-        /// Primary Key: ProductBrandID
-        /// </summary>
-
-        public class ProductBrandTable: DatabaseTable {
-            
-            public ProductBrandTable(IDataProvider provider):base("ProductBrand",provider){
-                ClassName = "ProductBrand";
-                SchemaName = "dbo";
-                
-
-                Columns.Add(new DatabaseColumn("ProductBrandID", this)
-                {
-	                IsPrimaryKey = true,
-	                DataType = DbType.Int32,
-	                IsNullable = false,
-	                AutoIncrement = true,
-	                IsForeignKey = true,
-	                MaxLength = 0
-                });
-
-                Columns.Add(new DatabaseColumn("BrandName", this)
-                {
-	                IsPrimaryKey = false,
-	                DataType = DbType.String,
-	                IsNullable = false,
-	                AutoIncrement = false,
-	                IsForeignKey = false,
-	                MaxLength = 500
-                });
-                    
-                
-                
-            }
-            
-            public IColumn ProductBrandID{
-                get{
-                    return this.GetColumn("ProductBrandID");
-                }
-            }
-            				
-   			public static string ProductBrandIDColumn{
-			      get{
-        			return "ProductBrandID";
-      			}
-		    }
-           
-            public IColumn BrandName{
-                get{
-                    return this.GetColumn("BrandName");
-                }
-            }
-            				
-   			public static string BrandNameColumn{
-			      get{
-        			return "BrandName";
       			}
 		    }
            
@@ -472,6 +151,91 @@ namespace ProductSite.Data {
    			public static string CollectionNameColumn{
 			      get{
         			return "CollectionName";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
+        /// Table: ProductImage
+        /// Primary Key: ProductImageID
+        /// </summary>
+
+        public class ProductImageTable: DatabaseTable {
+            
+            public ProductImageTable(IDataProvider provider):base("ProductImage",provider){
+                ClassName = "ProductImage";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ProductImageID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("ProductID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Path", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+            
+            public IColumn ProductImageID{
+                get{
+                    return this.GetColumn("ProductImageID");
+                }
+            }
+            				
+   			public static string ProductImageIDColumn{
+			      get{
+        			return "ProductImageID";
+      			}
+		    }
+           
+            public IColumn ProductID{
+                get{
+                    return this.GetColumn("ProductID");
+                }
+            }
+            				
+   			public static string ProductIDColumn{
+			      get{
+        			return "ProductID";
+      			}
+		    }
+           
+            public IColumn Path{
+                get{
+                    return this.GetColumn("Path");
+                }
+            }
+            				
+   			public static string PathColumn{
+			      get{
+        			return "Path";
       			}
 		    }
            
@@ -1085,6 +849,242 @@ namespace ProductSite.Data {
    			public static string IsActiveColumn{
 			      get{
         			return "IsActive";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
+        /// Table: User
+        /// Primary Key: UserID
+        /// </summary>
+
+        public class UserTable: DatabaseTable {
+            
+            public UserTable(IDataProvider provider):base("User",provider){
+                ClassName = "User";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("UserID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("UserRoleID", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("Email", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Username", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("Password", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+
+                Columns.Add(new DatabaseColumn("CreationDate", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.DateTime,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("IsActive", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+                    
+                
+                
+            }
+            
+            public IColumn UserID{
+                get{
+                    return this.GetColumn("UserID");
+                }
+            }
+            				
+   			public static string UserIDColumn{
+			      get{
+        			return "UserID";
+      			}
+		    }
+           
+            public IColumn UserRoleID{
+                get{
+                    return this.GetColumn("UserRoleID");
+                }
+            }
+            				
+   			public static string UserRoleIDColumn{
+			      get{
+        			return "UserRoleID";
+      			}
+		    }
+           
+            public IColumn Email{
+                get{
+                    return this.GetColumn("Email");
+                }
+            }
+            				
+   			public static string EmailColumn{
+			      get{
+        			return "Email";
+      			}
+		    }
+           
+            public IColumn Username{
+                get{
+                    return this.GetColumn("Username");
+                }
+            }
+            				
+   			public static string UsernameColumn{
+			      get{
+        			return "Username";
+      			}
+		    }
+           
+            public IColumn Password{
+                get{
+                    return this.GetColumn("Password");
+                }
+            }
+            				
+   			public static string PasswordColumn{
+			      get{
+        			return "Password";
+      			}
+		    }
+           
+            public IColumn CreationDate{
+                get{
+                    return this.GetColumn("CreationDate");
+                }
+            }
+            				
+   			public static string CreationDateColumn{
+			      get{
+        			return "CreationDate";
+      			}
+		    }
+           
+            public IColumn IsActive{
+                get{
+                    return this.GetColumn("IsActive");
+                }
+            }
+            				
+   			public static string IsActiveColumn{
+			      get{
+        			return "IsActive";
+      			}
+		    }
+           
+                    
+        }
+        
+        /// <summary>
+        /// Table: ProductBrand
+        /// Primary Key: ProductBrandID
+        /// </summary>
+
+        public class ProductBrandTable: DatabaseTable {
+            
+            public ProductBrandTable(IDataProvider provider):base("ProductBrand",provider){
+                ClassName = "ProductBrand";
+                SchemaName = "dbo";
+                
+
+                Columns.Add(new DatabaseColumn("ProductBrandID", this)
+                {
+	                IsPrimaryKey = true,
+	                DataType = DbType.Int32,
+	                IsNullable = false,
+	                AutoIncrement = true,
+	                IsForeignKey = true,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("BrandName", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.String,
+	                IsNullable = false,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 500
+                });
+                    
+                
+                
+            }
+            
+            public IColumn ProductBrandID{
+                get{
+                    return this.GetColumn("ProductBrandID");
+                }
+            }
+            				
+   			public static string ProductBrandIDColumn{
+			      get{
+        			return "ProductBrandID";
+      			}
+		    }
+           
+            public IColumn BrandName{
+                get{
+                    return this.GetColumn("BrandName");
+                }
+            }
+            				
+   			public static string BrandNameColumn{
+			      get{
+        			return "BrandName";
       			}
 		    }
            

@@ -48,18 +48,16 @@ namespace ProductSite.Controllers {
         public ActionResult Contact() {
             ContactUsViewModel model = new ContactUsViewModel();
             return View(model);
-        }
+        }   
 
         [HttpPost]
         public ActionResult Contact(ContactUsViewModel model) {
             if (ModelState.IsValid) {
                 TemplateParser parser = new TemplateParser();
                 Dictionary<string, string> replacements = new Dictionary<string, string>();
-                replacements.Add("[NAME]", string.Format("{0} {1}", model.FirstName, model.LastName));
+                replacements.Add("[NAME]", model.Name);
                 replacements.Add("[EMAIL]", model.EmailAddress);
                 replacements.Add("[PHONE]", model.PhoneNumber);
-                replacements.Add("[COUNTRY]", model.Country);
-                replacements.Add("[LANGUAGE]", model.Language);
                 replacements.Add("[BRAND]", model.Brand);
                 replacements.Add("[MODEL]", model.WatchModel);
                 replacements.Add("[DIALDESCRIPTION]", model.DialDescription);

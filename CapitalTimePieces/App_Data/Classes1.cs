@@ -12,138 +12,53 @@ namespace ProductSite.Data
     
     
     /// <summary>
-    /// A class which represents the User table in the Products Database.
-    /// This class is queryable through ProductsDB.User 
+    /// A class which represents the ProductCondition table in the Products Database.
+    /// This class is queryable through ProductsDB.ProductCondition 
     /// </summary>
 
-	public partial class User: INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class ProductCondition: INotifyPropertyChanging, INotifyPropertyChanged
 	{
         partial void OnLoaded();
         partial void OnValidate(System.Data.Linq.ChangeAction action);
         partial void OnCreated();
 	    
-	    public User(){
+	    public ProductCondition(){
 	        OnCreated();
 	    }
 	    
 	    #region Properties
 	    
-        partial void OnUserIDChanging(int value);
-        partial void OnUserIDChanged();
+        partial void OnProductConditionIDChanging(int value);
+        partial void OnProductConditionIDChanged();
 		
-		private int _UserID;
-		public int UserID { 
+		private int _ProductConditionID;
+		public int ProductConditionID { 
 		    get{
-		        return _UserID;
+		        return _ProductConditionID;
 		    } 
 		    set{
-		        this.OnUserIDChanging(value);
+		        this.OnProductConditionIDChanging(value);
                 this.SendPropertyChanging();
-                this._UserID = value;
-                this.SendPropertyChanged("UserID");
-                this.OnUserIDChanged();
+                this._ProductConditionID = value;
+                this.SendPropertyChanged("ProductConditionID");
+                this.OnProductConditionIDChanged();
 		    }
 		}
 		
-        partial void OnUserRoleIDChanging(int value);
-        partial void OnUserRoleIDChanged();
+        partial void OnConditionDescriptionChanging(string value);
+        partial void OnConditionDescriptionChanged();
 		
-		private int _UserRoleID;
-		public int UserRoleID { 
+		private string _ConditionDescription;
+		public string ConditionDescription { 
 		    get{
-		        return _UserRoleID;
+		        return _ConditionDescription;
 		    } 
 		    set{
-		        this.OnUserRoleIDChanging(value);
+		        this.OnConditionDescriptionChanging(value);
                 this.SendPropertyChanging();
-                this._UserRoleID = value;
-                this.SendPropertyChanged("UserRoleID");
-                this.OnUserRoleIDChanged();
-		    }
-		}
-		
-        partial void OnEmailChanging(string value);
-        partial void OnEmailChanged();
-		
-		private string _Email;
-		public string Email { 
-		    get{
-		        return _Email;
-		    } 
-		    set{
-		        this.OnEmailChanging(value);
-                this.SendPropertyChanging();
-                this._Email = value;
-                this.SendPropertyChanged("Email");
-                this.OnEmailChanged();
-		    }
-		}
-		
-        partial void OnUsernameChanging(string value);
-        partial void OnUsernameChanged();
-		
-		private string _Username;
-		public string Username { 
-		    get{
-		        return _Username;
-		    } 
-		    set{
-		        this.OnUsernameChanging(value);
-                this.SendPropertyChanging();
-                this._Username = value;
-                this.SendPropertyChanged("Username");
-                this.OnUsernameChanged();
-		    }
-		}
-		
-        partial void OnPasswordChanging(string value);
-        partial void OnPasswordChanged();
-		
-		private string _Password;
-		public string Password { 
-		    get{
-		        return _Password;
-		    } 
-		    set{
-		        this.OnPasswordChanging(value);
-                this.SendPropertyChanging();
-                this._Password = value;
-                this.SendPropertyChanged("Password");
-                this.OnPasswordChanged();
-		    }
-		}
-		
-        partial void OnCreationDateChanging(DateTime value);
-        partial void OnCreationDateChanged();
-		
-		private DateTime _CreationDate;
-		public DateTime CreationDate { 
-		    get{
-		        return _CreationDate;
-		    } 
-		    set{
-		        this.OnCreationDateChanging(value);
-                this.SendPropertyChanging();
-                this._CreationDate = value;
-                this.SendPropertyChanged("CreationDate");
-                this.OnCreationDateChanged();
-		    }
-		}
-		
-        partial void OnIsActiveChanging(bool value);
-        partial void OnIsActiveChanged();
-		
-		private bool _IsActive;
-		public bool IsActive { 
-		    get{
-		        return _IsActive;
-		    } 
-		    set{
-		        this.OnIsActiveChanging(value);
-                this.SendPropertyChanging();
-                this._IsActive = value;
-                this.SendPropertyChanged("IsActive");
-                this.OnIsActiveChanged();
+                this._ConditionDescription = value;
+                this.SendPropertyChanged("ConditionDescription");
+                this.OnConditionDescriptionChanged();
 		    }
 		}
 		
@@ -151,6 +66,135 @@ namespace ProductSite.Data
         #endregion
 
         #region Foreign Keys
+        public IQueryable<Product> Products
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.Condition == _ProductConditionID
+                       select items;
+            }
+        }
+
+        #endregion
+
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void SendPropertyChanging()
+        {
+            var handler = PropertyChanging;
+            if (handler != null)
+               handler(this, emptyChangingEventArgs);
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+	}
+	
+    
+    
+    /// <summary>
+    /// A class which represents the ProductCollection table in the Products Database.
+    /// This class is queryable through ProductsDB.ProductCollection 
+    /// </summary>
+
+	public partial class ProductCollection: INotifyPropertyChanging, INotifyPropertyChanged
+	{
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+	    
+	    public ProductCollection(){
+	        OnCreated();
+	    }
+	    
+	    #region Properties
+	    
+        partial void OnProductCollectionIDChanging(int value);
+        partial void OnProductCollectionIDChanged();
+		
+		private int _ProductCollectionID;
+		public int ProductCollectionID { 
+		    get{
+		        return _ProductCollectionID;
+		    } 
+		    set{
+		        this.OnProductCollectionIDChanging(value);
+                this.SendPropertyChanging();
+                this._ProductCollectionID = value;
+                this.SendPropertyChanged("ProductCollectionID");
+                this.OnProductCollectionIDChanged();
+		    }
+		}
+		
+        partial void OnProductBrandIDChanging(int value);
+        partial void OnProductBrandIDChanged();
+		
+		private int _ProductBrandID;
+		public int ProductBrandID { 
+		    get{
+		        return _ProductBrandID;
+		    } 
+		    set{
+		        this.OnProductBrandIDChanging(value);
+                this.SendPropertyChanging();
+                this._ProductBrandID = value;
+                this.SendPropertyChanged("ProductBrandID");
+                this.OnProductBrandIDChanged();
+		    }
+		}
+		
+        partial void OnCollectionNameChanging(string value);
+        partial void OnCollectionNameChanged();
+		
+		private string _CollectionName;
+		public string CollectionName { 
+		    get{
+		        return _CollectionName;
+		    } 
+		    set{
+		        this.OnCollectionNameChanging(value);
+                this.SendPropertyChanging();
+                this._CollectionName = value;
+                this.SendPropertyChanged("CollectionName");
+                this.OnCollectionNameChanged();
+		    }
+		}
+		
+
+        #endregion
+
+        #region Foreign Keys
+        public IQueryable<Product> Products
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.CollectionID == _ProductCollectionID
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductBrand> ProductBrands
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductBrands
+                       where items.ProductBrandID == _ProductBrandID
+                       select items;
+            }
+        }
+
         #endregion
 
 
@@ -254,326 +298,6 @@ namespace ProductSite.Data
                   var db=new ProductSite.Data.ProductsDB();
                   return from items in db.Products
                        where items.ProductID == _ProductID
-                       select items;
-            }
-        }
-
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
-        {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
-        }
-
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductCondition table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductCondition 
-    /// </summary>
-
-	public partial class ProductCondition: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductCondition(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductConditionIDChanging(int value);
-        partial void OnProductConditionIDChanged();
-		
-		private int _ProductConditionID;
-		public int ProductConditionID { 
-		    get{
-		        return _ProductConditionID;
-		    } 
-		    set{
-		        this.OnProductConditionIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductConditionID = value;
-                this.SendPropertyChanged("ProductConditionID");
-                this.OnProductConditionIDChanged();
-		    }
-		}
-		
-        partial void OnConditionDescriptionChanging(string value);
-        partial void OnConditionDescriptionChanged();
-		
-		private string _ConditionDescription;
-		public string ConditionDescription { 
-		    get{
-		        return _ConditionDescription;
-		    } 
-		    set{
-		        this.OnConditionDescriptionChanging(value);
-                this.SendPropertyChanging();
-                this._ConditionDescription = value;
-                this.SendPropertyChanged("ConditionDescription");
-                this.OnConditionDescriptionChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
-        public IQueryable<Product> Products
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.Products
-                       where items.Condition == _ProductConditionID
-                       select items;
-            }
-        }
-
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
-        {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
-        }
-
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductBrand table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductBrand 
-    /// </summary>
-
-	public partial class ProductBrand: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductBrand(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductBrandIDChanging(int value);
-        partial void OnProductBrandIDChanged();
-		
-		private int _ProductBrandID;
-		public int ProductBrandID { 
-		    get{
-		        return _ProductBrandID;
-		    } 
-		    set{
-		        this.OnProductBrandIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductBrandID = value;
-                this.SendPropertyChanged("ProductBrandID");
-                this.OnProductBrandIDChanged();
-		    }
-		}
-		
-        partial void OnBrandNameChanging(string value);
-        partial void OnBrandNameChanged();
-		
-		private string _BrandName;
-		public string BrandName { 
-		    get{
-		        return _BrandName;
-		    } 
-		    set{
-		        this.OnBrandNameChanging(value);
-                this.SendPropertyChanging();
-                this._BrandName = value;
-                this.SendPropertyChanged("BrandName");
-                this.OnBrandNameChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
-        public IQueryable<Product> Products
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.Products
-                       where items.BrandID == _ProductBrandID
-                       select items;
-            }
-        }
-
-        public IQueryable<ProductBrand> ProductBrands
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.ProductBrands
-                       where items.ProductBrandID == _ProductBrandID
-                       select items;
-            }
-        }
-
-        public IQueryable<ProductCollection> ProductCollections
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.ProductCollections
-                       where items.ProductBrandID == _ProductBrandID
-                       select items;
-            }
-        }
-
-        #endregion
-
-
-        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-        public event PropertyChangingEventHandler PropertyChanging;
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void SendPropertyChanging()
-        {
-            var handler = PropertyChanging;
-            if (handler != null)
-               handler(this, emptyChangingEventArgs);
-        }
-
-        protected virtual void SendPropertyChanged(String propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-	}
-	
-    
-    
-    /// <summary>
-    /// A class which represents the ProductCollection table in the Products Database.
-    /// This class is queryable through ProductsDB.ProductCollection 
-    /// </summary>
-
-	public partial class ProductCollection: INotifyPropertyChanging, INotifyPropertyChanged
-	{
-        partial void OnLoaded();
-        partial void OnValidate(System.Data.Linq.ChangeAction action);
-        partial void OnCreated();
-	    
-	    public ProductCollection(){
-	        OnCreated();
-	    }
-	    
-	    #region Properties
-	    
-        partial void OnProductCollectionIDChanging(int value);
-        partial void OnProductCollectionIDChanged();
-		
-		private int _ProductCollectionID;
-		public int ProductCollectionID { 
-		    get{
-		        return _ProductCollectionID;
-		    } 
-		    set{
-		        this.OnProductCollectionIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductCollectionID = value;
-                this.SendPropertyChanged("ProductCollectionID");
-                this.OnProductCollectionIDChanged();
-		    }
-		}
-		
-        partial void OnProductBrandIDChanging(int value);
-        partial void OnProductBrandIDChanged();
-		
-		private int _ProductBrandID;
-		public int ProductBrandID { 
-		    get{
-		        return _ProductBrandID;
-		    } 
-		    set{
-		        this.OnProductBrandIDChanging(value);
-                this.SendPropertyChanging();
-                this._ProductBrandID = value;
-                this.SendPropertyChanged("ProductBrandID");
-                this.OnProductBrandIDChanged();
-		    }
-		}
-		
-        partial void OnCollectionNameChanging(string value);
-        partial void OnCollectionNameChanged();
-		
-		private string _CollectionName;
-		public string CollectionName { 
-		    get{
-		        return _CollectionName;
-		    } 
-		    set{
-		        this.OnCollectionNameChanging(value);
-                this.SendPropertyChanging();
-                this._CollectionName = value;
-                this.SendPropertyChanged("CollectionName");
-                this.OnCollectionNameChanged();
-		    }
-		}
-		
-
-        #endregion
-
-        #region Foreign Keys
-        public IQueryable<ProductBrand> ProductBrands
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.ProductBrands
-                       where items.ProductBrandID == _ProductBrandID
-                       select items;
-            }
-        }
-
-        public IQueryable<Product> Products
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.Products
-                       where items.CollectionID == _ProductCollectionID
                        select items;
             }
         }
@@ -1082,13 +806,13 @@ namespace ProductSite.Data
         #endregion
 
         #region Foreign Keys
-        public IQueryable<ProductImage> ProductImages
+        public IQueryable<ProductCollection> ProductCollections
         {
             get
             {
                   var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.ProductImages
-                       where items.ProductID == _ProductID
+                  return from items in db.ProductCollections
+                       where items.ProductCollectionID == _CollectionID
                        select items;
             }
         }
@@ -1104,17 +828,6 @@ namespace ProductSite.Data
             }
         }
 
-        public IQueryable<ProductCollection> ProductCollections
-        {
-            get
-            {
-                  var db=new ProductSite.Data.ProductsDB();
-                  return from items in db.ProductCollections
-                       where items.ProductCollectionID == _CollectionID
-                       select items;
-            }
-        }
-
         public IQueryable<ProductCondition> ProductConditions
         {
             get
@@ -1122,6 +835,293 @@ namespace ProductSite.Data
                   var db=new ProductSite.Data.ProductsDB();
                   return from items in db.ProductConditions
                        where items.ProductConditionID == _Condition
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductImage> ProductImages
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductImages
+                       where items.ProductID == _ProductID
+                       select items;
+            }
+        }
+
+        #endregion
+
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void SendPropertyChanging()
+        {
+            var handler = PropertyChanging;
+            if (handler != null)
+               handler(this, emptyChangingEventArgs);
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+	}
+	
+    
+    
+    /// <summary>
+    /// A class which represents the User table in the Products Database.
+    /// This class is queryable through ProductsDB.User 
+    /// </summary>
+
+	public partial class User: INotifyPropertyChanging, INotifyPropertyChanged
+	{
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+	    
+	    public User(){
+	        OnCreated();
+	    }
+	    
+	    #region Properties
+	    
+        partial void OnUserIDChanging(int value);
+        partial void OnUserIDChanged();
+		
+		private int _UserID;
+		public int UserID { 
+		    get{
+		        return _UserID;
+		    } 
+		    set{
+		        this.OnUserIDChanging(value);
+                this.SendPropertyChanging();
+                this._UserID = value;
+                this.SendPropertyChanged("UserID");
+                this.OnUserIDChanged();
+		    }
+		}
+		
+        partial void OnUserRoleIDChanging(int value);
+        partial void OnUserRoleIDChanged();
+		
+		private int _UserRoleID;
+		public int UserRoleID { 
+		    get{
+		        return _UserRoleID;
+		    } 
+		    set{
+		        this.OnUserRoleIDChanging(value);
+                this.SendPropertyChanging();
+                this._UserRoleID = value;
+                this.SendPropertyChanged("UserRoleID");
+                this.OnUserRoleIDChanged();
+		    }
+		}
+		
+        partial void OnEmailChanging(string value);
+        partial void OnEmailChanged();
+		
+		private string _Email;
+		public string Email { 
+		    get{
+		        return _Email;
+		    } 
+		    set{
+		        this.OnEmailChanging(value);
+                this.SendPropertyChanging();
+                this._Email = value;
+                this.SendPropertyChanged("Email");
+                this.OnEmailChanged();
+		    }
+		}
+		
+        partial void OnUsernameChanging(string value);
+        partial void OnUsernameChanged();
+		
+		private string _Username;
+		public string Username { 
+		    get{
+		        return _Username;
+		    } 
+		    set{
+		        this.OnUsernameChanging(value);
+                this.SendPropertyChanging();
+                this._Username = value;
+                this.SendPropertyChanged("Username");
+                this.OnUsernameChanged();
+		    }
+		}
+		
+        partial void OnPasswordChanging(string value);
+        partial void OnPasswordChanged();
+		
+		private string _Password;
+		public string Password { 
+		    get{
+		        return _Password;
+		    } 
+		    set{
+		        this.OnPasswordChanging(value);
+                this.SendPropertyChanging();
+                this._Password = value;
+                this.SendPropertyChanged("Password");
+                this.OnPasswordChanged();
+		    }
+		}
+		
+        partial void OnCreationDateChanging(DateTime value);
+        partial void OnCreationDateChanged();
+		
+		private DateTime _CreationDate;
+		public DateTime CreationDate { 
+		    get{
+		        return _CreationDate;
+		    } 
+		    set{
+		        this.OnCreationDateChanging(value);
+                this.SendPropertyChanging();
+                this._CreationDate = value;
+                this.SendPropertyChanged("CreationDate");
+                this.OnCreationDateChanged();
+		    }
+		}
+		
+        partial void OnIsActiveChanging(bool value);
+        partial void OnIsActiveChanged();
+		
+		private bool _IsActive;
+		public bool IsActive { 
+		    get{
+		        return _IsActive;
+		    } 
+		    set{
+		        this.OnIsActiveChanging(value);
+                this.SendPropertyChanging();
+                this._IsActive = value;
+                this.SendPropertyChanged("IsActive");
+                this.OnIsActiveChanged();
+		    }
+		}
+		
+
+        #endregion
+
+        #region Foreign Keys
+        #endregion
+
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void SendPropertyChanging()
+        {
+            var handler = PropertyChanging;
+            if (handler != null)
+               handler(this, emptyChangingEventArgs);
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+	}
+	
+    
+    
+    /// <summary>
+    /// A class which represents the ProductBrand table in the Products Database.
+    /// This class is queryable through ProductsDB.ProductBrand 
+    /// </summary>
+
+	public partial class ProductBrand: INotifyPropertyChanging, INotifyPropertyChanged
+	{
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+	    
+	    public ProductBrand(){
+	        OnCreated();
+	    }
+	    
+	    #region Properties
+	    
+        partial void OnProductBrandIDChanging(int value);
+        partial void OnProductBrandIDChanged();
+		
+		private int _ProductBrandID;
+		public int ProductBrandID { 
+		    get{
+		        return _ProductBrandID;
+		    } 
+		    set{
+		        this.OnProductBrandIDChanging(value);
+                this.SendPropertyChanging();
+                this._ProductBrandID = value;
+                this.SendPropertyChanged("ProductBrandID");
+                this.OnProductBrandIDChanged();
+		    }
+		}
+		
+        partial void OnBrandNameChanging(string value);
+        partial void OnBrandNameChanged();
+		
+		private string _BrandName;
+		public string BrandName { 
+		    get{
+		        return _BrandName;
+		    } 
+		    set{
+		        this.OnBrandNameChanging(value);
+                this.SendPropertyChanging();
+                this._BrandName = value;
+                this.SendPropertyChanged("BrandName");
+                this.OnBrandNameChanged();
+		    }
+		}
+		
+
+        #endregion
+
+        #region Foreign Keys
+        public IQueryable<Product> Products
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.Products
+                       where items.BrandID == _ProductBrandID
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductBrand> ProductBrands
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductBrands
+                       where items.ProductBrandID == _ProductBrandID
+                       select items;
+            }
+        }
+
+        public IQueryable<ProductCollection> ProductCollections
+        {
+            get
+            {
+                  var db=new ProductSite.Data.ProductsDB();
+                  return from items in db.ProductCollections
+                       where items.ProductBrandID == _ProductBrandID
                        select items;
             }
         }

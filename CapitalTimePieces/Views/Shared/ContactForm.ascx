@@ -4,15 +4,12 @@
 
 <% using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" })) {%>
     <fieldset class="contact">
-        <p><%= Html.LabelFor(m => m.FirstName)%><%= Html.TextBoxFor(m => m.FirstName)%></p>
-        <p><%= Html.LabelFor(m => m.LastName)%><%= Html.TextBoxFor(m => m.LastName)%></p>
+        <p><%= Html.LabelFor(m => m.Name)%><%= Html.TextBoxFor(m => m.Name)%></p>
         <p><%= Html.LabelFor(m => m.EmailAddress)%><%= Html.TextBoxFor(m => m.EmailAddress)%></p>
         <p><%= Html.LabelFor(m => m.PhoneNumber)%><%= Html.TextBoxFor(m => m.PhoneNumber)%></p>
-        <p><%= Html.LabelFor(m => m.Country)%><%= Html.DropDownListFor(m => m.Country, Model.Countries, "Select a country")%></p>
-        <p><%= Html.LabelFor(m => m.Language)%><%= Html.DropDownListFor(m => m.Language, Model.Languages, "Select a language")%></p>
     </fieldset>
 
-    <h4>Tell us about your watch</h4>
+    <h4>Tell us about your watch</h4>   
     <fieldset class="contact">
         <p><%= Html.LabelFor(m => m.Brand)%><%= Html.DropDownListFor(m => m.Brand, Model.ProductBrands, "Select brand")%></p>
         <p><%= Html.LabelFor(m => m.WatchModel)%><%= Html.TextBoxFor(m => m.WatchModel)%></p>

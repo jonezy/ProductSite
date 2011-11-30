@@ -65,8 +65,6 @@ namespace CapitalTimePieces.Views.Email {
         ///&lt;p&gt;Name: [NAME]&lt;/p&gt;
         ///&lt;p&gt;Email: [EMAIL]&lt;/p&gt;
         ///&lt;p&gt;Phone: [PHONE]&lt;/p&gt;
-        ///&lt;p&gt;Country: [COUNTRY]&lt;/p&gt;
-        ///&lt;p&gt;Language: [LANGUAGE]&lt;/p&gt;
         ///
         ///&lt;h2&gt;Watch Information&lt;/h2&gt;
         ///&lt;p&gt;Brand: [BRAND]&lt;/p&gt;

@@ -16,7 +16,7 @@
             <address>
                 Phone (905) 761-1760<br />
                 Fax (905)761.1710<br />
-                Email: <a href="sales@capitaltimepieces.com">sales@capitaltimepieces.com</a><br /><br />
+                Email: <a href="mailto:sales@capitaltimepieces.com">sales@capitaltimepieces.com</a><br /><br />
             </address>
 
             <h4>Showroom Hours</h4>
