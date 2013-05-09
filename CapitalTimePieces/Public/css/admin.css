@@ -55,8 +55,25 @@ a.delete {display:inline;}
 .header {width:auto !important;margin:7px 0px 0px 5px !important;float:right;display:inline;}
 
 
-#slide-container {    position:absolute;    top:151px;    left:0px;	width: 100%;	background: #000;	z-index:0;}
-#slide-container #slide {    position:relative;	width: 1600px;	height: 475px;	margin: 0 auto;}#slide-container #slide img {}
+#slide-container 
+{
+    position:absolute;
+    top:151px;
+    left:0px;
+	width: 100%;
+	background: #000;
+	z-index:0;
+}
+
+#slide-container #slide 
+{
+    position:relative;
+	width: 1600px;
+	height: 475px;
+	margin: 0 auto;
+}
+
+#slide-container #slide img {}
 
 /*--- PARAGRAPHS ---*/
 p,
@@ -70,7 +87,8 @@ address{
     .checkboxes label {float:left;width:60px;}
     .checkboxes input[type="checkbox"] {display:block;margin:4px 5px;}
     
-
+p.radio label {float:left;width:80px;}
+p.radio {clear:both;} 
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }

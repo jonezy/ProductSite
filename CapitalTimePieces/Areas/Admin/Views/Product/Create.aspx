@@ -8,6 +8,7 @@
     <% using (Html.BeginForm(null, null, FormMethod.Post, new { @enctype = "multipart/form-data" })) {%>
         <fieldset>
             <div class="ten columns alpha">
+                <%= Html.HiddenFor(model => model.Sold)%>
                 <%= Html.HiddenFor(model => model.ProductID)%>
                 <p><%= Html.LabelFor(model => model.ProductName)%><%= Html.TextBoxFor(model => model.ProductName)%></p>
                 <p><%= Html.LabelFor(model => model.ModelName)%><%= Html.TextBoxFor(model => model.ModelName)%></p>
@@ -65,7 +66,9 @@
                 <p><%= Html.LabelFor(model => model.Gender)%><%= Html.DropDownListFor(model => model.Gender, Model.Genders, "Select")%></p>
                 <p><%= Html.LabelFor(model => model.BrandID)%><%= Html.DropDownListFor(model => model.BrandID, Model.ProductBrands, "Select")%></p>
                 <p><%= Html.LabelFor(model => model.Condition)%><%= Html.DropDownListFor(model => model.Condition, Model.Conditions, "Select")%></p>
-                <p><%= Html.LabelFor(model => model.IsActive)%><%= Html.CheckBoxFor(model => model.IsActive)%></p>
+                <p class="radio"><%= Html.LabelFor(model => model.IsActive)%><%= Html.CheckBoxFor(model => model.IsActive)%></p>
+                <p class="radio"><%= Html.LabelFor(model => model.NewArrival)%><%= Html.CheckBoxFor(model => model.NewArrival)%></p>
+                <p class="radio"><%= Html.LabelFor(model => model.HotDeal)%><%= Html.CheckBoxFor(model => model.HotDeal)%></p>
                 <hr style="clear:both;" />
                 <h4>Images</h4>
                 <div class="five columns">

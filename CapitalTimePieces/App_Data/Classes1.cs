@@ -751,20 +751,20 @@ namespace ProductSite.Data
 		    }
 		}
 		
-        partial void OnHotDealChanging(bool? value);
-        partial void OnHotDealChanged();
+        partial void OnSoldChanging(bool? value);
+        partial void OnSoldChanged();
 		
-		private bool? _HotDeal;
-		public bool? HotDeal { 
+		private bool? _Sold;
+		public bool? Sold { 
 		    get{
-		        return _HotDeal;
+		        return _Sold;
 		    } 
 		    set{
-		        this.OnHotDealChanging(value);
+		        this.OnSoldChanging(value);
                 this.SendPropertyChanging();
-                this._HotDeal = value;
-                this.SendPropertyChanged("HotDeal");
-                this.OnHotDealChanged();
+                this._Sold = value;
+                this.SendPropertyChanged("Sold");
+                this.OnSoldChanged();
 		    }
 		}
 		
@@ -782,6 +782,23 @@ namespace ProductSite.Data
                 this._NewArrival = value;
                 this.SendPropertyChanged("NewArrival");
                 this.OnNewArrivalChanged();
+		    }
+		}
+		
+        partial void OnHotDealChanging(bool? value);
+        partial void OnHotDealChanged();
+		
+		private bool? _HotDeal;
+		public bool? HotDeal { 
+		    get{
+		        return _HotDeal;
+		    } 
+		    set{
+		        this.OnHotDealChanging(value);
+                this.SendPropertyChanging();
+                this._HotDeal = value;
+                this.SendPropertyChanged("HotDeal");
+                this.OnHotDealChanged();
 		    }
 		}
 		

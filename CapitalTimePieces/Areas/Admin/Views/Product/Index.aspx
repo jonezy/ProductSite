@@ -10,7 +10,12 @@
                 <td style="vertical-align:middle !important;"><%= item.ProductName %></td>
                 <td style="vertical-align:middle !important;" class="actions_items">
                     <ul>
-                        <li><%= Html.ActionLink("Edit", "edit", new { id=item.ProductID }) %></li>
+                      <% if (item.Sold == false) { %>
+                        <li><%= Html.ActionLink("Sold!", "sold", new { id = item.ProductID })%></li>
+                      <% } else { %>
+                        <li><%= Html.ActionLink("Not Sold", "notsold", new { id = item.ProductID })%></li>
+                      <% } %>
+                        <li><%= Html.ActionLink("Edit", "edit", new { id = item.ProductID })%></li>
                         <li><%= Html.ActionLink("Delete", "delete", new { id = item.ProductID }, new { @class = "delete", @onclick="return confirm('Are you sure you want to delete that product');" })%></li>
                     </ul>
                 </td>

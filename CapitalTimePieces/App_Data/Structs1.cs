@@ -494,7 +494,7 @@ namespace ProductSite.Data {
 	                MaxLength = 0
                 });
 
-                Columns.Add(new DatabaseColumn("HotDeal", this)
+                Columns.Add(new DatabaseColumn("Sold", this)
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
@@ -505,6 +505,16 @@ namespace ProductSite.Data {
                 });
 
                 Columns.Add(new DatabaseColumn("NewArrival", this)
+                {
+	                IsPrimaryKey = false,
+	                DataType = DbType.Boolean,
+	                IsNullable = true,
+	                AutoIncrement = false,
+	                IsForeignKey = false,
+	                MaxLength = 0
+                });
+
+                Columns.Add(new DatabaseColumn("HotDeal", this)
                 {
 	                IsPrimaryKey = false,
 	                DataType = DbType.Boolean,
@@ -816,15 +826,15 @@ namespace ProductSite.Data {
       			}
 		    }
            
-            public IColumn HotDeal{
+            public IColumn Sold{
                 get{
-                    return this.GetColumn("HotDeal");
+                    return this.GetColumn("Sold");
                 }
             }
             				
-   			public static string HotDealColumn{
+   			public static string SoldColumn{
 			      get{
-        			return "HotDeal";
+        			return "Sold";
       			}
 		    }
            
@@ -837,6 +847,18 @@ namespace ProductSite.Data {
    			public static string NewArrivalColumn{
 			      get{
         			return "NewArrival";
+      			}
+		    }
+           
+            public IColumn HotDeal{
+                get{
+                    return this.GetColumn("HotDeal");
+                }
+            }
+            				
+   			public static string HotDealColumn{
+			      get{
+        			return "HotDeal";
       			}
 		    }
            
