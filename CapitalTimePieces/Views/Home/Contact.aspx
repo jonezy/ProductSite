@@ -7,15 +7,17 @@
         <div class="six columns alpha">
             <h4>Mailing Address</h4>
             <address>
-                Capital Time Pieces Ltd<br />
-                60 Pippin Road Suite 33<br />
-                Concord, Ontario L4k-4M8<br /><br />
+                Capital Time Pieces<br />
+                3883 Rutherford Road, Unit 15<br />
+                Woodbridge Ontario,<br />
+                L4L-9R8<br /><br />
             </address>
 
             <h4>For Sales Inquiries</h4>
             <address>
-                Phone (905) 761-1760<br />
-                Fax (905)761.1710<br />
+                Phone 905.605.6200<br />
+                Mobile 416.561.2928<br />
+                Fax 416.605.6300<br />
                 Email: <a href="mailto:sales@capitaltimepieces.com">sales@capitaltimepieces.com</a><br /><br />
             </address>
 

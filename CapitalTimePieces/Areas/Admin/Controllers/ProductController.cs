@@ -94,6 +94,7 @@ namespace ProductSite.Areas.Admin.Controllers {
       product.WaterResistant = model.WaterResistant;
       product.NewArrival = model.NewArrival;
       product.HotDeal = model.HotDeal;
+      product.Sold = model.Sold ? model.Sold : false;
 
       return product;
     }
